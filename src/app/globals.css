@@ -12,7 +12,7 @@
   --font-mono: var(--font-geist-mono);
 
   --color-quartz: #4c4c4d;
-  --color-gainsboro: #d5d5d7;
+  --color-silver-mist: #d5d5d7;
   --color-platinum: #eaeaeb;
   --color-white: #ffffff;
   --color-cadet-gray: #b0b2b5;
@@ -21,6 +21,7 @@
   --color-cultured: #f8f8f8;
   --color-gray-web: #b9b9bb;
   --color-granite: #62615d;
+  --color-sky-blue: #1c97f0;
 
   --font-robert-regular: 'robert-regular', sans-serif;
   --font-robert-semibold: 'robert-semibold', sans-serif;
@@ -34,8 +35,10 @@
   --leading-110: 110%;
 
   --tracking-0: 0%;
-  --tracking-1: -2%;
-  --tracking-2: -1%;
+  --tracking-1: -1%;
+  --tracking-2: -2%;
+
+  --spacing-uix: 1236px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -47,3 +50,18 @@
 body {
   @apply bg-background;
 }
+
+@utility uix-center {
+  @apply max-w-uix w-[96%] mx-auto;
+}
+
+/* 
+font-thin (100)
+font-extralight (200)
+font-light (300)
+font-normal (400)
+font-medium (500)
+font-semibold (600)
+font-bold (700)
+font-black (900)
+ */
