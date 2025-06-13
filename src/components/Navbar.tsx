@@ -220,7 +220,7 @@ const Navbar = () => {
                 transition: { duration: 0.3, ease: 'easeInOut' },
               }}
               transition={{ duration: 0.6, ease: 'easeInOut' }}
-              className='font-medium text-base xl:text-xl leading-160 tracking-2 text-silver-mist cursor-pointer relative group'
+              className='font-medium font-dm-sans text-base xl:text-xl leading-160 tracking-2 text-silver-mist cursor-pointer relative group'
             >
               {link.title}
 
@@ -287,7 +287,7 @@ const Navbar = () => {
                       opacity: 1,
                       transition: { delay: i * 0.1 },
                     }}
-                    className='font-medium text-lg leading-160 tracking-2 text-silver-mist hover:text-platinum transition-colors duration-200 cursor-pointer py-2 border-b border-gray-800/20 last:border-b-0'
+                    className='font-medium font-dm-sans text-lg leading-160 tracking-2 text-silver-mist hover:text-platinum transition-colors duration-200 cursor-pointer py-2 border-b border-gray-800/20 last:border-b-0'
                   >
                     {link.title}
                   </motion.li>
