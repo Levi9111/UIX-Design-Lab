@@ -39,7 +39,7 @@ const Button = ({
 
       <motion.button
         className={clsx(
-          'relative z-10 w-full min-w-[180px] h-[66px] sm:h-[60px] md:h-[66px] rounded-[35px] flex items-center justify-between px-[2px] border-2 transition-all duration-300 ease-out shadow-lg overflow-hidden cursor-pointer',
+          'relative z-10 w-full min-w-[180px] h-[66px] sm:h-[60px] md:h-[66px] rounded-[35px] flex items-center justify-between gap-3 px-[2px] border-2 transition-all duration-300 ease-out shadow-lg overflow-hidden cursor-pointer',
           type === 1
             ? 'border-[#282A30] bg-rich-black hover:border-[#404248]'
             : 'border-sky-blue bg-sky-blue hover:border-sky-blue/80',
@@ -112,7 +112,7 @@ const Button = ({
         <motion.div
           className={clsx(
             'relative z-20 flex-1 min-w-0 text-xl sm:text-lg md:text-xl font-medium tracking-wide text-center pr-4',
-            type === 1 ? 'text-white' : 'text-rich-black',
+            '!text-white',
           )}
           animate={{
             x: isHovered ? 4 : 0,

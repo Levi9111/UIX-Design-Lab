@@ -55,6 +55,10 @@ body {
   @apply max-w-uix w-[96%] mx-auto;
 }
 
+@utility break {
+  @apply hidden md:block;
+}
+
 /* 
 font-thin (100)
 font-extralight (200)
