@@ -22,6 +22,7 @@
   --color-gray-web: #b9b9bb;
   --color-granite: #62615d;
   --color-sky-blue: #1c97f0;
+  --color-charcoal-blue: #181b21;
 
   --font-space-grotesk: var(--font-space-grotesk), sans-serif;
   --font-dm-sans: var(--font-dm-sans), sans-serif;
@@ -55,16 +56,37 @@ body {
 }
 
 @utility break {
-  @apply hidden md:block;
+  @apply hidden  md:block;
 }
 
 @utility uix-title {
-  background: linear-gradient(96.64deg, #e0e0e1 51.66%, #04070d 100%);
-  @apply text-[56px] font-medium leading-120 tracking-1 text-center bg-clip-text text-transparent;
+  background: linear-gradient(96.64deg, #e0e0e1 41.66%, #04070d 100%);
+  @apply text-[56px] font-bold leading-120 tracking-1 text-center bg-clip-text text-transparent;
 }
 
 @utility uix-text-title {
   @apply font-normal text-xl text-roman-silver leading-150 tracking-0 text-center;
+}
+
+.gradient-border {
+  background: linear-gradient(
+    135deg,
+    rgba(226, 232, 240, 0.1) 0%,
+    rgba(226, 232, 240, 0.05) 100%
+  );
+}
+
+.glass-effect {
+  backdrop-filter: blur(10px);
+  background: rgba(26, 32, 44, 0.8);
+}
+
+.inner-shadow {
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.subtle-glow {
+  box-shadow: 0 0 20px rgba(226, 232, 240, 0.1);
 }
 
 /* 

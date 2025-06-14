@@ -19,7 +19,7 @@ const Button = ({
 
   return (
     <motion.div
-      className='relative group inline-block w-full max-w-[222px] '
+      className='relative group inline-block min-w-[222px] font-dm-sans'
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       initial={{ y: 0 }}
@@ -39,7 +39,7 @@ const Button = ({
 
       <motion.button
         className={clsx(
-          'relative z-10 w-full min-w-[180px] h-[66px] sm:h-[60px] md:h-[66px] rounded-[35px] flex items-center justify-between gap-3 px-[2px] border-2 transition-all duration-300 ease-out shadow-lg overflow-hidden cursor-pointer',
+          'relative z-10 w-full min-w-[180px] h-[66px] sm:h-[60px] md:h-[66px] rounded-[35px] flex items-center justify-between gap-0 px-[2px] border-2 transition-all duration-300 ease-out shadow-lg overflow-hidden cursor-pointer',
           type === 1
             ? 'border-[#282A30] bg-rich-black hover:border-[#404248]'
             : 'border-sky-blue bg-sky-blue hover:border-sky-blue/80',
@@ -111,7 +111,7 @@ const Button = ({
         {/* Text with smooth reveal animation */}
         <motion.div
           className={clsx(
-            'relative z-20 flex-1 min-w-0 text-xl sm:text-lg md:text-xl font-medium tracking-wide text-center pr-4',
+            'relative z-20 flex-1 min-w-0 text-xl sm:text-lg md:text-xl font-medium tracking-wide text-center',
             '!text-white',
           )}
           animate={{
