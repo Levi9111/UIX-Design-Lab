@@ -69,24 +69,25 @@ body {
 }
 
 .gradient-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
   background: linear-gradient(
-    135deg,
-    rgba(226, 232, 240, 0.1) 0%,
-    rgba(226, 232, 240, 0.05) 100%
+    90.18deg,
+    rgba(207, 231, 255, 0.2) 0.14%,
+    rgba(207, 231, 255, 0) 100.74%
   );
-}
-
-.glass-effect {
-  backdrop-filter: blur(10px);
-  background: rgba(26, 32, 44, 0.8);
-}
-
-.inner-shadow {
-  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.subtle-glow {
-  box-shadow: 0 0 20px rgba(226, 232, 240, 0.1);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 /* 

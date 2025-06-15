@@ -58,8 +58,8 @@ const serviceDetailsData = [
 
 const ProvidedServices = () => {
   return (
-    <section className='md:pt-20 md:pb-44'>
-      <div className='uix-center md:py-[90px]'>
+    <section className='md:pt-20'>
+      <div className='uix-center'>
         <h3 className='uix-title'>
           Let’s Build Something <br className='break' /> Great Together
         </h3>
@@ -78,7 +78,7 @@ const ProvidedServices = () => {
         </div>
 
         {/* Service descriptions */}
-        <div className='grid md:grid-cols-2 gap-3'>
+        <div className='max-w-[1111px] w-full mx-auto grid md:grid-cols-2 gap-4'>
           {serviceDetailsData.map((serviceDetails, index) => (
             <div
               className='max-w-[546px] w-full min-h-[678px] h-max rounded-[40px] bg-charcoal-blue relative'
@@ -95,6 +95,10 @@ const ProvidedServices = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className='md:mt-[60px] w-full flex items-center justify-center'>
+          <Button>View More</Button>
         </div>
       </div>
     </section>
