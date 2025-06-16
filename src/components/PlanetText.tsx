@@ -2,10 +2,13 @@
 
 import { motion, Variants } from 'framer-motion';
 import { ReactNode } from 'react';
+import person from '../../public/icons/person.svg';
+import Image from 'next/image';
 
 type PlanetTextProps = {
   title: string | ReactNode;
   subtitle: string | ReactNode;
+  btnText?: string | ReactNode;
 };
 
 const titleVariants: Variants = {
@@ -67,7 +70,11 @@ const FloatingPlanet: React.FC<FloatingPlanetProps> = ({
   />
 );
 
-export const PlanetText: React.FC<PlanetTextProps> = ({ title, subtitle }) => {
+export const PlanetText: React.FC<PlanetTextProps> = ({
+  title,
+  subtitle,
+  btnText,
+}) => {
   return (
     <div className='relative z-10 mx-auto w-full max-w-3xl px-4 py-12 text-center'>
       {/* 🌌 Floating planet dots */}
@@ -95,7 +102,22 @@ export const PlanetText: React.FC<PlanetTextProps> = ({ title, subtitle }) => {
           transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
         />
       </motion.svg>
-
+      {btnText && (
+        <div className='w-full flex items-center justify-center'>
+          <motion.button
+            initial='hidden'
+            whileInView='show'
+            viewport={{ once: true, amount: 0.6 }}
+            variants={titleVariants}
+            className='w-[129px] h-[34px] rounded-[100vw] border border-[#d8e7e2]  flex items-center justify-center gap-1'
+          >
+            <Image src={person} alt='Person' width={16} height={12} />
+            <p className='text-[13px] text-roman-silver font-normal leading-170 tracking-0 font-dm-sans uppercase'>
+              {btnText}
+            </p>
+          </motion.button>
+        </div>
+      )}
       {/* 🪐 Animated text */}
       <motion.h3
         initial='hidden'

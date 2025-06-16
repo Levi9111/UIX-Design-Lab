@@ -182,8 +182,8 @@ const Showcase: React.FC = () => {
             subtitle={
               <>
                 We make design simple, seamless, and impactful—helping you
-                <br className='hidden md:block' /> bring ideas to life with
-                clarity and creativity.
+                <br className='break' /> bring ideas to life with clarity and
+                creativity.
               </>
             }
           />
