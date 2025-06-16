@@ -22,7 +22,7 @@ const Hero = () => {
         </motion.h1>
 
         <motion.p
-          className='mt-4 sm:mt-6 mb-8 sm:mb-12 text-base sm:text-lg md:text-xl lg:text-2xl font-normal leading-relaxed tracking-normal max-w-xl sm:max-w-2xl text-cadet-gray'
+          className='mt-4 sm:mt-6 mb-8 sm:mb-12 text-base sm:text-lg md:text-xl lg:text-2xl font-normal leading-relaxed tracking-normal max-w-xl sm:max-w-4xl text-cadet-gray'
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.8 }}
@@ -44,9 +44,8 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Optional: Divider glow line */}
       <div
-        className='w-full h-[1px] absolute bottom-0'
+        className='w-full h-[3px] absolute bottom-0'
         style={{
           background:
             'radial-gradient(50% 50% at 50% 50%, rgba(216, 231, 242, 0.3) 0%, #04070D 100%)',
