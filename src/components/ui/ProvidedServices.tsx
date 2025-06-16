@@ -1,7 +1,7 @@
 'use client';
 
-import Button from './Button';
-import { PlanetText } from './PlanetText';
+import Button from '../elements/Button';
+import { PlanetText } from '../elements/PlanetText';
 import { motion } from 'framer-motion';
 
 // Navigation link type

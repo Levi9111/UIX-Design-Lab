@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence, Variants, easeInOut } from 'framer-motion';
 import Image from 'next/image';
-import logo from '../../public/logos/logo.svg';
-import Button from './Button';
+import logo from '../../../public/logos/logo.svg';
+import Button from '../elements/Button';
 
 const links = [
   { title: 'Home', path: '' },

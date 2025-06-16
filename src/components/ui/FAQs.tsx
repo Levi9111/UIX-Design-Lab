@@ -1,11 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { PlanetText } from './PlanetText';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
-import arrow from '../../public/icons/arrow.svg';
+import arrow from '../../../public/icons/arrow.svg';
 import Image from 'next/image';
+import { PlanetText } from '../elements/PlanetText';
 
 const accordionData = [
   {

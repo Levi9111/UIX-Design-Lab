@@ -2,7 +2,7 @@
 
 import { motion, Variants } from 'framer-motion';
 import { ReactNode } from 'react';
-import person from '../../public/icons/person.svg';
+import person from '../../../public/icons/person.svg';
 import Image from 'next/image';
 
 type PlanetTextProps = {

@@ -10,10 +10,10 @@ import {
 } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, RefObject, useEffect, useState } from 'react';
-import shield from '../../public/icons/shield.svg';
-import showcaseLine from '../../public/icons/showcase-line.svg';
-import logoShowCase from '../../public/logos/logo-showcase.svg';
-import { PlanetText } from './PlanetText';
+import shield from '../../../public/icons/shield.svg';
+import showcaseLine from '../../../public/icons/showcase-line.svg';
+import logoShowCase from '../../../public/logos/logo-showcase.svg';
+import { PlanetText } from '../elements/PlanetText';
 
 // Mock components for the example
 const MockImage = ({ src, alt, width, height, className }: any) => (

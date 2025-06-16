@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import arrow from '../../public/icons/arrow.svg';
+import arrow from '../../../public/icons/arrow.svg';
 import { ReactNode, useState } from 'react';
 import clsx from 'clsx';
 import { motion, AnimatePresence } from 'framer-motion';

@@ -1,11 +1,11 @@
 'use client';
 
-import logo from '../../public/logos/logo.svg';
-import instagram from '../../public/icons/instagram.svg';
-import tiktok from '../../public/icons/tiktok.svg';
-import linkedin from '../../public/icons/linkedin.svg';
-import youtube from '../../public/icons/youtube.svg';
-import twitter from '../../public/icons/twitter.svg';
+import logo from '../../../public/logos/logo.svg';
+import instagram from '../../../public/icons/instagram.svg';
+import tiktok from '../../../public/icons/tiktok.svg';
+import linkedin from '../../../public/icons/linkedin.svg';
+import youtube from '../../../public/icons/youtube.svg';
+import twitter from '../../../public/icons/twitter.svg';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 

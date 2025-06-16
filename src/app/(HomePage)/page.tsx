@@ -1,24 +1,20 @@
-import FAQs from '@/components/FAQs';
-import Hero from '@/components/Hero';
-import NebulaBackground from '@/components/NebulaBackground';
-import PreFooter from '@/components/PreFooter';
-import ProvidedServices from '@/components/ProvidedServices';
-import Showcase from '@/components/Showcase';
-import SpaceBackground from '@/components/SpaceBackground';
-import Stories from '@/components/Stories';
+import FAQs from '@/components/ui/FAQs';
+import Hero from '@/components/ui/Hero';
+import PreFooter from '@/components/ui/PreFooter';
+import ProvidedServices from '@/components/ui/ProvidedServices';
+import Showcase from '@/components/ui/Showcase';
+import Stories from '@/components/ui/Stories';
 
 const HomePage = () => {
   return (
-    <div className='relative'>
-      <NebulaBackground />
-      <SpaceBackground />
+    <>
       <Hero />
       <ProvidedServices />
       <Showcase />
       <Stories />
       <FAQs />
       <PreFooter />
-    </div>
+    </>
   );
 };
 

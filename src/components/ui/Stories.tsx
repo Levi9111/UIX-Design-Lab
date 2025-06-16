@@ -1,11 +1,11 @@
 'use client';
 
-import { PlanetText } from './PlanetText';
+import { PlanetText } from '../elements/PlanetText';
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, PanInfo } from 'framer-motion';
-import userImage from '../../public/images/demo-user.png';
-import personLinesIcon from '../../public/icons/person-lines.svg';
+import userImage from '../../../public/images/demo-user.png';
+import personLinesIcon from '../../../public/icons/person-lines.svg';
 
 type Testimonial = {
   title: string;
