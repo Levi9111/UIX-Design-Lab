@@ -284,7 +284,7 @@ const SpaceBackground = () => {
           key={`star-${i}`}
           x={Math.random() * 100}
           y={Math.random() * 100}
-          size={Math.random() * 2 + 1}
+          size={Math.random() * 4 + 1}
           delay={Math.random() * 3}
         />
       ))}

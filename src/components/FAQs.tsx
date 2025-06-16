@@ -153,10 +153,10 @@ const FAQs = () => {
       </div>
 
       <div
-        className='w-full h-[3px] absolute bottom-0'
+        className='w-full h-1 absolute bottom-0'
         style={{
           background:
-            'radial-gradient(50% 50% at 50% 50%, rgba(216, 231, 242, 0.3) 0%, #04070D 100%)',
+            'radial-gradient(50% 50% at 50% 50%, rgba(216, 231, 242, 0.3) 0%, transparent 80%)',
         }}
       />
     </section>

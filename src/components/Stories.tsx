@@ -117,7 +117,7 @@ const Stories = () => {
             return (
               <motion.div
                 key={i}
-                className={`absolute left-1/2 -translate-x-1/2 top-0 w-full max-w-[980px] transition-all duration-700 ${style}`}
+                className={`absolute left-1/2 -translate-x-1/2 w-full max-w-[980px] transition-all duration-700 ${style}`}
                 style={{
                   filter: isActive ? 'none' : 'blur(0.4px) brightness(0.95)',
                 }}
