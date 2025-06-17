@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import Footer from '@/components/ui/Footer';
-import Navbar from '@/components/ui/Navbar';
 import NebulaBackground from '@/components/designs/NebulaBackground';
 import SpaceBackground from '@/components/designs/SpaceBackground';
 import Welcoming from '@/components/ui/Welcoming';
+import Navbar from '@/components/Navigation';
 
 export default function HomeLayout({
   children,
