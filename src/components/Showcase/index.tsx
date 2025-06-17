@@ -1,5 +1,6 @@
 import { PlanetText } from '../elements/PlanetText';
 import DesktopShowcase from './DesktopShowcase';
+import MobileShowcase from './MobileShowcase';
 
 const Showcase = () => {
   return (
@@ -15,6 +16,7 @@ const Showcase = () => {
         }
       />
       <DesktopShowcase />
+      <MobileShowcase />
     </section>
   );
 };
