@@ -1,5 +1,5 @@
+import FAQs from '@/components/FAQs';
 import Stories from '@/components/Stories';
-import FAQs from '@/components/ui/FAQs';
 import Hero from '@/components/ui/Hero';
 import PreFooter from '@/components/ui/PreFooter';
 import ProvidedServices from '@/components/ui/ProvidedServices';
