@@ -45,7 +45,7 @@ const MobileStories = () => {
   }, [activeIndex]);
 
   return (
-    <section className='block md:hidden mt-16 px-4'>
+    <section className='block md:hidden mt-16 px-4 overflow-x-hidden'>
       <AnimatePresence mode='wait'>
         <motion.div
           key={activeIndex}
