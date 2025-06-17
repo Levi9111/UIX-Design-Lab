@@ -51,10 +51,7 @@ const Welcoming: React.FC = () => {
   }, []);
 
   return (
-    <div
-      className='relative w-full h-screen overflow-hidden'
-      style={{ backgroundColor: '#04070d' }}
-    >
+    <div className='relative w-full h-screen overflow-hidden bg-background'>
       {/* Animated background container */}
       <div ref={containerRef} className='absolute inset-0 overflow-hidden'>
         {/* Cosmic nebula effect */}

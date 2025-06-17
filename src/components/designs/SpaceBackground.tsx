@@ -247,7 +247,7 @@ const SpaceBackground = () => {
   return (
     <div className='fixed inset-0 -z-50 overflow-hidden pointer-events-none bg-transparent'>
       {/* Floating dots */}
-      {Array.from({ length: 20 }).map((_, i) => (
+      {Array.from({ length: 10 }).map((_, i) => (
         <FloatingDot
           key={`dot-${i}`}
           startX={Math.random() * 100}
@@ -258,7 +258,7 @@ const SpaceBackground = () => {
         />
       ))}
       {/* Linear moving stars in random directions */}
-      {Array.from({ length: 6 }).map((_, i) => {
+      {Array.from({ length: 18 }).map((_, i) => {
         const startX = Math.random() * 100;
         const startY = Math.random() * 100;
         const endX = Math.random() * 100;
@@ -279,12 +279,12 @@ const SpaceBackground = () => {
       })}
 
       {/* Twinkling stars */}
-      {Array.from({ length: 40 }).map((_, i) => (
+      {Array.from({ length: 80 }).map((_, i) => (
         <TwinklingStar
           key={`star-${i}`}
           x={Math.random() * 100}
           y={Math.random() * 100}
-          size={Math.random() * 4 + 1}
+          size={Math.random() + 1}
           delay={Math.random() * 3}
         />
       ))}
