@@ -60,10 +60,16 @@ body {
 @utility uix-title {
   background: linear-gradient(96.64deg, #e0e0e1 41.66%, #04070d 100%);
   @apply text-[56px] font-bold leading-120 tracking-1 text-center bg-clip-text text-transparent;
+
+  /* Smaller screens */
+  @apply text-3xl leading-[1.1] tracking-normal sm:text-[56px] sm:leading-120 sm:tracking-1;
 }
 
 @utility uix-text-title {
   @apply font-normal text-xl text-roman-silver leading-150 tracking-0 text-center;
+
+  /* Smaller screens */
+  @apply text-base leading-[1.4] sm:text-xl sm:leading-150;
 }
 
 .gradient-border {
