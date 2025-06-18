@@ -7,7 +7,9 @@ import {
   useReducedMotion,
   easeInOut,
 } from 'framer-motion';
+import Image from 'next/image';
 import { useRef, RefObject, useState, useEffect } from 'react';
+import logoShowCase from '../../../public/logos/logo-showcase.svg';
 
 // Mock SVG components for demo
 const MockShield = ({ className }: { className?: string }) => (
@@ -17,21 +19,66 @@ const MockShield = ({ className }: { className?: string }) => (
 );
 
 const MockLogoShowcase = ({ className }: { className?: string }) => (
-  <svg viewBox='0 0 100 100' className={className} fill='currentColor'>
-    <circle
-      cx='50'
-      cy='50'
-      r='40'
-      fill='none'
-      stroke='currentColor'
-      strokeWidth='4'
+  <motion.div
+    className={`size-[180px] mx-auto rounded-full border border-blue-300/30 p-1 flex items-center justify-center relative overflow-hidden ${className}`}
+    animate={{
+      y: [0, -6, 0, 6, 0], // Float up and down
+    }}
+    transition={{
+      duration: 10,
+      repeat: Infinity,
+      ease: 'easeInOut',
+    }}
+  >
+    {/* Single orbital ring */}
+    <motion.div
+      className='absolute inset-0 rounded-full border border-blue-300/15'
+      animate={{ rotate: 360 }}
+      transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+      style={{
+        background:
+          'conic-gradient(from 0deg, transparent 80%, rgba(59, 130, 246, 0.05) 100%)',
+      }}
     />
-    <circle cx='50' cy='50' r='20' />
-    <circle cx='50' cy='30' r='5' />
-    <circle cx='65' cy='50' r='5' />
-    <circle cx='50' cy='70' r='5' />
-    <circle cx='35' cy='50' r='5' />
-  </svg>
+
+    {/* Central planet */}
+    <motion.div
+      className='size-full rounded-full flex items-center justify-center relative z-10 backdrop-blur-sm'
+      style={{
+        background:
+          'radial-gradient(circle at 30% 30%, rgba(59, 130, 246, 0.15), rgba(147, 51, 234, 0.08), transparent)',
+        boxShadow:
+          '2px 2px 40px 0px rgba(59, 130, 246, 0.2) inset, 2px 2px 40px 0px rgba(147, 51, 234, 0.1) inset',
+      }}
+    >
+      {/* Logo with hover pop */}
+      <motion.div
+        className='relative'
+        animate={{
+          y: [0, -2, 0], // Gentle bounce inside
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+        whileHover={{
+          scale: 1.08,
+          filter:
+            'brightness(1.1) drop-shadow(0 0 15px rgba(59, 130, 246, 0.4))',
+          transition: { duration: 0.3 },
+        }}
+      >
+        <Image
+          src={logoShowCase}
+          alt='Logo Showcase'
+          width={90}
+          height={90}
+          className='relative z-10'
+        />
+      </motion.div>
+    </motion.div>
+  </motion.div>
 );
 
 // Minimal animation variants for better performance
@@ -103,7 +150,10 @@ const MobileShowcase: React.FC = () => {
   };
 
   return (
-    <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8' ref={ref}>
+    <div
+      className='md:hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'
+      ref={ref}
+    >
       <motion.div
         initial='hidden'
         animate={isInView ? 'visible' : 'hidden'}
@@ -242,79 +292,8 @@ const MobileShowcase: React.FC = () => {
           </motion.div>
         </motion.div>
 
-        {/* Center Feature - Simplified */}
-        <motion.div
-          variants={fadeInVariants}
-          className='flex justify-center my-8 sm:my-12'
-        >
-          <div className='relative'>
-            {/* Main container - responsive sizing */}
-            <motion.div
-              className='w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 rounded-full border border-blue-300/30 flex items-center justify-center relative'
-              style={{
-                background:
-                  'radial-gradient(circle at 30% 30%, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.05), transparent)',
-                boxShadow: '0 0 40px rgba(59, 130, 246, 0.1)',
-              }}
-              whileHover={
-                screenSize === 'desktop'
-                  ? {
-                      scale: 1.05,
-                      transition: { duration: 0.3 },
-                    }
-                  : {}
-              }
-            >
-              {/* Orbital ring - only on desktop */}
-              {screenSize === 'desktop' && !shouldReduceMotion && (
-                <motion.div
-                  className='absolute inset-0 rounded-full border border-blue-300/20'
-                  animate={getRotationEffect(25)}
-                  style={{
-                    background:
-                      'conic-gradient(from 0deg, transparent 70%, rgba(59, 130, 246, 0.1) 100%)',
-                  }}
-                />
-              )}
-
-              {/* Orbiting element - only on desktop/tablet */}
-              {screenSize !== 'mobile' && !shouldReduceMotion && (
-                <motion.div
-                  className='absolute inset-0'
-                  animate={getRotationEffect(20)}
-                >
-                  <div
-                    className='absolute w-2 h-2 bg-blue-400 rounded-full'
-                    style={{
-                      left: '20%',
-                      top: '50%',
-                      transform: 'translate(-50%, -50%)',
-                    }}
-                  />
-                </motion.div>
-              )}
-
-              {/* Central logo */}
-              <motion.div
-                className='relative z-10'
-                animate={
-                  screenSize === 'desktop' && !shouldReduceMotion
-                    ? {
-                        y: [0, -4, 0],
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              >
-                <MockLogoShowcase className='w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 text-blue-400' />
-              </motion.div>
-            </motion.div>
-          </div>
-        </motion.div>
+        {/* Central logo */}
+        <MockLogoShowcase />
 
         {/* Second Grid */}
         <motion.div

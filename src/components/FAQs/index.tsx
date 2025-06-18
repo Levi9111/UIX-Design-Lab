@@ -16,7 +16,7 @@ const FAQs = () => {
         }
       />
       <DesktopFAQs />
-      <MobileFAQs />
+      {/* <MobileFAQs /> */}
     </section>
   );
 };

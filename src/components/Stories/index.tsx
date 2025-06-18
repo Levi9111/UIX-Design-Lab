@@ -9,8 +9,8 @@ const Stories = () => {
       <div className='uix-center'>
         <PlanetText
           btnText='Our clients'
-          title='Hear Directly from Our Valued Partners'
-          subtitle='Discover how businesses and creators... solutions.'
+          title='Our Success Stories'
+          subtitle='Real transformations from real businesses. See how our solutions drive exceptional results.'
         />
       </div>
       {/* Desktop: lg and above */}

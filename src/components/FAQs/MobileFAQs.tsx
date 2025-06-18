@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { AccordionItem } from './DesktopFAQs';
+// import { AccordionItem } from './DesktopFAQs';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const accordionData = [
   {
@@ -33,6 +34,50 @@ const accordionData = [
 
 import arrow from '../../../public/icons/arrow.svg';
 import Image from 'next/image';
+import { ChevronDown } from 'lucide-react';
+
+export const AccordionItem = ({
+  question,
+  answer,
+  isOpen,
+  onClick,
+}: {
+  question: string;
+  answer: string;
+  isOpen: boolean;
+  onClick: () => void;
+}) => (
+  <div
+    className='rounded-lg border border-white/10 p-4 cursor-pointer bg-background/50'
+    style={{ boxShadow: '0px 2px 1px 0px #CFE7FF33 inset' }}
+    onClick={onClick}
+  >
+    <div className='flex items-center justify-between'>
+      <h4 className='text-base md:text-lg font-medium text-white'>
+        {question}
+      </h4>
+      <motion.span
+        animate={{ rotate: isOpen ? 180 : 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        <ChevronDown className='w-5 h-5 text-white/80' />
+      </motion.span>
+    </div>
+    <AnimatePresence>
+      {isOpen && (
+        <motion.p
+          className='text-sm md:text-base text-white/70 mt-2 leading-relaxed'
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          {answer}
+        </motion.p>
+      )}
+    </AnimatePresence>
+  </div>
+);
 
 const SupportCard = () => {
   return (

@@ -46,6 +46,11 @@ const FloatingDot = ({
   />
 );
 
+const getStarColor = () =>
+  ['#ffffff', '#93c5fd', '#f472b6', '#facc15', '#a855f7', '#5eead4'][
+    Math.floor(Math.random() * 6)
+  ];
+
 const TwinklingStar = ({
   x,
   y,
@@ -56,28 +61,34 @@ const TwinklingStar = ({
   y: number;
   size?: number;
   delay?: number;
-}) => (
-  <motion.div
-    className='absolute bg-white rounded-full'
-    style={{
-      width: size,
-      height: size,
-      top: `${y}%`,
-      left: `${x}%`,
-      opacity: 0.8,
-    }}
-    animate={{
-      scale: [1, 1.5, 1],
-      opacity: [0.4, 1, 0.4],
-    }}
-    transition={{
-      duration: 2,
-      delay,
-      repeat: Infinity,
-      ease: 'easeInOut',
-    }}
-  />
-);
+}) => {
+  const [color] = useState(getStarColor());
+
+  return (
+    <motion.div
+      className='absolute rounded-full'
+      style={{
+        width: size,
+        height: size,
+        top: `${y}%`,
+        left: `${x}%`,
+        backgroundColor: color,
+        opacity: 0.8,
+        boxShadow: `0 0 6px ${color}`,
+      }}
+      animate={{
+        scale: [1, 1.5, 1],
+        opacity: [0.4, 1, 0.4],
+      }}
+      transition={{
+        duration: 2,
+        delay,
+        repeat: Infinity,
+        ease: 'easeInOut',
+      }}
+    />
+  );
+};
 
 const DriftingPlanet = ({
   startX,

@@ -4,14 +4,12 @@ import Button from '../elements/Button';
 import { PlanetText } from '../elements/PlanetText';
 import { motion } from 'framer-motion';
 
-// Navigation link type
 type NavigationLink = {
   title: string;
   path: string;
   type: number;
 };
 
-// Service detail type
 type ServiceDetail = {
   title: string;
   description: string;
@@ -24,42 +22,15 @@ const navigationLinks: NavigationLink[] = [
   { title: 'Development', path: '', type: 1 },
 ];
 
-const serviceDetailsData: ServiceDetail[] = [
-  {
-    title: 'My Shell AI',
-    description:
-      'MyShell is building an AI consumer layer that connects users, creators, and open-source AI researchers.',
-  },
-  {
-    title: 'My Shell AI',
-    description:
-      'MyShell is building an AI consumer layer that connects users, creators, and open-source AI researchers.',
-  },
-  {
-    title: 'My Shell AI',
-    description:
-      'MyShell is building an AI consumer layer that connects users, creators, and open-source AI researchers.',
-  },
-  {
-    title: 'My Shell AI',
-    description:
-      'MyShell is building an AI consumer layer that connects users, creators, and open-source AI researchers.',
-  },
-  {
-    title: 'My Shell AI',
-    description:
-      'MyShell is building an AI consumer layer that connects users, creators, and open-source AI researchers.',
-  },
-  {
-    title: 'My Shell AI',
-    description:
-      'MyShell is building an AI consumer layer that connects users, creators, and open-source AI researchers.',
-  },
-];
+const serviceDetailsData: ServiceDetail[] = Array(6).fill({
+  title: 'My Shell AI',
+  description:
+    'MyShell is building an AI consumer layer that connects users, creators, and open-source AI researchers.',
+});
 
 const ProvidedServices = () => {
   return (
-    <section className='md:pt-20 pt-10 pb-10 sm:pb-16'>
+    <section className='md:pt-24 pt-12 pb-16 sm:pb-20 bg-rich-black/20'>
       <div className='uix-center px-4 sm:px-6'>
         <PlanetText
           title={
@@ -77,39 +48,42 @@ const ProvidedServices = () => {
           }
         />
 
-        {/* Navigation buttons */}
-        <div className='flex flex-wrap items-center justify-center gap-4 md:mb-20 mb-10'>
-          {navigationLinks.map((navigation) => (
-            <Button key={navigation.title} type={navigation.type}>
-              {navigation.title}
-            </Button>
-          ))}
+        {/* Category Filters */}
+        <div className='mt-6 mb-12 md:mb-20'>
+          <div className='bg-charcoal-blue/40 p-4 rounded-3xl backdrop-blur-md border border-white/10'>
+            <div className='flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6'>
+              {navigationLinks.map((nav) => (
+                <Button key={nav.title} type={nav.type}>
+                  {nav.title}
+                </Button>
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* Service descriptions */}
-        <div className='w-full max-w-[1111px] mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4'>
-          {serviceDetailsData.map((serviceDetails, index) => (
+        {/* Services Grid */}
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto'>
+          {serviceDetailsData.map((service, index) => (
             <motion.div
-              className='w-full rounded-[40px] bg-charcoal-blue relative flex flex-col justify-end overflow-hidden'
               key={index}
+              className='bg-gradient-to-br from-[#121417] to-[#1c1f24] rounded-[32px] overflow-hidden border border-white/5 shadow-xl flex flex-col group hover:shadow-platinum/30 transition-shadow duration-300'
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
+              transition={{ delay: index * 0.08, duration: 0.5 }}
             >
-              {/* Optional image section (can be made dynamic later) */}
-              <div className='flex-1 bg-gradient-to-br from-[#111317] to-[#1a1d22]' />
+              {/* Image or preview area */}
+              <div className='relative h-60 bg-gradient-to-tr from-[#2e2e2e] via-[#1f1f1f] to-[#3a3a3a] group-hover:scale-105 transition-transform duration-300'>
+                {/* Later replace with real image */}
+              </div>
 
-              {/* Image box */}
-              <div className='w-full h-[503px]'></div>
-
-              {/* Text box */}
-              <div className='w-full bg-background rounded-b-[40px] inner-shadow border-b border-platinum/15 p-6 sm:p-8 md:p-10'>
-                <h3 className='font-normal text-2xl sm:text-[28px] md:text-[33px] leading-[1.3] tracking-wide mb-4 text-cultured'>
-                  {serviceDetails.title}
+              {/* Text Content */}
+              <div className='p-6 sm:p-8 bg-rich-black rounded-b-[32px] border-t border-white/5'>
+                <h3 className='text-xl sm:text-2xl text-platinum font-semibold mb-3'>
+                  {service.title}
                 </h3>
-                <p className='font-dm-sans text-base sm:text-lg text-roman-silver leading-relaxed'>
-                  {serviceDetails.description}
+                <p className='text-roman-silver text-sm sm:text-base leading-relaxed'>
+                  {service.description}
                 </p>
               </div>
             </motion.div>
@@ -117,7 +91,7 @@ const ProvidedServices = () => {
         </div>
 
         {/* View More Button */}
-        <div className='mt-10 sm:mt-[60px] w-full flex items-center justify-center'>
+        <div className='mt-14 sm:mt-[60px] w-full flex items-center justify-center'>
           <Button>View More</Button>
         </div>
       </div>

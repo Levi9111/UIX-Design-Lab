@@ -26,7 +26,7 @@ export default function HomeLayout({
   return (
     <main className='relative'>
       <Navbar />
-      <NebulaBackground />
+      {/* <NebulaBackground /> */}
       <SpaceBackground />
       {children}
       <Footer />
