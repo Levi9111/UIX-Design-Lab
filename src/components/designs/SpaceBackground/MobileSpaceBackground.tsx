@@ -52,6 +52,46 @@ export const LinearMovingStar = ({
   />
 );
 
+// Simplified twinkling star with colors and better visibility
+export const SimpleTwinklingStar = ({
+  x,
+  y,
+  size = 1,
+  delay = 0,
+}: {
+  x: number;
+  y: number;
+  size?: number;
+  delay?: number;
+}) => {
+  const [color] = useState(getStarColor());
+
+  return (
+    <motion.div
+      className='absolute rounded-full'
+      style={{
+        width: size,
+        height: size,
+        top: `${y}%`,
+        left: `${x}%`,
+        backgroundColor: color,
+        opacity: 0.6,
+        boxShadow: `0 0 4px ${color}`,
+      }}
+      animate={{
+        opacity: [0.4, 1, 0.4],
+        scale: [1, 1.3, 1],
+      }}
+      transition={{
+        duration: 2.5,
+        delay,
+        repeat: Infinity,
+        ease: 'easeInOut',
+      }}
+    />
+  );
+};
+
 const MobileSpaceBackground = () => {
   const StaticStar = ({
     x,
@@ -73,46 +113,6 @@ const MobileSpaceBackground = () => {
       }}
     />
   );
-
-  // Simplified twinkling star with colors and better visibility
-  const SimpleTwinklingStar = ({
-    x,
-    y,
-    size = 1,
-    delay = 0,
-  }: {
-    x: number;
-    y: number;
-    size?: number;
-    delay?: number;
-  }) => {
-    const [color] = useState(getStarColor());
-
-    return (
-      <motion.div
-        className='absolute rounded-full'
-        style={{
-          width: size,
-          height: size,
-          top: `${y}%`,
-          left: `${x}%`,
-          backgroundColor: color,
-          opacity: 0.6,
-          boxShadow: `0 0 4px ${color}`,
-        }}
-        animate={{
-          opacity: [0.4, 1, 0.4],
-          scale: [1, 1.3, 1],
-        }}
-        transition={{
-          duration: 2.5,
-          delay,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-      />
-    );
-  };
 
   return (
     <>

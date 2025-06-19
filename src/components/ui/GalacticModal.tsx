@@ -3,6 +3,10 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import React, { useEffect } from 'react';
+import {
+  LinearMovingStar,
+  SimpleTwinklingStar,
+} from '../designs/SpaceBackground/MobileSpaceBackground';
 
 type GalacticModalProps = {
   isOpen: boolean;
@@ -29,12 +33,22 @@ const GalacticModal: React.FC<GalacticModalProps> = ({
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className='fixed inset-0 z-50 flex items-center justify-center px-4 backdrop-blur-md'
+          className='fixed inset-0 z-50 flex items-center justify-center px-4 backdrop-blur-lg bg-background/20'
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
         >
+          {Array.from({ length: 80 }).map((_, i) => (
+            <SimpleTwinklingStar
+              key={`twinkle-star-${i}`}
+              x={Math.random() * 100}
+              y={Math.random() * 100}
+              size={Math.random() * 1.5 + 1}
+              delay={Math.random() * 3}
+            />
+          ))}
+
           {/* Starry background glow */}
           <div className='absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(109,40,217,0.2),transparent_80%)] z-0 pointer-events-none' />
 
@@ -46,6 +60,25 @@ const GalacticModal: React.FC<GalacticModalProps> = ({
             transition={{ duration: 0.4, ease: 'easeInOut' }}
             onClick={(e) => e.stopPropagation()}
           >
+            {Array.from({ length: 40 }).map((_, i) => {
+              const startX = Math.random() * 100;
+              const startY = Math.random() * 100;
+              const endX = Math.random() * 100;
+              const endY = Math.random() * 100;
+
+              return (
+                <LinearMovingStar
+                  key={`random-star-${i}`}
+                  startX={startX}
+                  startY={startY}
+                  endX={endX}
+                  endY={endY}
+                  delay={Math.random() * 4}
+                  duration={Math.random() * 5 + 3}
+                  size={Math.random() * 2 + 1}
+                />
+              );
+            })}
             {/* Close button */}
             <button
               onClick={onClose}
@@ -69,17 +102,33 @@ const GalacticModal: React.FC<GalacticModalProps> = ({
               {children}
             </div>
 
-            {/* Custom Scrollbar (Tailwind-compatible) */}
-            <style jsx>{`
-              ::-webkit-scrollbar {
-                width: 6px;
+            <style>{`
+              /* Firefox */
+              * {
+                scrollbar-width: thin;
+                scrollbar-color: #7c3aed #1e1e2e;
               }
-              ::-webkit-scrollbar-thumb {
-                background: linear-gradient(#a855f7, #6366f1);
+
+              /* WebKit (Chrome, Edge, Safari) */
+              ::-webkit-scrollbar {
+                width: 8px;
+              }
+
+              ::-webkit-scrollbar-track {
+                background: rgba(255, 255, 255, 0.05);
                 border-radius: 8px;
               }
-              ::-webkit-scrollbar-track {
-                background: transparent;
+
+              ::-webkit-scrollbar-thumb {
+                background: linear-gradient(180deg, #8b5cf6, #6366f1);
+                border-radius: 10px;
+                box-shadow: 0 0 8px rgba(139, 92, 246, 0.5);
+                transition: background 0.3s ease;
+              }
+
+              ::-webkit-scrollbar-thumb:hover {
+                background: linear-gradient(180deg, #a78bfa, #818cf8);
+                box-shadow: 0 0 10px rgba(167, 139, 250, 0.8);
               }
             `}</style>
 
