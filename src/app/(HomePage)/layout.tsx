@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Footer from '@/components/ui/Footer';
 import NebulaBackground from '@/components/designs/NebulaBackground';
 import SpaceBackground from '@/components/designs/SpaceBackground';
@@ -16,7 +16,7 @@ export default function HomeLayout({
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 7000); // 7 seconds
+    const timer = setTimeout(() => setIsLoading(false), 4000); // 4 seconds
     return () => clearTimeout(timer);
   }, []);
 
@@ -24,13 +24,12 @@ export default function HomeLayout({
     return <Welcoming />;
   }
 
-  // TODO: fix the suspense here
   return (
     <main className='relative'>
       <Navbar />
       {/* <NebulaBackground /> */}
-      <SpaceBackground />
-      <Suspense fallback={<LoadingPage />}>{children}</Suspense>
+      {/* <SpaceBackground /> */}
+      {children}
       <Footer />
     </main>
   );
