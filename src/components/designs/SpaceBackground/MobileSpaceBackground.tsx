@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
+// Shared utilities
 const getStarColor = () =>
   ['#ffffff', '#93c5fd', '#f472b6', '#facc15', '#a855f7', '#5eead4'][
     Math.floor(Math.random() * 6)
@@ -30,7 +31,7 @@ const MobileSpaceBackground = () => {
     />
   );
 
-  // Simplified twinkling star with reduced animation complexity
+  // Simplified twinkling star with colors and better visibility
   const SimpleTwinklingStar = ({
     x,
     y,
@@ -46,21 +47,22 @@ const MobileSpaceBackground = () => {
 
     return (
       <motion.div
-        className='absolute rounded-full bg-white'
+        className='absolute rounded-full'
         style={{
           width: size,
           height: size,
           top: `${y}%`,
           left: `${x}%`,
           backgroundColor: color,
-          opacity: 0.8,
-          boxShadow: `0 0 6px ${color}`,
+          opacity: 0.6,
+          boxShadow: `0 0 4px ${color}`,
         }}
         animate={{
-          opacity: [0.3, 0.8, 0.3],
+          opacity: [0.4, 1, 0.4],
+          scale: [1, 1.3, 1],
         }}
         transition={{
-          duration: 3,
+          duration: 2.5,
           delay,
           repeat: Infinity,
           ease: 'easeInOut',
@@ -69,120 +71,133 @@ const MobileSpaceBackground = () => {
     );
   };
 
-  // Simplified planet without complex gradients
-  const SimplePlanet = ({
-    x,
-    y,
-    size,
-    color,
-    duration,
-  }: {
-    x: string;
-    y: string;
-    size: string;
-    color: string;
-    duration: number;
-  }) => (
-    <motion.div
-      className='absolute rounded-full'
-      style={{
-        width: size,
-        height: size,
-        background: color,
-        top: y,
-        left: x,
-        opacity: 0.6,
-      }}
-      animate={{
-        scale: [1, 1.02, 1],
-      }}
-      transition={{
-        duration,
-        repeat: Infinity,
-        ease: 'easeInOut',
-      }}
-    />
-  );
-
-  // Single orbit ring
-  const SimpleOrbitRing = () => (
-    <motion.div
-      className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'
-      style={{ width: 300, height: 300 }}
-      animate={{ rotate: 360 }}
-      transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
-    >
-      <div className='w-full h-full rounded-full border border-white/5' />
-    </motion.div>
-  );
-
-  // Occasional shooting star
-  const OccasionalShootingStar = () => {
+  // Multiple shooting stars with better visibility
+  const MobileShootingStar = ({ delay = 0 }: { delay?: number }) => {
     const [visible, setVisible] = useState(false);
     const [startPos, setStartPos] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
       const interval = setInterval(() => {
-        setStartPos({ x: Math.random() * 100, y: Math.random() * 50 });
+        setStartPos({ x: Math.random() * 80, y: Math.random() * 40 });
         setVisible(true);
-        setTimeout(() => setVisible(false), 1000);
-      }, 12000); // Less frequent
+        setTimeout(() => setVisible(false), 1200);
+      }, 6000 + delay * 1000); // Staggered timing
       return () => clearInterval(interval);
-    }, []);
+    }, [delay]);
 
     return visible ? (
       <motion.div
         className='absolute bg-white rounded-full'
         style={{
-          width: '1px',
-          height: '1px',
+          width: '8px',
+          height: '8px',
           top: `${startPos.y}%`,
           left: `${startPos.x}%`,
-          opacity: 0.8,
+          boxShadow: '0 0 8px white',
+          opacity: 0.9,
         }}
         initial={{ opacity: 0 }}
         animate={{
-          x: ['0%', '25%'],
-          y: ['0%', '25%'],
+          x: ['0%', '40%'],
+          y: ['0%', '40%'],
           opacity: [0, 1, 0],
         }}
-        transition={{ duration: 1, ease: 'easeOut' }}
+        transition={{ duration: 1.2, ease: 'easeOut' }}
       />
     ) : null;
   };
 
+  const LinearMovingStar = ({
+    startX,
+    startY,
+    endX,
+    endY,
+    delay = 0,
+    duration = 4,
+    size = 2,
+  }: {
+    startX: number;
+    startY: number;
+    endX: number;
+    endY: number;
+    delay?: number;
+    duration?: number;
+    size?: number;
+  }) => (
+    <motion.div
+      className='absolute bg-white rounded-full'
+      style={{
+        width: `${size}px`,
+        height: `${size}px`,
+        top: `${startY}vh`,
+        left: `${startX}vw`,
+        boxShadow: '0 0 8px white',
+        opacity: 0.7,
+      }}
+      initial={{ opacity: 0 }}
+      animate={{
+        x: `${endX - startX}vw`,
+        y: `${endY - startY}vh`,
+        opacity: [0, 1, 0],
+      }}
+      transition={{
+        delay,
+        duration,
+        repeat: Infinity,
+        repeatDelay: 2,
+        ease: 'linear',
+      }}
+    />
+  );
+
   return (
     <>
       {/* Static stars for base layer */}
-      {Array.from({ length: 30 }).map((_, i) => (
+      {Array.from({ length: 40 }).map((_, i) => (
         <StaticStar
           key={`static-star-${i}`}
           x={Math.random() * 100}
           y={Math.random() * 100}
-          size={Math.random() * 0.5 + 0.5}
+          size={Math.random() * 1 + 0.5}
         />
       ))}
 
-      {/* Reduced twinkling stars */}
-      {Array.from({ length: 15 }).map((_, i) => (
+      {/* Increased colored twinkling stars */}
+      {Array.from({ length: 105 }).map((_, i) => (
         <SimpleTwinklingStar
           key={`twinkle-star-${i}`}
           x={Math.random() * 100}
           y={Math.random() * 100}
-          size={Math.random() * 0.5 + 1}
-          delay={Math.random() * 4}
+          size={Math.random() * 1.5 + 1}
+          delay={Math.random() * 3}
         />
       ))}
 
-      {/* Simplified planets */}
-      <SimplePlanet x='15%' y='75%' size='40px' color='#38bdf8' duration={45} />
-      <SimplePlanet x='75%' y='15%' size='35px' color='#facc15' duration={55} />
+      {/* Linear moving stars in random directions */}
+      {Array.from({ length: 18 }).map((_, i) => {
+        const startX = Math.random() * 100;
+        const startY = Math.random() * 100;
+        const endX = Math.random() * 100;
+        const endY = Math.random() * 100;
 
-      {/* Single orbit ring */}
-      <SimpleOrbitRing />
+        return (
+          <LinearMovingStar
+            key={`random-star-${i}`}
+            startX={startX}
+            startY={startY}
+            endX={endX}
+            endY={endY}
+            delay={Math.random() * 4}
+            duration={Math.random() * 5 + 3}
+            size={Math.random() * 2 + 1}
+          />
+        );
+      })}
 
-      {/* Occasional shooting star */}
-      <OccasionalShootingStar />
+      {/* Multiple shooting stars */}
+      <MobileShootingStar delay={0} />
+      <MobileShootingStar delay={2} />
+      <MobileShootingStar delay={4} />
     </>
   );
 };
