@@ -104,7 +104,7 @@ const TabletStories = () => {
   };
 
   return (
-    <section className='hidden md:block lg:hidden px-6 py-12'>
+    <section className='hidden md:block lg:hidden px-6 py-12 overflow-x-hidden'>
       {/* Section Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}

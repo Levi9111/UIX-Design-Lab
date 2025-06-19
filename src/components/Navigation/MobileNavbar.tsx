@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import logo from '../../../public/logos/logo.svg';
 import Button from '../elements/Button';
-import { useRouter } from 'next/navigation';
+import Route from '../elements/Route';
 
 const links = [
   { title: 'Home', path: '' },
@@ -19,15 +19,14 @@ const lineProps =
 
 const MobileNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const router = useRouter();
 
   return (
     <nav className='block lg:hidden bg-rich-black/90 px-4 py-3 border-b border-gray-800/30 backdrop-blur-sm shadow-md relative z-50'>
       <div className='flex items-center justify-between'>
-        <div className='flex items-center gap-2'>
+        <Route className='flex items-center gap-2' link='/'>
           <Image src={logo} alt='Logo' width={40} height={40} />
           <p className='text-lg text-platinum font-semibold'>Design Lab</p>
-        </div>
+        </Route>
 
         {/* Animated Hamburger/X Icon */}
         <button
@@ -69,9 +68,9 @@ const MobileNavbar = () => {
                 {link.title}
               </p>
             ))}
-            <Button onClick={() => router.push('/get-in-touch')}>
-              Get in touch
-            </Button>
+            <Route link='/get-in-touch'>
+              <Button>Get in touch</Button>
+            </Route>
           </motion.div>
         )}
       </AnimatePresence>

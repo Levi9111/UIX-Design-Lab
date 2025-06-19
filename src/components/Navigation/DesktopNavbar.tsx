@@ -4,7 +4,7 @@ import { motion, Variants, easeInOut } from 'framer-motion';
 import Image from 'next/image';
 import logo from '../../../public/logos/logo.svg';
 import Button from '../elements/Button';
-import { useRouter } from 'next/navigation';
+import Route from '../elements/Route';
 
 const links = [
   { title: 'Home', path: '' },
@@ -15,8 +15,6 @@ const links = [
 ];
 
 const DesktopNavbar = () => {
-  const router = useRouter();
-
   const navVariants = {
     hidden: { y: -100, opacity: 0 },
     visible: {
@@ -59,30 +57,32 @@ const DesktopNavbar = () => {
     >
       <div className='flex items-center justify-between'>
         {/* Logo */}
-        <motion.div
-          className='flex items-center gap-3 flex-shrink-0'
-          variants={logoVariants}
-          whileHover='hover'
-        >
+        <Route link='/'>
           <motion.div
-            whileHover={{ rotate: 360 }}
-            transition={{ duration: 0.6, ease: 'easeInOut' }}
-          >
-            <Image
-              src={logo}
-              alt='Logo'
-              width={56}
-              height={56}
-              className='w-12 h-12'
-            />
-          </motion.div>
-          <motion.p
-            className='text-2xl font-semibold text-platinum'
+            className='flex items-center gap-3 flex-shrink-0'
             variants={logoVariants}
+            whileHover='hover'
           >
-            Design Lab
-          </motion.p>
-        </motion.div>
+            <motion.div
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.6, ease: 'easeInOut' }}
+            >
+              <Image
+                src={logo}
+                alt='Logo'
+                width={56}
+                height={56}
+                className='w-12 h-12'
+              />
+            </motion.div>
+            <motion.p
+              className='text-2xl font-semibold text-platinum'
+              variants={logoVariants}
+            >
+              Design Lab
+            </motion.p>
+          </motion.div>
+        </Route>
 
         {/* Desktop Nav */}
         <motion.ul
@@ -106,9 +106,9 @@ const DesktopNavbar = () => {
         </motion.ul>
 
         {/* Desktop CTA */}
-        <Button onClick={() => router.push('/get-in-touch')}>
-          Get in touch
-        </Button>
+        <Route link='/get-in-touch'>
+          <Button>Get in touch</Button>
+        </Route>
       </div>
     </motion.nav>
   );

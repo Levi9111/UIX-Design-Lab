@@ -1,16 +1,13 @@
+'use client';
+import { useMedia } from '../hooks/useMedia';
 import MobilePreFooter from './MobilePreFooter';
 import TabAndBiggerPreFooter from './TabAndBiggerPreFooter';
 
 const PreFooter = () => {
+  const device = useMedia();
+
   return (
-    <>
-      <div className='block md:hidden'>
-        <MobilePreFooter />
-      </div>
-      <div className='hidden md:block'>
-        <TabAndBiggerPreFooter />
-      </div>
-    </>
+    <>{device === 'mobile' ? <MobilePreFooter /> : <TabAndBiggerPreFooter />}</>
   );
 };
 

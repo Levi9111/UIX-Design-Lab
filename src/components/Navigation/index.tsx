@@ -1,13 +1,11 @@
+'use client';
+import { useMedia } from '../hooks/useMedia';
 import DesktopNavbar from './DesktopNavbar';
 import MobileNavbar from './MobileNavbar';
 
 const Navbar = () => {
-  return (
-    <>
-      <DesktopNavbar />
-      <MobileNavbar />
-    </>
-  );
+  const device = useMedia();
+  return <>{device === 'desktop' ? <DesktopNavbar /> : <MobileNavbar />}</>;
 };
 
 export default Navbar;

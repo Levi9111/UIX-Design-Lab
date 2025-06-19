@@ -103,7 +103,7 @@ const MobileStories = () => {
   };
 
   return (
-    <section className='block md:hidden py-8 px-4 '>
+    <section className='block md:hidden py-8 px-4  overflow-x-hidden'>
       {/* Section Header */}
 
       {/* Main Testimonial Container */}

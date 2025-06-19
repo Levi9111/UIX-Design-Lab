@@ -1,7 +1,9 @@
+'use client';
 import DesktopFAQs from './DesktopFAQs';
 import MobileFAQs from './MobileFAQs';
 import { PlanetText } from '../elements/PlanetText';
-import { ChevronDown, HelpCircle, MessageCircle, Zap } from 'lucide-react';
+import { HelpCircle, MessageCircle, Zap } from 'lucide-react';
+import { useMedia } from '../hooks/useMedia';
 
 export const accordionData = [
   {
@@ -37,6 +39,8 @@ export const accordionData = [
 ];
 
 const FAQs = () => {
+  const device = useMedia();
+
   return (
     <section className='md:mt-48'>
       <PlanetText
@@ -49,8 +53,7 @@ const FAQs = () => {
           </>
         }
       />
-      <DesktopFAQs />
-      <MobileFAQs />
+      {device === 'desktop' ? <DesktopFAQs /> : <MobileFAQs />};
     </section>
   );
 };

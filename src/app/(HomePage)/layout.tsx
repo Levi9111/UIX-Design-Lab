@@ -1,11 +1,12 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import Footer from '@/components/ui/Footer';
 import NebulaBackground from '@/components/designs/NebulaBackground';
 import SpaceBackground from '@/components/designs/SpaceBackground';
 import Welcoming from '@/components/ui/Welcoming';
 import Navbar from '@/components/Navigation';
+import LoadingPage from './loading';
 
 export default function HomeLayout({
   children,
@@ -23,12 +24,13 @@ export default function HomeLayout({
     return <Welcoming />;
   }
 
+  // TODO: fix the suspense here
   return (
     <main className='relative'>
       <Navbar />
       {/* <NebulaBackground /> */}
       <SpaceBackground />
-      {children}
+      <Suspense fallback={<LoadingPage />}>{children}</Suspense>
       <Footer />
     </main>
   );

@@ -7,8 +7,6 @@ import {
   BarChart3,
   Share2,
   Code,
-  ArrowRight,
-  Sparkles,
 } from 'lucide-react';
 
 export const serviceData = [

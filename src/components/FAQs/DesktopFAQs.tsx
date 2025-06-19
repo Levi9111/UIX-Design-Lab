@@ -1,44 +1,8 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
-import {
-  AnimatePresence,
-  motion,
-  useMotionValue,
-  useSpring,
-  useTransform,
-} from 'framer-motion';
-import { ChevronDown, HelpCircle, MessageCircle, Zap } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ChevronDown, HelpCircle, MessageCircle } from 'lucide-react';
 import { accordionData } from '.';
-
-const FloatingOrb = ({ delay = 0, duration = 8 }) => {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const opacity = useSpring(0.6, { stiffness: 50, damping: 20 });
-
-  return (
-    <motion.div
-      className='absolute w-32 h-32 rounded-full blur-3xl pointer-events-none'
-      style={{
-        background:
-          'radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, rgba(139, 92, 246, 0.3) 50%, transparent 100%)',
-        x,
-        y,
-        opacity,
-      }}
-      animate={{
-        x: [0, 100, -50, 0],
-        y: [0, -80, 50, 0],
-        scale: [1, 1.2, 0.8, 1],
-      }}
-      transition={{
-        duration,
-        repeat: Infinity,
-        ease: 'easeInOut',
-        delay,
-      }}
-    />
-  );
-};
 
 const AccordionItem = ({
   question,

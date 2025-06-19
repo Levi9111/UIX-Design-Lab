@@ -1,8 +1,12 @@
+'use client';
 import { PlanetText } from '../elements/PlanetText';
+import { useMedia } from '../hooks/useMedia';
 import DesktopShowcase from './DesktopShowcase';
 import MobileShowcase from './MobileShowcase';
 
 const Showcase = () => {
+  const device = useMedia();
+
   return (
     <section className='pt-10 md:pt-20 px-4 md:px-0'>
       <PlanetText
@@ -15,8 +19,7 @@ const Showcase = () => {
           </>
         }
       />
-      <DesktopShowcase />
-      <MobileShowcase />
+      {device === 'desktop' ? <DesktopShowcase /> : '<MobileShowcase />'}
     </section>
   );
 };
