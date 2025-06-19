@@ -65,7 +65,7 @@ const testimonials = [
 ];
 
 const MobileStories = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const isInView = useInView(containerRef, { margin: '-50px' });
@@ -103,39 +103,43 @@ const MobileStories = () => {
   };
 
   return (
-    <section className='block md:hidden py-8 px-4 overflow-x-hidden max-w-[95vw] mx-auto'>
-      {/* Section Header */}
-
-      {/* Main Testimonial Container */}
-      <div ref={containerRef} className='relative mb-6'>
+    <section className='block md:hidden py-8 px-4 '>
+      {/* Main Testimonial Container - Fixed overflow issues */}
+      <div
+        ref={containerRef}
+        className='relative mb-6 overflow-hidden  h-[480px]'
+      >
         <AnimatePresence mode='wait'>
           <motion.div
             key={activeIndex}
-            initial={{ opacity: 0, x: 100 }}
+            initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -100 }}
-            transition={{ duration: 0.5, ease: 'easeInOut' }}
-            className='bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-2xl'
+            exit={{ opacity: 0, x: '-100%' }}
+            transition={{
+              duration: 0.5,
+              ease: [0.25, 0.46, 0.45, 0.94], // Custom easing for smoother motion
+            }}
+            className='bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-2xl w-full'
           >
             {/* Header with Avatar */}
             <div className='flex items-center gap-4 mb-6'>
               <motion.div
-                className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${testimonials[activeIndex].color} flex items-center justify-center text-white font-bold text-lg shadow-lg`}
+                className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${testimonials[activeIndex].color} flex items-center justify-center text-white font-bold text-lg shadow-lg flex-shrink-0`}
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
               >
                 {testimonials[activeIndex].image}
               </motion.div>
-              <div className='flex-1'>
-                <h3 className='text-white font-semibold text-lg leading-tight'>
+              <div className='flex-1 min-w-0'>
+                <h3 className='text-white font-semibold text-lg leading-tight truncate'>
                   {testimonials[activeIndex].name}
                 </h3>
-                <p className='text-gray-300 text-sm'>
+                <p className='text-gray-300 text-sm truncate'>
                   {testimonials[activeIndex].role}
                 </p>
               </div>
               <motion.div
-                className='w-8 h-8 rounded-full bg-white/10 flex items-center justify-center'
+                className='w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0'
                 animate={{ rotate: 360 }}
                 transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
               >
@@ -150,7 +154,9 @@ const MobileStories = () => {
               transition={{ delay: 0.2, duration: 0.6 }}
               className='mb-6'
             >
-              <div className='text-4xl text-white/20 font-serif mb-2'>"</div>
+              <div className='text-4xl text-white/20 font-serif mb-2 leading-none'>
+                "
+              </div>
               <p className='text-white/90 text-base leading-relaxed -mt-6 pl-6'>
                 {testimonials[activeIndex].description}
               </p>
@@ -165,7 +171,7 @@ const MobileStories = () => {
             >
               <div className='bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl p-4 border border-blue-400/20'>
                 <div className='flex items-center gap-2 mb-2'>
-                  <TrendingUp className='w-4 h-4 text-blue-400' />
+                  <TrendingUp className='w-4 h-4 text-blue-400 flex-shrink-0' />
                   <span className='text-xs text-blue-300 font-medium'>
                     ROI Increase
                   </span>
@@ -176,7 +182,7 @@ const MobileStories = () => {
               </div>
               <div className='bg-gradient-to-br from-green-500/20 to-teal-500/20 rounded-2xl p-4 border border-green-400/20'>
                 <div className='flex items-center gap-2 mb-2'>
-                  <DollarSign className='w-4 h-4 text-green-400' />
+                  <DollarSign className='w-4 h-4 text-green-400 flex-shrink-0' />
                   <span className='text-xs text-green-300 font-medium'>
                     Revenue Boost
                   </span>
@@ -196,9 +202,9 @@ const MobileStories = () => {
             >
               {Object.entries(testimonials[activeIndex].stats).map(
                 ([key, value], idx) => (
-                  <div key={key} className='flex-1'>
+                  <div key={key} className='flex-1 min-w-0'>
                     <p className='text-lg font-bold text-white'>{value}</p>
-                    <p className='text-xs text-gray-400 capitalize'>
+                    <p className='text-xs text-gray-400 capitalize truncate'>
                       {key.replace('_', ' ')}
                     </p>
                   </div>
@@ -209,18 +215,22 @@ const MobileStories = () => {
         </AnimatePresence>
 
         {/* Navigation Arrows */}
-        <button
+        <motion.button
           onClick={prevSlide}
-          className='absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 hover:bg-white/20 transition-colors'
+          className='absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 hover:bg-white/20 transition-colors z-10'
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
         >
           <ChevronLeft className='w-5 h-5 text-white' />
-        </button>
-        <button
+        </motion.button>
+        <motion.button
           onClick={nextSlide}
-          className='absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 hover:bg-white/20 transition-colors'
+          className='absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 hover:bg-white/20 transition-colors z-10'
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
         >
           <ChevronRight className='w-5 h-5 text-white' />
-        </button>
+        </motion.button>
       </div>
 
       {/* Enhanced Dot Indicators */}
