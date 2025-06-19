@@ -1,6 +1,7 @@
 'use client';
 
 import { motion, Variants, easeInOut } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import logo from '../../../public/logos/logo.svg';
 import Button from '../elements/Button';
@@ -15,6 +16,17 @@ const links = [
 ];
 
 const DesktopNavbar = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const navVariants = {
     hidden: { y: -100, opacity: 0 },
     visible: {
@@ -50,7 +62,11 @@ const DesktopNavbar = () => {
 
   return (
     <motion.nav
-      className='hidden lg:block bg-rich-black/40 h-auto py-4 px-4 sm:px-6 lg:px-8 border-b border-gray-800/30 backdrop-blur-sm shadow-lg z-50 relative'
+      className={`fixed left-0 right-0 top-0 z-50 hidden lg:block h-auto py-4 px-4 sm:px-6 lg:px-8 transition-all duration-300 ${
+        scrolled
+          ? 'bg-rich-black/80 backdrop-blur-md shadow-xl border-b border-white/10'
+          : 'bg-rich-black/40 backdrop-blur-sm shadow-sm border-b border-gray-800/30'
+      }`}
       variants={navVariants}
       initial='hidden'
       animate='visible'

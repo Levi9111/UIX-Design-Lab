@@ -10,7 +10,7 @@ const Hero = () => {
   return (
     <section
       id='home'
-      className='relative pt-[80px] pb-[100px] md:pt-[140px] md:pb-[185px]'
+      className='relative pt-[110px] pb-[100px] md:pt-[170px] md:pb-[185px]'
     >
       {/* Floating decorative elements  */}
       <div className='pointer-events-none absolute w-40 h-40 bg-purple-500/10 blur-2xl rounded-full top-[10%] left-[5%] z-0 animate-pulse' />
