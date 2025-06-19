@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 // Shared utilities
 const getStarColor = () =>
@@ -71,42 +71,6 @@ const MobileSpaceBackground = () => {
     );
   };
 
-  // Multiple shooting stars with better visibility
-  const MobileShootingStar = ({ delay = 0 }: { delay?: number }) => {
-    const [visible, setVisible] = useState(false);
-    const [startPos, setStartPos] = useState({ x: 0, y: 0 });
-
-    useEffect(() => {
-      const interval = setInterval(() => {
-        setStartPos({ x: Math.random() * 80, y: Math.random() * 40 });
-        setVisible(true);
-        setTimeout(() => setVisible(false), 1200);
-      }, 6000 + delay * 1000); // Staggered timing
-      return () => clearInterval(interval);
-    }, [delay]);
-
-    return visible ? (
-      <motion.div
-        className='absolute bg-white rounded-full'
-        style={{
-          width: '8px',
-          height: '8px',
-          top: `${startPos.y}%`,
-          left: `${startPos.x}%`,
-          boxShadow: '0 0 8px white',
-          opacity: 0.9,
-        }}
-        initial={{ opacity: 0 }}
-        animate={{
-          x: ['0%', '40%'],
-          y: ['0%', '40%'],
-          opacity: [0, 1, 0],
-        }}
-        transition={{ duration: 1.2, ease: 'easeOut' }}
-      />
-    ) : null;
-  };
-
   const LinearMovingStar = ({
     startX,
     startY,
@@ -153,7 +117,7 @@ const MobileSpaceBackground = () => {
   return (
     <>
       {/* Static stars for base layer */}
-      {Array.from({ length: 40 }).map((_, i) => (
+      {Array.from({ length: 150 }).map((_, i) => (
         <StaticStar
           key={`static-star-${i}`}
           x={Math.random() * 100}
@@ -163,7 +127,7 @@ const MobileSpaceBackground = () => {
       ))}
 
       {/* Increased colored twinkling stars */}
-      {Array.from({ length: 105 }).map((_, i) => (
+      {Array.from({ length: 200 }).map((_, i) => (
         <SimpleTwinklingStar
           key={`twinkle-star-${i}`}
           x={Math.random() * 100}
@@ -174,7 +138,7 @@ const MobileSpaceBackground = () => {
       ))}
 
       {/* Linear moving stars in random directions */}
-      {Array.from({ length: 18 }).map((_, i) => {
+      {Array.from({ length: 30 }).map((_, i) => {
         const startX = Math.random() * 100;
         const startY = Math.random() * 100;
         const endX = Math.random() * 100;
@@ -193,11 +157,6 @@ const MobileSpaceBackground = () => {
           />
         );
       })}
-
-      {/* Multiple shooting stars */}
-      <MobileShootingStar delay={0} />
-      <MobileShootingStar delay={2} />
-      <MobileShootingStar delay={4} />
     </>
   );
 };
