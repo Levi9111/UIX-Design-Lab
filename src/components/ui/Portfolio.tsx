@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import Button from '../elements/Button';
 import { PlanetText } from '../elements/PlanetText';
 import { motion } from 'framer-motion';
@@ -91,9 +92,12 @@ const Portfolio = () => {
         </div>
 
         {/* View More Button */}
-        <div className='mt-14 sm:mt-[60px] w-full flex items-center justify-center'>
+        <Link
+          href='/all-projects'
+          className='mt-14 sm:mt-[60px] w-full flex items-center justify-center'
+        >
           <Button>View More</Button>
-        </div>
+        </Link>
       </div>
     </section>
   );
