@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Button from '../elements/Button';
 import { PlanetText } from '../elements/PlanetText';
 import { motion } from 'framer-motion';
+import MobilePlanet from '../designs/MobilePlanet';
 
 type NavigationLink = {
   title: string;
@@ -32,7 +33,13 @@ const serviceDetailsData: ServiceDetail[] = Array(6).fill({
 const Portfolio = () => {
   return (
     <section className='md:pt-24 pt-12 pb-16 sm:pb-20 bg-rich-black/20'>
-      <div className='uix-center px-4 sm:px-6'>
+      <div className='uix-center px-4 sm:px-6 relative'>
+        <MobilePlanet
+          gradientFrom='#8B5CF6'
+          gradientTo='#3B82F6'
+          ringColor1='#D8B4FE'
+          ringColor2='#BFDBFE'
+        />
         <PlanetText
           title={
             <>
@@ -48,7 +55,6 @@ const Portfolio = () => {
             </>
           }
         />
-
         {/* Category Filters */}
         <div className='mt-6 mb-12 md:mb-20'>
           <div className='bg-charcoal-blue/40 px-3 py-4 sm:px-4 sm:py-5 md:px-6 md:py-6 rounded-2xl sm:rounded-3xl backdrop-blur-md border border-white/10'>
@@ -61,7 +67,6 @@ const Portfolio = () => {
             </div>
           </div>
         </div>
-
         {/* Services Grid */}
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto'>
           {serviceDetailsData.map((service, index) => (
@@ -90,7 +95,6 @@ const Portfolio = () => {
             </motion.div>
           ))}
         </div>
-
         {/* View More Button */}
         <Link
           href='/all-projects'
