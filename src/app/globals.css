@@ -425,9 +425,20 @@ body {
   }
 }
 
-.animate-spin-slow {
-  animation: spin 12s linear infinite;
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
+
+.animate-spin-slow {
+  animation: spin 10s linear infinite;
+}
+
+.animate-spin-slower {
+  animation: spin 20s linear infinite;
+}
+
 /* 
 font-thin (100)
 font-extralight (200)

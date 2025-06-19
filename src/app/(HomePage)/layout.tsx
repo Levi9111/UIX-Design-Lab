@@ -2,10 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import Footer from '@/components/ui/Footer';
-import NebulaBackground from '@/components/designs/NebulaBackground';
 import Welcoming from '@/components/ui/Welcoming';
 import Navbar from '@/components/Navigation';
-import LoadingPage from './loading';
 import SpaceBackground from '@/components/designs/SpaceBackground/index';
 
 export default function HomeLayout({
@@ -27,7 +25,6 @@ export default function HomeLayout({
   return (
     <main className='relative'>
       <Navbar />
-      {/* <NebulaBackground /> */}
       <SpaceBackground />
       {children}
       <Footer />
