@@ -5,6 +5,7 @@ import Footer from '@/components/ui/Footer';
 import Welcoming from '@/components/ui/Welcoming';
 import Navbar from '@/components/Navigation';
 import SpaceBackground from '@/components/designs/SpaceBackground/index';
+import { useMedia } from '@/components/hooks/useMedia';
 
 export default function HomeLayout({
   children,
@@ -12,6 +13,7 @@ export default function HomeLayout({
   children: React.ReactNode;
 }>) {
   const [isLoading, setIsLoading] = useState(true);
+  const device = useMedia();
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 4000); // 4 seconds
@@ -25,7 +27,7 @@ export default function HomeLayout({
   return (
     <main className='relative'>
       <Navbar />
-      <SpaceBackground />
+      <SpaceBackground device={device} />
       {children}
       <Footer />
     </main>

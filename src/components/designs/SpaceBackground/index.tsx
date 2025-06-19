@@ -1,11 +1,7 @@
-'use client';
-import { useMedia } from '@/components/hooks/useMedia';
 import MobileSpaceBackground from './MobileSpaceBackground';
 import TabAndDesktopSpaceBackground from './TabAndDesktopSpaceBackground';
 
-const SpaceBackground = () => {
-  const device = useMedia();
-
+const SpaceBackground = ({ device }: { device: string }) => {
   return (
     <>
       {device === 'mobile' ? (

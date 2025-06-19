@@ -19,7 +19,7 @@ const Showcase = () => {
           </>
         }
       />
-      {device === 'desktop' ? <DesktopShowcase /> : '<MobileShowcase />'}
+      {device === 'desktop' ? <DesktopShowcase /> : <MobileShowcase />}
     </section>
   );
 };

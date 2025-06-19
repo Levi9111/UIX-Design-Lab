@@ -120,15 +120,6 @@ const Services = () => {
   return (
     <div className='relative'>
       <ProvidedServices />
-
-      <div className='md:hidden absolute bottom-[-220px] left-1/2 transform -translate-x-1/2 z-0'>
-        <div className='w-[120px] h-[120px] bg-gradient-to-br from-purple-500 to-blue-600 rounded-full shadow-[0_0_60px_20px_rgba(139,92,246,0.6)] relative'>
-          {/* Inner ring (blurred) */}
-          <div className='absolute inset-0 w-[160px] h-[160px] border border-purple-300 rounded-full blur-sm opacity-40 animate-spin-slow -z-10' />
-          {/* Outer ring (faint) */}
-          <div className='absolute inset-0 w-[200px] h-[200px] border border-blue-300 rounded-full blur-md opacity-20 animate-spin-slower -z-20' />
-        </div>
-      </div>
     </div>
   );
 };
