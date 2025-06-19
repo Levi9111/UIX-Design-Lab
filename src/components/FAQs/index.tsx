@@ -43,7 +43,7 @@ const FAQs = () => {
   const device = useMedia();
 
   return (
-    <section className='md:mt-48 relative'>
+    <section id='faq' className='md:mt-48 relative'>
       <MobilePlanet
         gradientFrom='#0c4230'
         gradientTo='#106259'

@@ -10,7 +10,7 @@ const Showcase = () => {
   const device = useMedia();
 
   return (
-    <section className='pt-10 md:pt-20 px-4 md:px-0 relative'>
+    <section id='showcase' className='pt-10 md:pt-20 px-4 md:px-0 relative'>
       <MobilePlanet
         gradientFrom='#18445a'
         gradientTo='#137066'

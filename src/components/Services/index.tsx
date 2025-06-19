@@ -118,7 +118,7 @@ export type ServiceCardProps = {
 
 const Services = () => {
   return (
-    <div className='relative'>
+    <div id='services' className='relative'>
       <ProvidedServices />
     </div>
   );

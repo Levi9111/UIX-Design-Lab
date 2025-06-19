@@ -1,5 +1,5 @@
-1. fix the carousel slide for tab and mobile screen in Showcase section
-2. fix the planetText component animation
+1.[partially done] fix the carousel slide for tab and mobile screen in Showcase section
+2.[handled] fix the planetText component animation
 3.[done] create 2 different pages, one for booking, one for All projects
 4.[done] optimize the ui useing useMedia hook for mobile view
 5. use a widget for direct communication

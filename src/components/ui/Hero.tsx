@@ -8,7 +8,10 @@ const Hero = () => {
   const router = useRouter();
 
   return (
-    <section className='relative pt-[80px] pb-[100px] md:pt-[140px] md:pb-[185px]'>
+    <section
+      id='home'
+      className='relative pt-[80px] pb-[100px] md:pt-[140px] md:pb-[185px]'
+    >
       {/* Floating decorative elements (DO NOT override background) */}
       <div className='pointer-events-none absolute w-40 h-40 bg-purple-500/10 blur-2xl rounded-full top-[10%] left-[5%] z-0 animate-pulse' />
       <div className='pointer-events-none absolute w-32 h-32 bg-yellow-400/10 blur-2xl rounded-full bottom-[15%] right-[10%] z-0 animate-ping' />

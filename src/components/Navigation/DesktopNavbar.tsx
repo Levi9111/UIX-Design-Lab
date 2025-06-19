@@ -7,11 +7,11 @@ import Button from '../elements/Button';
 import Route from '../elements/Route';
 
 const links = [
-  { title: 'Home', path: '' },
-  { title: 'Portfolio', path: '' },
-  { title: 'Services', path: '' },
-  { title: 'Review', path: '' },
-  { title: 'FAQ', path: '' },
+  { title: 'Home', id: 'home' },
+  { title: 'Services', id: 'services' },
+  { title: 'Portfolio', id: 'portfolio' },
+  { title: 'Review', id: 'review' },
+  { title: 'FAQ', id: 'faq' },
 ];
 
 const DesktopNavbar = () => {
@@ -98,6 +98,12 @@ const DesktopNavbar = () => {
               variants={linkVariants}
               className='text-xl text-silver-mist cursor-pointer relative group font-medium'
               whileHover='hover'
+              onClick={() => {
+                const el = document.getElementById(link.id);
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
             >
               {link.title}
               <motion.div className='absolute left-0 -bottom-1 h-0.5 w-full bg-platinum origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300' />

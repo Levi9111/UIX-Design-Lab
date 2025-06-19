@@ -7,11 +7,11 @@ import Button from '../elements/Button';
 import Route from '../elements/Route';
 
 const links = [
-  { title: 'Home', path: '' },
-  { title: 'Portfolio', path: '' },
-  { title: 'Services', path: '' },
-  { title: 'Review', path: '' },
-  { title: 'FAQ', path: '' },
+  { title: 'Home', id: 'home' },
+  { title: 'Services', id: 'services' },
+  { title: 'Portfolio', id: 'portfolio' },
+  { title: 'Review', id: 'review' },
+  { title: 'FAQ', id: 'faq' },
 ];
 
 const lineProps =
@@ -54,24 +54,32 @@ const MobileNavbar = () => {
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+          <motion.ul
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             className='mt-3 space-y-3 bg-rich-black/70 px-3 py-3 rounded-md border border-gray-700'
           >
             {links.map((link) => (
-              <p
+              <li
                 key={link.title}
                 className='text-silver-mist text-base font-medium border-b border-gray-700 pb-1'
+                onClick={() => {
+                  const el = document.getElementById(link.id);
+                  if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+
+                  // setIsOpen(false);
+                }}
               >
                 {link.title}
-              </p>
+              </li>
             ))}
             <Route link='/get-in-touch'>
               <Button>Get in touch</Button>
             </Route>
-          </motion.div>
+          </motion.ul>
         )}
       </AnimatePresence>
     </nav>

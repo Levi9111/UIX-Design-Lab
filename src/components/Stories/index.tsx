@@ -11,7 +11,7 @@ const Stories = () => {
   const device = useMedia();
 
   return (
-    <section className='pt-[180px] '>
+    <section id='review' className='pt-[180px] '>
       <div className='uix-center relative '>
         {/* Linear moving stars in random directions */}
         {Array.from({ length: 30 }).map((_, i) => {
@@ -34,10 +34,10 @@ const Stories = () => {
           );
         })}
         <MobilePlanet
-          gradientFrom='#104760'
-          gradientTo='#3B82F6'
-          ringColor1='#213844'
-          ringColor2='#35475b'
+          gradientFrom='#80550a'
+          gradientTo='#992c2c'
+          ringColor1='#FCD34D'
+          ringColor2='#FCA5A5'
           className='!-top-4'
         />
         <PlanetText
