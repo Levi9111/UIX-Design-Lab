@@ -9,7 +9,7 @@ const Stories = () => {
   const device = useMedia();
 
   return (
-    <section className='pt-[180px] overflow-hidden'>
+    <section className='pt-[180px] '>
       <div className='uix-center'>
         <PlanetText
           btnText='Our clients'

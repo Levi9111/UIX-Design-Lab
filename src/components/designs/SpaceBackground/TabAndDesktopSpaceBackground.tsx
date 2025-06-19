@@ -7,6 +7,10 @@ const randomColor = () =>
   ['#ffffff', '#a855f7', '#38bdf8', '#facc15', '#f472b6'][
     Math.floor(Math.random() * 5)
   ];
+const getStarColor = () =>
+  ['#ffffff', '#93c5fd', '#f472b6', '#facc15', '#a855f7', '#5eead4'][
+    Math.floor(Math.random() * 6)
+  ];
 
 const FloatingDot = ({
   startX,
@@ -45,11 +49,6 @@ const FloatingDot = ({
     }}
   />
 );
-
-const getStarColor = () =>
-  ['#ffffff', '#93c5fd', '#f472b6', '#facc15', '#a855f7', '#5eead4'][
-    Math.floor(Math.random() * 6)
-  ];
 
 const TwinklingStar = ({
   x,
@@ -254,7 +253,7 @@ const LinearMovingStar = ({
   />
 );
 
-const SpaceBackground = () => {
+const TabAndDesktopSpaceBackground = () => {
   return (
     <div className='fixed inset-0 -z-50 overflow-hidden pointer-events-none bg-transparent'>
       {/* Floating dots */}
@@ -340,4 +339,4 @@ const SpaceBackground = () => {
   );
 };
 
-export default SpaceBackground;
+export default TabAndDesktopSpaceBackground;
