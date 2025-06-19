@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import logo from '../../../public/logos/logo.svg';
 import Button from '../elements/Button';
+import { useRouter } from 'next/navigation';
 
 const links = [
   { title: 'Home', path: '' },
@@ -18,6 +19,7 @@ const lineProps =
 
 const MobileNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
 
   return (
     <nav className='block lg:hidden bg-rich-black/90 px-4 py-3 border-b border-gray-800/30 backdrop-blur-sm shadow-md relative z-50'>
@@ -67,7 +69,9 @@ const MobileNavbar = () => {
                 {link.title}
               </p>
             ))}
-            <Button>Contact</Button>
+            <Button onClick={() => router.push('/get-in-touch')}>
+              Get in touch
+            </Button>
           </motion.div>
         )}
       </AnimatePresence>

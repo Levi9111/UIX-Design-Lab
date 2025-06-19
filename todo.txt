@@ -1,0 +1,7 @@
+1. fix the carousel slide for tab and mobile screen in Showcase section
+2. fix the planetText component animation
+3. create 2 different pages, one for booking, one for All projects
+4. optimize the ui useing useMedia hook for mobile view
+5. use a widget for direct communication
+6. make the navbar fixed on scroll
+7. in service section clicking the learn more on each component will open a modal with detailed informations.

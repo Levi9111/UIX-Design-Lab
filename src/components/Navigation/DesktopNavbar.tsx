@@ -1,10 +1,10 @@
 'use client';
 
-import { useState } from 'react';
-import { motion, AnimatePresence, Variants, easeInOut } from 'framer-motion';
+import { motion, Variants, easeInOut } from 'framer-motion';
 import Image from 'next/image';
 import logo from '../../../public/logos/logo.svg';
 import Button from '../elements/Button';
+import { useRouter } from 'next/navigation';
 
 const links = [
   { title: 'Home', path: '' },
@@ -15,8 +15,7 @@ const links = [
 ];
 
 const DesktopNavbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const router = useRouter();
 
   const navVariants = {
     hidden: { y: -100, opacity: 0 },
@@ -107,9 +106,9 @@ const DesktopNavbar = () => {
         </motion.ul>
 
         {/* Desktop CTA */}
-        <div className='block'>
-          <Button>Get in touch</Button>
-        </div>
+        <Button onClick={() => router.push('/get-in-touch')}>
+          Get in touch
+        </Button>
       </div>
     </motion.nav>
   );

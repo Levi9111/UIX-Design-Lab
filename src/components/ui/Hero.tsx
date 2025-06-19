@@ -2,8 +2,11 @@
 
 import { motion } from 'framer-motion';
 import Button from '../elements/Button';
+import { useRouter } from 'next/navigation';
 
 const Hero = () => {
+  const router = useRouter();
+
   return (
     <section className='relative pt-[80px] pb-[100px] md:pt-[140px] md:pb-[185px]'>
       {/* Floating decorative elements (DO NOT override background) */}
@@ -40,7 +43,9 @@ const Hero = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.7, duration: 0.5 }}
         >
-          <Button type={2}>Get in touch</Button>
+          <Button type={2} onClick={() => router.push('/get-in-touch')}>
+            Get in touch
+          </Button>
         </motion.div>
       </div>
 

@@ -1,74 +1,8 @@
 'use client';
 import React, { useState, useRef, useEffect } from 'react';
-import {
-  Monitor,
-  Rocket,
-  Smartphone,
-  BarChart3,
-  Share2,
-  Code,
-  ArrowRight,
-  Sparkles,
-} from 'lucide-react';
-
-const serviceData = [
-  {
-    title: 'Web Design',
-    tags: ['Responsive', 'User-Centered', 'Interactive'],
-    icon: Monitor,
-    gradient: 'from-blue-500 to-purple-600',
-    hoverGradient: 'from-blue-600 to-purple-700',
-  },
-  {
-    title: 'Landing Page Design',
-    tags: ['Engaging', 'High Conversion', 'Fast'],
-    icon: Rocket,
-    gradient: 'from-emerald-500 to-teal-600',
-    hoverGradient: 'from-emerald-600 to-teal-700',
-  },
-  {
-    title: 'App Design',
-    tags: ['iOS & Android', 'UI/UX', 'Prototyping'],
-    icon: Smartphone,
-    gradient: 'from-orange-500 to-red-600',
-    hoverGradient: 'from-orange-600 to-red-700',
-  },
-  {
-    title: 'Dashboard Design',
-    tags: ['Data Visualization', 'Components', 'Usability'],
-    icon: BarChart3,
-    gradient: 'from-cyan-500 to-blue-600',
-    hoverGradient: 'from-cyan-600 to-blue-700',
-  },
-  {
-    title: 'Social Media Design',
-    tags: ['Visuals', 'Branding', 'Platform Optimized'],
-    icon: Share2,
-    gradient: 'from-pink-500 to-rose-600',
-    hoverGradient: 'from-pink-600 to-rose-700',
-  },
-  {
-    title: 'Development',
-    tags: ['Next.js', 'MERN Stack', 'WordPress'],
-    icon: Code,
-    gradient: 'from-violet-500 to-indigo-600',
-    hoverGradient: 'from-violet-600 to-indigo-700',
-  },
-];
-
-type Service = {
-  title: string;
-  tags: string[];
-  icon: React.ElementType;
-  gradient: string;
-  hoverGradient: string;
-};
-
-type ServiceCardProps = {
-  service: Service;
-  index: number;
-  isVisible: boolean;
-};
+import { useRouter } from 'next/navigation';
+import { ServiceCardProps, serviceData } from '.';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 const ServiceCard: React.FC<ServiceCardProps> = ({
   service,
@@ -155,6 +89,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 const ProvidedServices = () => {
   const [visibleCards, setVisibleCards] = useState(new Set());
   const sectionRef = useRef(null);
+  const router = useRouter();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -201,8 +136,8 @@ const ProvidedServices = () => {
           </div>
 
           <h2 className='text-5xl md:text-7xl font-bold bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent mb-6 animate-fade-in'>
-            What We
-            <span className='block bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient-x'>
+            What We{' '}
+            <span className='inline-block bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient-x'>
               Provide
             </span>
           </h2>
@@ -226,7 +161,12 @@ const ProvidedServices = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div className='text-center mt-20'>
+        <div
+          className='text-center mt-20'
+          onClick={() => {
+            router.push('/select-your-project');
+          }}
+        >
           <div className='inline-flex items-center gap-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full px-8 py-4 text-white font-semibold transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 cursor-pointer group'>
             <span>Ready to Start Your Project?</span>
             <ArrowRight className='w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-2' />
