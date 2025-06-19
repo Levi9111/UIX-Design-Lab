@@ -51,14 +51,6 @@ const Hero = () => {
           </Button>
         </motion.div>
       </div>
-
-      <div
-        className='w-full h-1 absolute bottom-0'
-        style={{
-          background:
-            'radial-gradient(50% 50% at 50% 50%, rgba(216, 231, 242, 0.3) 0%, transparent 80%)',
-        }}
-      />
     </section>
   );
 };

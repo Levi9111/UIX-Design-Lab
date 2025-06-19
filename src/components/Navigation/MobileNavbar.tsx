@@ -21,7 +21,7 @@ const MobileNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className='block lg:hidden bg-rich-black/90 px-4 py-3 border-b border-gray-800/30 backdrop-blur-sm shadow-md z-50 fixed left-0 right-0'>
+    <nav className='block lg:hidden bg-rich-black/90 px-4 py-3 border-b border-gray-800/30 backdrop-blur-sm shadow-md relative z-50'>
       <div className='flex items-center justify-between'>
         <Route className='flex items-center gap-2' link='/'>
           <Image src={logo} alt='Logo' width={40} height={40} />
