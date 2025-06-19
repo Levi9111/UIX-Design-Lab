@@ -425,6 +425,9 @@ body {
   }
 }
 
+.animate-spin-slow {
+  animation: spin 12s linear infinite;
+}
 /* 
 font-thin (100)
 font-extralight (200)
