@@ -300,7 +300,7 @@ const TabletStories = () => {
         </AnimatePresence>
 
         {/* Navigation Buttons */}
-        <div className='absolute inset-y-1/2 -translate-y-1/2 w-full flex justify-between px-2 pointer-events-none'>
+        <div className='absolute inset-y-1/2 -translate-y-1/2 w-full flex justify-between px-2'>
           <motion.button
             onClick={prevSlide}
             className='absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all duration-300'

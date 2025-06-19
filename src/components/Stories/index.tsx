@@ -13,13 +13,8 @@ const Stories = () => {
           subtitle='Real transformations from real businesses. See how our solutions drive exceptional results.'
         />
       </div>
-      {/* Desktop: lg and above */}
       <DesktopStories />
-
-      {/* Tablet: md only */}
       <TabletStories />
-
-      {/* Mobile: below md */}
       <MobileStories />
     </section>
   );

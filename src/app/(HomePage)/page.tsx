@@ -1,16 +1,17 @@
 import FAQs from '@/components/FAQs';
+import PreFooter from '@/components/PreFooter';
+import Services from '@/components/Services';
 import Showcase from '@/components/Showcase';
 import Stories from '@/components/Stories';
 import Hero from '@/components/ui/Hero';
-import PreFooter from '@/components/ui/PreFooter';
-import ProvidedServices from '@/components/ui/ProvidedServices';
-// import Showcase from '@/components/ui/Showcase';
+import Portfolio from '@/components/ui/Portfolio';
 
 const HomePage = () => {
   return (
     <>
       <Hero />
-      <ProvidedServices />
+      <Services />
+      <Portfolio />
       <Showcase />
       <Stories />
       <FAQs />

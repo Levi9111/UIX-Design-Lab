@@ -28,7 +28,7 @@ const serviceDetailsData: ServiceDetail[] = Array(6).fill({
     'MyShell is building an AI consumer layer that connects users, creators, and open-source AI researchers.',
 });
 
-const ProvidedServices = () => {
+const Portfolio = () => {
   return (
     <section className='md:pt-24 pt-12 pb-16 sm:pb-20 bg-rich-black/20'>
       <div className='uix-center px-4 sm:px-6'>
@@ -50,12 +50,12 @@ const ProvidedServices = () => {
 
         {/* Category Filters */}
         <div className='mt-6 mb-12 md:mb-20'>
-          <div className='bg-charcoal-blue/40 p-4 rounded-3xl backdrop-blur-md border border-white/10'>
-            <div className='flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6'>
+          <div className='bg-charcoal-blue/40 px-3 py-4 sm:px-4 sm:py-5 md:px-6 md:py-6 rounded-2xl sm:rounded-3xl backdrop-blur-md border border-white/10'>
+            <div className='grid grid-cols-1 gap-2 sm:flex sm:flex-wrap sm:justify-center sm:gap-3 md:gap-6'>
               {navigationLinks.map((nav) => (
-                <Button key={nav.title} type={nav.type}>
-                  {nav.title}
-                </Button>
+                <div key={nav.title} className='w-full sm:w-auto'>
+                  <Button type={nav.type}>{nav.title}</Button>
+                </div>
               ))}
             </div>
           </div>
@@ -99,4 +99,4 @@ const ProvidedServices = () => {
   );
 };
 
-export default ProvidedServices;
+export default Portfolio;

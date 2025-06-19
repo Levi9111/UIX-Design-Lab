@@ -1,135 +1,165 @@
 'use client';
-
 import { useState } from 'react';
-// import { AccordionItem } from './DesktopFAQs';
 import { AnimatePresence, motion } from 'framer-motion';
+import {
+  ChevronDown,
+  HelpCircle,
+  MessageCircle,
+  ArrowRight,
+} from 'lucide-react';
+import { accordionData } from '.';
 
-const accordionData = [
-  {
-    question: 'Is the template SEO-friendly?',
-    answer:
-      'Yes, the template is built with SEO best practices, making it easy to optimize your content for search engines.',
-  },
-  {
-    question: 'What’s included with the template?',
-    answer:
-      'The template includes reusable UI components, responsive layouts, and a modern design system to build your site faster.',
-  },
-  {
-    question: 'Can I use this template to create a landing page?',
-    answer:
-      'Absolutely! The template is perfect for building high-converting, responsive landing pages.',
-  },
-  {
-    question: 'Is the template optimized for accessibility?',
-    answer:
-      'Yes, it follows WCAG guidelines and ensures your site is usable for all visitors.',
-  },
-  {
-    question: 'Does the template include mobile responsiveness?',
-    answer:
-      'Yes, the template is fully responsive and works seamlessly on all screen sizes.',
-  },
-];
-
-import arrow from '../../../public/icons/arrow.svg';
-import Image from 'next/image';
-import { ChevronDown } from 'lucide-react';
-
-export const AccordionItem = ({
+const AccordionItem = ({
   question,
   answer,
   isOpen,
   onClick,
+  index,
 }: {
   question: string;
   answer: string;
   isOpen: boolean;
   onClick: () => void;
+  index: number;
 }) => (
-  <div
-    className='rounded-lg border border-white/10 p-4 cursor-pointer bg-background/50'
-    style={{ boxShadow: '0px 2px 1px 0px #CFE7FF33 inset' }}
-    onClick={onClick}
+  <motion.div
+    initial={{ opacity: 0, y: 10 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: index * 0.05, duration: 0.3 }}
+    className='relative group'
   >
-    <div className='flex items-center justify-between'>
-      <h4 className='text-base md:text-lg font-medium text-white'>
-        {question}
-      </h4>
-      <motion.span
-        animate={{ rotate: isOpen ? 180 : 0 }}
-        transition={{ duration: 0.3 }}
-      >
-        <ChevronDown className='w-5 h-5 text-white/80' />
-      </motion.span>
-    </div>
-    <AnimatePresence>
+    {/* Subtle gradient border */}
+    <div className='absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl p-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
+
+    <div
+      className='relative rounded-xl border border-white/10 bg-gray-900/40 backdrop-blur-sm cursor-pointer transition-all duration-200 active:scale-[0.98]'
+      onClick={onClick}
+    >
+      <div className='p-4 sm:p-5'>
+        <div className='flex items-center justify-between gap-3'>
+          <h4 className='text-sm sm:text-base font-medium text-white leading-relaxed flex-1'>
+            {question}
+          </h4>
+          <motion.div
+            animate={{ rotate: isOpen ? 180 : 0 }}
+            transition={{ duration: 0.2 }}
+            className='flex-shrink-0 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center'
+          >
+            <ChevronDown className='w-4 h-4 text-white/60' />
+          </motion.div>
+        </div>
+
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2 }}
+              className='overflow-hidden'
+            >
+              <p className='text-xs sm:text-sm text-white/70 mt-3 leading-relaxed'>
+                {answer}
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* Subtle inner glow */}
       {isOpen && (
-        <motion.p
-          className='text-sm md:text-base text-white/70 mt-2 leading-relaxed'
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          {answer}
-        </motion.p>
+        <div className='absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-xl pointer-events-none' />
       )}
-    </AnimatePresence>
-  </div>
+    </div>
+  </motion.div>
 );
 
 const SupportCard = () => {
   return (
-    <div className='w-full bg-background/60 border border-white/10 p-4 rounded-3xl text-white shadow-inner relative overflow-hidden'>
-      {/* Angled top */}
-      <div className='absolute top-0 left-0 w-full h-4 bg-gradient-to-b from-white/5 to-transparent' />
-
-      <h3 className='text-center text-lg text-[#d5dbe6] leading-5 font-medium'>
-        Still Have Questions?
-      </h3>
-      <p className='text-center font-dm-sans text-[14px] text-roman-silver my-2'>
-        Can’t find what you’re looking for? Reach out to our support team and
-        we’ll get back to you soon.
-      </p>
-
-      <div className='flex justify-center mt-2'>
-        <button
-          className='relative rounded-lg transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.03]'
-          style={{ boxShadow: '0px 2px 1px 0px #CFE7FF33 inset' }}
-        >
-          <span className='absolute bottom-0 left-1/2 w-20 h-2 bg-white blur-[6px] rounded-full -translate-x-1/2 translate-y-1 opacity-70 z-10'></span>
-
-          <div className='rounded-md border border-granite flex items-center justify-center gap-2 bg-background py-2 px-3 relative z-20'>
-            <p className='text-base text-white font-medium'>Get Started</p>
-            <Image src={arrow} alt='Arrow' width={10} height={10} />
-          </div>
-        </button>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.3, duration: 0.4 }}
+      className='relative overflow-hidden'
+    >
+      {/* Gradient border */}
+      <div className='absolute inset-0 bg-gradient-to-br from-blue-500/30 to-purple-500/30 rounded-2xl p-[1px]'>
+        <div className='h-full w-full rounded-2xl bg-gray-900/60 backdrop-blur-sm' />
       </div>
-    </div>
+
+      <div className='relative z-10 p-6 text-center'>
+        {/* Icon */}
+        <div className='w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center'>
+          <HelpCircle className='w-6 h-6 text-blue-400' />
+        </div>
+
+        <h3 className='text-lg sm:text-xl font-semibold text-white mb-2'>
+          Still Have Questions?
+        </h3>
+
+        <p className='text-sm text-white/70 mb-6 leading-relaxed max-w-sm mx-auto'>
+          Can't find what you're looking for? Our support team is here to help
+          you succeed.
+        </p>
+
+        <motion.button
+          whileTap={{ scale: 0.95 }}
+          className='relative group w-full sm:w-auto'
+        >
+          {/* Button glow */}
+          <div className='absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg blur opacity-60 group-active:opacity-80 transition-opacity' />
+
+          <div className='relative bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg py-3 px-6 flex items-center justify-center gap-2'>
+            <MessageCircle className='w-4 h-4 text-white' />
+            <span className='text-sm font-medium text-white'>Get Support</span>
+            <ArrowRight className='w-4 h-4 text-white' />
+          </div>
+        </motion.button>
+      </div>
+    </motion.div>
   );
 };
 
 const MobileFAQs = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const toggleAccordion = (index: number) =>
+
+  const toggleAccordion = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
+  };
 
   return (
-    <div className='block lg:hidden px-4 pt-4'>
-      <div className='space-y-3'>
-        {accordionData.map((item, index) => (
-          <AccordionItem
-            key={index}
-            question={item.question}
-            answer={item.answer}
-            isOpen={openIndex === index}
-            onClick={() => toggleAccordion(index)}
-          />
-        ))}
-      </div>
-      <div className='mt-12 max-w-2xl mx-auto'>
-        <SupportCard />
+    <div className='block lg:hidden min-h-screen'>
+      {/* Subtle background pattern */}
+      <div
+        className='absolute inset-0 opacity-10'
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '40px 40px',
+        }}
+      />
+
+      <div className='relative z-10 px-4 pt-8 pb-12'>
+        {/* Accordion Items */}
+        <div className='space-y-3 mb-8'>
+          {accordionData.map((item, index) => (
+            <AccordionItem
+              key={index}
+              question={item.question}
+              answer={item.answer}
+              isOpen={openIndex === index}
+              onClick={() => toggleAccordion(index)}
+              index={index}
+            />
+          ))}
+        </div>
+
+        {/* Support Card */}
+        <div className='max-w-sm mx-auto'>
+          <SupportCard />
+        </div>
       </div>
     </div>
   );

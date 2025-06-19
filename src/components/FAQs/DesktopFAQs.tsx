@@ -1,163 +1,314 @@
 'use client';
+import { useState, useRef, useEffect } from 'react';
+import {
+  AnimatePresence,
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from 'framer-motion';
+import { ChevronDown, HelpCircle, MessageCircle, Zap } from 'lucide-react';
+import { accordionData } from '.';
 
-import { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
-import Image from 'next/image';
-import arrow from '../../../public/icons/arrow.svg';
+const FloatingOrb = ({ delay = 0, duration = 8 }) => {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const opacity = useSpring(0.6, { stiffness: 50, damping: 20 });
 
-const accordionData = [
-  {
-    question: 'Is the template SEO-friendly?',
-    answer: 'Yes, the template is built with SEO best practices...',
-  },
-  {
-    question: 'What’s included with the template?',
-    answer: 'The template includes reusable UI components...',
-  },
-  {
-    question: 'Can I use this template to create a landing page?',
-    answer: 'Absolutely! The template is perfect for landing pages.',
-  },
-  {
-    question: 'Is the template optimized for accessibility?',
-    answer: 'Yes, it follows WCAG guidelines...',
-  },
-  {
-    question: 'Does the template include mobile responsiveness?',
-    answer: 'Yes, the template is fully responsive...',
-  },
-];
+  return (
+    <motion.div
+      className='absolute w-32 h-32 rounded-full blur-3xl pointer-events-none'
+      style={{
+        background:
+          'radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, rgba(139, 92, 246, 0.3) 50%, transparent 100%)',
+        x,
+        y,
+        opacity,
+      }}
+      animate={{
+        x: [0, 100, -50, 0],
+        y: [0, -80, 50, 0],
+        scale: [1, 1.2, 0.8, 1],
+      }}
+      transition={{
+        duration,
+        repeat: Infinity,
+        ease: 'easeInOut',
+        delay,
+      }}
+    />
+  );
+};
 
 const AccordionItem = ({
   question,
   answer,
+  icon,
   isOpen,
   onClick,
+  index,
 }: {
   question: string;
   answer: string;
+  icon: React.ReactNode;
   isOpen: boolean;
   onClick: () => void;
-}) => (
-  <motion.div
-    layout
-    onClick={onClick}
-    className={`group rounded-xl border border-white/10 p-5 cursor-pointer transition-all duration-300 backdrop-blur-md relative bg-background/50 ${
-      isOpen ? 'shadow-[0_0_20px_rgba(207,231,255,0.15)] bg-background/60' : ''
-    } hover:shadow-[0_0_20px_rgba(207,231,255,0.1)]`}
-    style={{
-      boxShadow: isOpen ? '0px 2px 1px 0px #CFE7FF33 inset' : undefined,
-    }}
-  >
-    <div className='flex items-center justify-between'>
-      <h4 className='text-lg font-medium text-white group-hover:text-white/90'>
-        {question}
-      </h4>
-      <motion.span
-        animate={{ rotate: isOpen ? 180 : 0 }}
-        transition={{ duration: 0.3 }}
+  index: number;
+}) => {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [contentHeight, setContentHeight] = useState(0);
+
+  useEffect(() => {
+    if (contentRef.current) {
+      setContentHeight(contentRef.current.scrollHeight);
+    }
+  }, [answer]);
+
+  const borderGradient = isOpen
+    ? 'linear-gradient(135deg, rgba(59, 130, 246, 0.3) 0%, rgba(139, 92, 246, 0.2) 100%)'
+    : 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)';
+
+  return (
+    <motion.div
+      layout
+      onClick={onClick}
+      className='group relative cursor-pointer'
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        delay: index * 0.1,
+        duration: 0.6,
+        ease: [0.25, 0.46, 0.45, 0.94],
+      }}
+      whileHover={{ scale: 1.02 }}
+    >
+      {/* Animated border */}
+      <motion.div
+        className='absolute inset-0 rounded-2xl p-[1px]'
+        style={{
+          background: borderGradient,
+        }}
+        animate={{
+          background: isOpen
+            ? [
+                'linear-gradient(135deg, rgba(59, 130, 246, 0.3) 0%, rgba(139, 92, 246, 0.2) 100%)',
+                'linear-gradient(135deg, rgba(139, 92, 246, 0.3) 0%, rgba(59, 130, 246, 0.2) 100%)',
+                'linear-gradient(135deg, rgba(59, 130, 246, 0.3) 0%, rgba(139, 92, 246, 0.2) 100%)',
+              ]
+            : 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)',
+        }}
+        transition={{ duration: 2, repeat: isOpen ? Infinity : 0 }}
       >
-        <ChevronDown className='w-5 h-5 text-white/70 group-hover:text-white' />
-      </motion.span>
-    </div>
-    <AnimatePresence>
-      {isOpen && (
-        <motion.p
-          className='text-white/70 mt-3 text-base leading-relaxed origin-top'
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          {answer}
-        </motion.p>
-      )}
-    </AnimatePresence>
-  </motion.div>
-);
+        <div className='h-full w-full rounded-2xl bg-gray-900/50 backdrop-blur-xl' />
+      </motion.div>
+
+      {/* Content */}
+      <div className='relative z-10 p-6'>
+        <div className='flex items-center justify-between'>
+          <div className='flex items-center gap-4'>
+            <motion.div
+              className='flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 backdrop-blur-sm'
+              animate={{
+                scale: isOpen ? 1.1 : 1,
+                rotate: isOpen ? 360 : 0,
+              }}
+              transition={{ duration: 0.5, ease: 'backOut' }}
+            >
+              <div className='text-blue-400'>{icon}</div>
+            </motion.div>
+            <h4 className='text-lg font-semibold text-white group-hover:text-blue-200 transition-colors duration-300'>
+              {question}
+            </h4>
+          </div>
+
+          <motion.div
+            animate={{
+              rotate: isOpen ? 180 : 0,
+              scale: isOpen ? 1.1 : 1,
+            }}
+            transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className='flex items-center justify-center w-8 h-8 rounded-full bg-white/5 backdrop-blur-sm'
+          >
+            <ChevronDown className='w-4 h-4 text-white/70 group-hover:text-white transition-colors' />
+          </motion.div>
+        </div>
+
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0, y: -10 }}
+              animate={{ opacity: 1, height: 'auto', y: 0 }}
+              exit={{ opacity: 0, height: 0, y: -10 }}
+              transition={{
+                duration: 0.5,
+                ease: [0.25, 0.46, 0.45, 0.94],
+              }}
+              className='overflow-hidden'
+            >
+              <div className='pt-4 pl-14'>
+                <motion.p
+                  className='text-gray-300 leading-relaxed'
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2, duration: 0.3 }}
+                >
+                  {answer}
+                </motion.p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* Glow effect */}
+      <motion.div
+        className='absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500'
+        style={{
+          background:
+            'radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(59, 130, 246, 0.1), transparent 40%)',
+        }}
+        animate={{
+          opacity: isOpen ? 0.5 : 0,
+        }}
+      />
+    </motion.div>
+  );
+};
 
 const DesktopFAQs = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
   const toggleAccordion = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePosition({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
   return (
-    <div className='hidden lg:block relative'>
-      <div className='uix-center pb-[140px]'>
-        <div className='mt-[60px] flex flex-col lg:flex-row items-start justify-center gap-10'>
+    <div className='hidden lg:block relative min-h-screen  overflow-hidden'>
+      {/* Grid pattern overlay */}
+      <div
+        className='absolute inset-0 opacity-20'
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px',
+        }}
+      />
+
+      <div className='relative z-10 max-w-7xl mx-auto px-6 py-20'>
+        <div className='flex flex-col lg:flex-row items-start justify-center gap-12'>
           {/* Left Info Box */}
           <motion.div
-            className='w-full max-w-[368px] relative overflow-hidden border border-white/10 p-6 rounded-3xl text-white bg-background/30 backdrop-blur-md shadow-inner'
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            className='w-full max-w-[400px] relative'
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <div className='absolute top-0 left-0 w-full h-6 bg-gradient-to-b from-white/10 to-transparent' />
-            <h3 className='text-center text-xl text-[#d5dbe6] leading-6 font-medium z-10 relative'>
-              Still Have Questions?
-            </h3>
-            <p className='text-center font-dm-sans text-base text-roman-silver my-3 z-10 relative'>
-              Can’t find what you’re looking for? Reach out to our support team
-              and we’ll get back to you soon.
-            </p>
-            <div className='flex justify-center mt-6 z-10 relative'>
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-                className='relative rounded-lg overflow-hidden'
-              >
-                <span className='absolute bottom-0 left-1/2 w-20 h-2 bg-white blur-[6px] rounded-full -translate-x-1/2 translate-y-1 opacity-70 z-10'></span>
-                <div className='rounded-lg border border-white/20 flex items-center justify-center gap-2 bg-background py-3 px-6 relative z-20'>
-                  <p className='text-xl text-white font-medium'>Get Started</p>
-                  <Image src={arrow} alt='Arrow' width={13} height={13} />
-                </div>
-              </motion.button>
+            <div className='relative overflow-hidden border border-white/10 p-8 rounded-3xl text-white bg-gradient-to-br from-gray-900/80 to-gray-800/60 backdrop-blur-2xl shadow-2xl'>
+              {/* Animated gradient overlay */}
+              <motion.div
+                className='absolute top-0 left-0 w-full h-full opacity-30'
+                style={{
+                  background:
+                    'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%)',
+                }}
+                animate={{
+                  background: [
+                    'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%)',
+                    'linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%)',
+                    'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%)',
+                  ],
+                }}
+                transition={{ duration: 4, repeat: Infinity }}
+              />
+
+              <div className='relative z-10'>
+                <motion.div
+                  className='w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 backdrop-blur-sm flex items-center justify-center'
+                  animate={{
+                    scale: [1, 1.05, 1],
+                    rotate: [0, 5, -5, 0],
+                  }}
+                  transition={{ duration: 4, repeat: Infinity }}
+                >
+                  <HelpCircle className='w-8 h-8 text-blue-400' />
+                </motion.div>
+
+                <h3 className='text-center text-2xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent mb-4'>
+                  Still Have Questions?
+                </h3>
+
+                <p className='text-center text-gray-300 mb-8 leading-relaxed'>
+                  Can't find what you're looking for? Our expert support team is
+                  here to help you succeed.
+                </p>
+
+                <motion.button
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  className='w-full relative group'
+                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                >
+                  <div className='absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300' />
+                  <div className='relative bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl py-4 px-8 text-white font-semibold flex items-center justify-center gap-2'>
+                    <MessageCircle className='w-5 h-5' />
+                    Get Support
+                  </div>
+                </motion.button>
+              </div>
             </div>
           </motion.div>
 
           {/* Right Accordion */}
           <motion.div
-            className='max-w-[600px] w-full space-y-4'
-            initial='hidden'
-            animate='show'
-            variants={{
-              hidden: {},
-              show: {
-                transition: {
-                  staggerChildren: 0.1,
-                },
-              },
-            }}
+            className='max-w-[700px] w-full space-y-4'
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            onMouseMove={handleMouseMove}
+            style={
+              {
+                '--mouse-x': `${mousePosition.x}px`,
+                '--mouse-y': `${mousePosition.y}px`,
+              } as React.CSSProperties
+            }
           >
             {accordionData.map((item, index) => (
-              <motion.div
+              <AccordionItem
                 key={index}
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  show: { opacity: 1, y: 0 },
-                }}
-              >
-                <AccordionItem
-                  question={item.question}
-                  answer={item.answer}
-                  isOpen={openIndex === index}
-                  onClick={() => toggleAccordion(index)}
-                />
-              </motion.div>
+                question={item.question}
+                answer={item.answer}
+                icon={item.icon}
+                isOpen={openIndex === index}
+                onClick={() => toggleAccordion(index)}
+                index={index}
+              />
             ))}
           </motion.div>
         </div>
       </div>
 
-      {/* Subtle Glow at Bottom */}
-      <div
-        className='w-full h-1 absolute bottom-0'
+      {/* Bottom glow */}
+      <motion.div
+        className='absolute bottom-0 left-1/2 w-full h-32 -translate-x-1/2'
         style={{
           background:
-            'radial-gradient(50% 50% at 50% 50%, rgba(216, 231, 242, 0.3) 0%, transparent 80%)',
+            'radial-gradient(50% 50% at 50% 50%, rgba(59, 130, 246, 0.2) 0%, transparent 80%)',
         }}
+        animate={{
+          opacity: [0.5, 0.8, 0.5],
+        }}
+        transition={{ duration: 3, repeat: Infinity }}
       />
     </div>
   );
