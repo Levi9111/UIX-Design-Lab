@@ -11,7 +11,7 @@ const Stories = () => {
   const device = useMedia();
 
   return (
-    <section id='review' className='pt-[180px] '>
+    <section id='review' className='md:pt-[180px] pt-16'>
       <div className='uix-center relative '>
         {/* Linear moving stars in random directions */}
         {Array.from({ length: 30 }).map((_, i) => {
