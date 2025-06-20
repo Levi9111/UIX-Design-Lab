@@ -109,8 +109,8 @@ const Welcoming: React.FC = () => {
           <div className='loading-orbit'>
             <div className='loading-planet'></div>
           </div>
-          <p className='text-sm tracking-widest text-gray-400 pulse-text font-light'>
-            INITIALIZING COSMIC EXPERIENCE
+          <p className='text-sm tracking-widest text-gray-400 pulse-text font-light uppercase'>
+            Crafting Tomorrow’s Orbit
           </p>
         </div>
       </div>
