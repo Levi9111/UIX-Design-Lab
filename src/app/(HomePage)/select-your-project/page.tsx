@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { serviceData } from '@/components/Services';
+import { PlanetText } from '@/components/elements/PlanetText';
 
 type ServiceType = {
   title: string;
@@ -238,14 +239,11 @@ const ProjectSelection = () => {
       </div>
 
       {/* Headline */}
-      <div className='relative z-10 text-center mb-16'>
-        <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight'>
-          Choose a Service
-        </h2>
-        <p className='text-white/60 max-w-2xl mx-auto text-base sm:text-lg'>
-          Select the service that best fits your project goals.
-        </p>
-      </div>
+
+      <PlanetText
+        title='Choose a Service'
+        subtitle='Select the service that best fits your project goals.'
+      />
 
       {/* Grid of cards */}
       <div className='relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto w-full'>

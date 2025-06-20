@@ -53,7 +53,7 @@ const GalacticModal: React.FC<GalacticModalProps> = ({
           <div className='absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(109,40,217,0.2),transparent_80%)] z-0 pointer-events-none' />
 
           <motion.div
-            className='relative bg-gradient-to-br from-slate-900 via-indigo-900 to-black text-white rounded-2xl shadow-2xl border border-purple-800 p-4 max-w-2xl w-[80vw] mx-auto md:w-full z-10 overflow-hidden h-[70vh] md:h-[90vh] max-h-[700px]'
+            className='relative bg-gradient-to-br from-slate-900 via-indigo-900 to-black text-white rounded-2xl shadow-2xl border border-purple-800 p-4 max-w-2xl w-[80vw] mx-auto md:w-full z-10 overflow-hidden h-[70vh] md:h-[90vh] max-h-[600px]'
             initial={{ scale: 0.8, opacity: 0, y: 50 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.8, opacity: 0, y: 50 }}
@@ -94,7 +94,7 @@ const GalacticModal: React.FC<GalacticModalProps> = ({
 
             {/* Content */}
             <div
-              className='text-white/90 leading-relaxed space-y-4 relative z-10 h-full overflow-y-scroll pr-2 md:pb-8 pb-20 2xl:pl-0'
+              className='text-white/90 leading-relaxed space-y-4 relative z-10 h-full overflow-y-scroll pr-2 md:pb-16 pb-20 2xl:pl-0'
               style={{
                 scrollbarWidth: 'thin',
               }}

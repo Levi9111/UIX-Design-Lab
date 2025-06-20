@@ -3,6 +3,7 @@
 import { FormEvent, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { PlanetText } from '@/components/elements/PlanetText';
 
 const GetInTouch = () => {
   const [formData, setFormData] = useState({
@@ -34,17 +35,10 @@ const GetInTouch = () => {
         <div className='absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent' />
       </div>
 
-      {/* Header */}
-      <div className='relative z-10 text-center mb-16'>
-        <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight'>
-          Get in Touch
-        </h2>
-        <p className='text-white/60 max-w-2xl mx-auto text-base sm:text-lg'>
-          We’d love to hear from you. Fill out the form below and we’ll get back
-          to you shortly.
-        </p>
-      </div>
-
+      <PlanetText
+        title='Get in touch'
+        subtitle='We’d love to hear from you. Fill out the form below and we’ll get back to you shortly.'
+      />
       {/* Contact Info + Form */}
       <div className='relative z-10 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12'>
         {/* Info */}
