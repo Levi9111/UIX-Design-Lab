@@ -6,7 +6,6 @@ import Image from 'next/image';
 import logo from '../../../public/logos/logo.svg';
 import Button from '../elements/Button';
 import Route from '../elements/Route';
-import clsx from 'clsx';
 
 const links = [
   { title: 'Home', id: 'home' },
@@ -16,7 +15,7 @@ const links = [
   { title: 'FAQ', id: 'faq' },
 ];
 
-const DesktopNavbar = () => {
+const DesktopNavbar = ({ url }: { url: string }) => {
   const [scrolled, setScrolled] = useState(false);
   const [scrollY, setScrollY] = useState(0);
 
@@ -134,7 +133,7 @@ const DesktopNavbar = () => {
 
   return (
     <motion.nav
-      className='fixed left-0 right-0 top-0 z-50 hidden lg:block h-auto transition-all duration-300 py-3'
+      className='fixed left-0 right-0 top-0 z-50 hidden lg:flex  transition-all duration-300 py-3 h-[100px] items-center'
       style={{
         background: scrolled
           ? `linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%)`
@@ -211,60 +210,62 @@ const DesktopNavbar = () => {
 
         {/* Desktop Nav with smooth background transition */}
 
-        <motion.ul
-          className='flex gap-8 items-center justify-center px-10 py-6 rounded-full h-full border w-[50%] bg-red-400'
-          initial='hidden'
-          animate={scrolled ? 'scrolled' : 'default'}
-          //@ts-expect-error
-          variants={navListVariants}
-          style={{
-            transform: `translateY(${scrolled ? '0px' : '0px'})`,
-          }}
-        >
-          {links.map((link, i) => (
-            <motion.li
-              key={link.title}
-              custom={i}
-              variants={linkVariants}
-              className='text-xl text-silver-mist cursor-pointer relative group font-medium'
-              whileHover='hover'
-              whileTap={{ scale: 0.95 }}
-              onClick={() => {
-                const el = document.getElementById(link.id);
-                if (el) {
-                  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-              }}
-            >
-              <motion.span
-                animate={{
-                  fontSize: scrolled ? '18px' : '20px',
-                  transition: { duration: 0.3, ease: 'easeOut' },
+        {url === '/' && (
+          <motion.ul
+            className='flex gap-8 items-center justify-center px-10 py-6 rounded-full h-full border w-[50%]'
+            initial='hidden'
+            animate={scrolled ? 'scrolled' : 'default'}
+            //@ts-expect-error
+            variants={navListVariants}
+            style={{
+              transform: `translateY(${scrolled ? '0px' : '0px'})`,
+            }}
+          >
+            {links.map((link, i) => (
+              <motion.li
+                key={link.title}
+                custom={i}
+                variants={linkVariants}
+                className='text-xl text-silver-mist cursor-pointer relative group font-medium'
+                whileHover='hover'
+                whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  const el = document.getElementById(link.id);
+                  if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
                 }}
               >
-                {link.title}
-              </motion.span>
+                <motion.span
+                  animate={{
+                    fontSize: scrolled ? '18px' : '20px',
+                    transition: { duration: 0.3, ease: 'easeOut' },
+                  }}
+                >
+                  {link.title}
+                </motion.span>
 
-              {/* Enhanced underline animation */}
-              <motion.div
-                className='absolute left-0 -bottom-1 h-0.5 bg-gradient-to-r from-platinum to-white origin-left scale-x-0 group-hover:scale-x-100'
-                style={{
-                  background: `linear-gradient(90deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.8) 100%)`,
-                }}
-                transition={{
-                  duration: 0.3,
-                  ease: [0.25, 0.46, 0.45, 0.94],
-                }}
-              />
+                {/* Enhanced underline animation */}
+                <motion.div
+                  className='absolute left-0 -bottom-1 h-0.5 bg-gradient-to-r from-platinum to-white origin-left scale-x-0 group-hover:scale-x-100'
+                  style={{
+                    background: `linear-gradient(90deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.8) 100%)`,
+                  }}
+                  transition={{
+                    duration: 0.3,
+                    ease: [0.25, 0.46, 0.45, 0.94],
+                  }}
+                />
 
-              {/* Hover glow effect */}
-              <motion.div
-                className='absolute inset-0 rounded-md bg-white/5 opacity-0 group-hover:opacity-100 -z-10'
-                transition={{ duration: 0.2 }}
-              />
-            </motion.li>
-          ))}
-        </motion.ul>
+                {/* Hover glow effect */}
+                <motion.div
+                  className='absolute inset-0 rounded-md bg-white/5 opacity-0 group-hover:opacity-100 -z-10'
+                  transition={{ duration: 0.2 }}
+                />
+              </motion.li>
+            ))}
+          </motion.ul>
+        )}
 
         {/* Desktop CTA with smooth fade */}
         <Route link='/get-in-touch' className='absolute right-0'>

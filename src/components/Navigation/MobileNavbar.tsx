@@ -17,7 +17,7 @@ const links = [
 const lineProps =
   'w-full h-[2px] bg-platinum rounded transition-all duration-300';
 
-const MobileNavbar = () => {
+const MobileNavbar = ({ url }: { url: string }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -53,7 +53,7 @@ const MobileNavbar = () => {
       </div>
 
       <AnimatePresence>
-        {isOpen && (
+        {url === '/' && isOpen && (
           <motion.ul
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
