@@ -46,8 +46,7 @@ const Portfolio = () => {
           subtitle={
             <>
               We combine design, strategy, and technology to help your business
-              stand <br className='hidden sm:block' /> out online and create
-              lasting impressions on your audience.
+              stand out online and create lasting impressions on your audience.
             </>
           }
         />
