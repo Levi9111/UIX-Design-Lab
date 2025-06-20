@@ -1,11 +1,12 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import Footer from '@/components/ui/Footer';
 import Welcoming from '@/components/ui/Welcoming';
 import Navbar from '@/components/Navigation';
 import SpaceBackground from '@/components/designs/SpaceBackground/index';
 import { useMedia } from '@/components/hooks/useMedia';
+import LoadingDesign from '@/components/designs/LoadingDesign';
 
 export default function HomeLayout({
   children,
@@ -28,7 +29,8 @@ export default function HomeLayout({
     <main className='relative overflow-x-hidden'>
       <Navbar />
       <SpaceBackground device={device} />
-      {children}
+      <Suspense fallback={<LoadingDesign />}>{children}</Suspense>
+
       <Footer />
     </main>
   );
