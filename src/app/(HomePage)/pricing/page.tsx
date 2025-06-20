@@ -37,7 +37,7 @@ const serviceData = [
     ],
   },
   {
-    title: 'Galactic Plus',
+    title: 'Galactic Enterprise',
     price: '$1199',
     icon: ShieldCheck,
     features: [
