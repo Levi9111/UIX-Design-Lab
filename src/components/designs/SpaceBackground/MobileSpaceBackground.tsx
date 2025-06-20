@@ -115,7 +115,7 @@ const MobileSpaceBackground = () => {
   );
 
   return (
-    <>
+    <div className='fixed inset-0 -z-50 overflow-hidden pointer-events-none bg-transparent'>
       {/* Static stars for base layer */}
       {Array.from({ length: 150 }).map((_, i) => (
         <StaticStar
@@ -157,7 +157,7 @@ const MobileSpaceBackground = () => {
           />
         );
       })}
-    </>
+    </div>
   );
 };
 
