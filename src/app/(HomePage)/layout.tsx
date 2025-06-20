@@ -25,7 +25,7 @@ export default function HomeLayout({
   }
 
   return (
-    <main className='relative'>
+    <main className='relative overflow-x-hidden'>
       <Navbar />
       <SpaceBackground device={device} />
       {children}

@@ -120,7 +120,7 @@ const DeskShowcase: React.FC = () => {
   }, [mouseX, mouseY]);
 
   return (
-    <div className='md:block hidden max-w-7xl mx-auto' ref={ref}>
+    <div className='md:block hidden uix-center mx-auto' ref={ref}>
       <motion.div
         initial='hidden'
         animate={isInView ? 'visible' : 'hidden'}

@@ -107,7 +107,7 @@ const MobileStories = () => {
       {/* Main Testimonial Container - Fixed overflow issues */}
       <div
         ref={containerRef}
-        className='relative mb-6 overflow-hidden  h-[480px]'
+        className='relative mb-6 overflow-hidden  min-h-[480px]'
       >
         <AnimatePresence mode='wait'>
           <motion.div

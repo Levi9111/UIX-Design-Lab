@@ -10,7 +10,7 @@ const Stories = () => {
 
   return (
     <section id='review' className='md:pt-[180px] pt-16'>
-      <div className='uix-center relative overflow-hidden'>
+      <div className='uix-center relative '>
         <PlanetText
           btnText='Our clients'
           title='Our Success Stories'

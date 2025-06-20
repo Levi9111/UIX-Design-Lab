@@ -128,7 +128,7 @@ const MobileFAQs = () => {
   };
 
   return (
-    <div className='block lg:hidden min-h-screen'>
+    <div className='block lg:hidden'>
       {/* Subtle background pattern */}
       <div
         className='absolute inset-0 opacity-10'

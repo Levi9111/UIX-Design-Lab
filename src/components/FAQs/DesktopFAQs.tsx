@@ -156,7 +156,7 @@ const DesktopFAQs = () => {
   };
 
   return (
-    <div className='hidden lg:block relative min-h-screen  overflow-hidden'>
+    <div className='hidden lg:block relative  overflow-hidden'>
       {/* Grid pattern overlay */}
       <div
         className='absolute inset-0 opacity-20'

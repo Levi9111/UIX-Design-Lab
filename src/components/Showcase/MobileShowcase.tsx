@@ -151,7 +151,7 @@ const MobileShowcase: React.FC = () => {
 
   return (
     <div
-      className='md:hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'
+      className='lg:hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'
       ref={ref}
     >
       <motion.div

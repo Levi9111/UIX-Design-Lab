@@ -105,25 +105,6 @@ const TabletStories = () => {
 
   return (
     <section className='hidden md:block lg:hidden px-6 py-12 overflow-x-hidden'>
-      {/* Section Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className='text-center mb-12'
-      >
-        <div className='flex items-center justify-center gap-2 mb-3'>
-          <Star className='w-5 h-5 text-yellow-400 fill-yellow-400' />
-          <h2 className='text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent'>
-            Success Stories
-          </h2>
-          <Star className='w-5 h-5 text-yellow-400 fill-yellow-400' />
-        </div>
-        <p className='text-gray-400 text-base max-w-xl mx-auto'>
-          Real transformations from real businesses driving exceptional results.
-        </p>
-      </motion.div>
-
       {/* Main Testimonial Container */}
       <motion.div ref={containerRef} className='relative mb-8'>
         <AnimatePresence mode='wait'>
