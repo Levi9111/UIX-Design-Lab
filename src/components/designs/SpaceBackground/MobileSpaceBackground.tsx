@@ -117,7 +117,7 @@ const MobileSpaceBackground = () => {
   return (
     <div className='fixed inset-0 -z-50 overflow-hidden pointer-events-none bg-transparent'>
       {/* Static stars for base layer */}
-      {Array.from({ length: 150 }).map((_, i) => (
+      {Array.from({ length: 18 }).map((_, i) => (
         <StaticStar
           key={`static-star-${i}`}
           x={Math.random() * 100}
@@ -127,7 +127,7 @@ const MobileSpaceBackground = () => {
       ))}
 
       {/* Increased colored twinkling stars */}
-      {Array.from({ length: 200 }).map((_, i) => (
+      {Array.from({ length: 80 }).map((_, i) => (
         <SimpleTwinklingStar
           key={`twinkle-star-${i}`}
           x={Math.random() * 100}

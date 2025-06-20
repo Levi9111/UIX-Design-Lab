@@ -268,7 +268,7 @@ const TabAndDesktopSpaceBackground = () => {
         />
       ))}
       {/* Linear moving stars in random directions */}
-      {Array.from({ length: 18 }).map((_, i) => {
+      {Array.from({ length: 20 }).map((_, i) => {
         const startX = Math.random() * 100;
         const startY = Math.random() * 100;
         const endX = Math.random() * 100;
@@ -289,7 +289,7 @@ const TabAndDesktopSpaceBackground = () => {
       })}
 
       {/* Twinkling stars */}
-      {Array.from({ length: 80 }).map((_, i) => (
+      {Array.from({ length: 280 }).map((_, i) => (
         <TwinklingStar
           key={`star-${i}`}
           x={Math.random() * 100}

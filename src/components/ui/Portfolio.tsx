@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Button from '../elements/Button';
 import { PlanetText } from '../elements/PlanetText';
 import { motion } from 'framer-motion';
-import MobilePlanet from '../designs/MobilePlanet';
 
 type NavigationLink = {
   title: string;
@@ -37,12 +36,6 @@ const Portfolio = () => {
       className='md:pt-24 pt-12 pb-16 sm:pb-20 bg-rich-black/20'
     >
       <div className='uix-center px-4 sm:px-6 relative'>
-        <MobilePlanet
-          gradientFrom='#8B5CF6'
-          gradientTo='#3B82F6'
-          ringColor1='#D8B4FE'
-          ringColor2='#BFDBFE'
-        />
         <PlanetText
           title={
             <>

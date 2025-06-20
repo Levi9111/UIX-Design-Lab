@@ -39,7 +39,7 @@ const GalacticModal: React.FC<GalacticModalProps> = ({
           exit={{ opacity: 0 }}
           onClick={onClose}
         >
-          {Array.from({ length: 80 }).map((_, i) => (
+          {Array.from({ length: 30 }).map((_, i) => (
             <SimpleTwinklingStar
               key={`twinkle-star-${i}`}
               x={Math.random() * 100}
@@ -60,7 +60,7 @@ const GalacticModal: React.FC<GalacticModalProps> = ({
             transition={{ duration: 0.4, ease: 'easeInOut' }}
             onClick={(e) => e.stopPropagation()}
           >
-            {Array.from({ length: 40 }).map((_, i) => {
+            {Array.from({ length: 10 }).map((_, i) => {
               const startX = Math.random() * 100;
               const startY = Math.random() * 100;
               const endX = Math.random() * 100;

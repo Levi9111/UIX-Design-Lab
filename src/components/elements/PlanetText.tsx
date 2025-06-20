@@ -63,7 +63,7 @@ export const PlanetText: React.FC<PlanetTextProps> = ({
             whileInView='show'
             viewport={{ once: true, amount: 0.6 }}
             variants={titleVariants}
-            className='w-[129px] h-[34px] rounded-[100vw] border border-[#d8e7e2]  flex items-center justify-center gap-1'
+            className='w-[129px] h-[34px] rounded-[100vw] border border-[#d8e7e2]  flex items-center justify-center gap-1 mb-2'
           >
             <Image src={person} alt='Person' width={16} height={12} />
             <p className='text-[13px] text-roman-silver font-normal leading-170 tracking-0 font-dm-sans uppercase'>

@@ -5,7 +5,6 @@ import MobileFAQs from './MobileFAQs';
 import { PlanetText } from '../elements/PlanetText';
 import { HelpCircle, MessageCircle, Zap } from 'lucide-react';
 import { useMedia } from '../hooks/useMedia';
-import MobilePlanet from '../designs/MobilePlanet';
 
 export const accordionData = [
   {
@@ -45,13 +44,6 @@ const FAQs = () => {
 
   return (
     <section id='faq' className='md:pt-48 pt-16 relative'>
-      <MobilePlanet
-        gradientFrom='#0c4230'
-        gradientTo='#106259'
-        ringColor1='#A7F3D0'
-        ringColor2='#99F6E4'
-        className='!top-11'
-      />
       <PlanetText
         btnText={`FAQ'S`}
         title='Frequently Asked Questions'
