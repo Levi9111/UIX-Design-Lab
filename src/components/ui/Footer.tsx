@@ -8,6 +8,7 @@ import youtube from '../../../public/icons/youtube.svg';
 import twitter from '../../../public/icons/twitter.svg';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const imgArr = [
   {
@@ -44,7 +45,7 @@ const footerList = [
   },
   {
     title: 'Pricing',
-    link: '',
+    link: '/pricing',
   },
   {
     title: 'Contact',
@@ -107,10 +108,10 @@ const Footer = () => {
               visible: { opacity: 1, y: 0 },
             }}
           >
-            <a href={list.link} target='_blank' rel='noopener noreferrer'>
+            <Link href={list.link} rel='noopener noreferrer'>
               {list.title}
               <span className='block w-0 h-[1px] bg-white transition-all group-hover:w-full' />
-            </a>
+            </Link>
           </motion.li>
         ))}
       </motion.ul>

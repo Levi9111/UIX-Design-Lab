@@ -105,7 +105,7 @@ const ProvidedServices = () => {
   return (
     <section
       ref={sectionRef}
-      className='min-h-screen uix-center py-20 px-4 relative overflow-hidden'
+      className=' uix-center py-20 px-4 relative overflow-hidden'
     >
       {/* Background */}
       <div className='absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent'></div>
