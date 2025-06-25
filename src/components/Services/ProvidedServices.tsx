@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { ServiceCardProps, serviceData, Service } from '.';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import GalacticModal from '../ui/GalacticModal';
+import clsx from 'clsx';
 
 const ServiceCard: React.FC<ServiceCardProps> = ({
   service,
@@ -20,11 +21,11 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
     <div
       ref={cardRef}
       onClick={onClick}
-      className={`group relative overflow-hidden rounded-2xl bg-gradient-to-br ${
-        isHovered ? service.hoverGradient : service.gradient
-      } p-[2px] transition-all duration-700 ease-out transform ${
-        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
-      }`}
+      className={clsx(
+        `group relative overflow-hidden rounded-2xl sbg-gradient-to-br p-[2px] transition-all duration-700 ease-out transform `,
+        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0',
+        isHovered ? service.hoverGradient : service.gradient,
+      )}
       style={{ transitionDelay: `${index * 150}ms` }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -152,10 +153,10 @@ const ProvidedServices = () => {
           className='text-center mt-20'
           onClick={() => router.push('/select-your-project')}
         >
-          <div className='inline-flex items-center gap-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full px-8 py-4 text-white font-semibold transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 cursor-pointer group'>
+          <button className='inline-flex items-center gap-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full px-8 py-4 text-white font-semibold transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 cursor-pointer group'>
             <span>Ready to Start Your Project?</span>
             <ArrowRight className='w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-2' />
-          </div>
+          </button>
         </div>
       </div>
 

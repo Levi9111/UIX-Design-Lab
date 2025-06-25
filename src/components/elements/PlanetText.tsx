@@ -13,7 +13,6 @@ import {
   Sparkles,
   Globe,
   Orbit,
-  Zap,
   Stars,
   ArrowUpRight,
 } from 'lucide-react';
@@ -417,8 +416,9 @@ const DesktopPlanetText: React.FC<PlanetTextProps> = ({
             />
 
             <motion.div
-              animate={{ rotate: [0, 15, 0] }}
+              // animate={{ rotate: [0, 15, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+              className='animate-spin duration-150'
             >
               <Globe
                 size={16}
