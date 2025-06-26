@@ -47,14 +47,14 @@ const GetInTouch = () => {
             <Mail className='w-6 h-6 text-blue-400' />
             <div>
               <h4 className='font-semibold text-white'>Email</h4>
-              <p className='text-white/60'>support@uixdl.com</p>
+              <p className='text-white/60'>sktahsinahmed@gmail.com</p>
             </div>
           </div>
           <div className='flex items-start gap-4'>
             <Phone className='w-6 h-6 text-green-400' />
             <div>
               <h4 className='font-semibold text-white'>Phone</h4>
-              <p className='text-white/60'>+880 1234 567890</p>
+              <p className='text-white/60'>+8801759745923</p>
             </div>
           </div>
           <div className='flex items-start gap-4'>

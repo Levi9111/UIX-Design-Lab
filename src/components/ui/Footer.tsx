@@ -1,40 +1,43 @@
 'use client';
 
-import logo from '../../../public/logos/logo.svg';
-import instagram from '../../../public/icons/instagram.svg';
-import tiktok from '../../../public/icons/tiktok.svg';
-import linkedin from '../../../public/icons/linkedin.svg';
-import youtube from '../../../public/icons/youtube.svg';
-import twitter from '../../../public/icons/twitter.svg';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import {
+  SiInstagram,
+  SiX,
+  SiLinkedin,
+  SiDribbble,
+  SiBehance,
+} from 'react-icons/si';
 
-const imgArr = [
+import Image from 'next/image';
+import logo from '../../../public/logos/logo.svg';
+
+const iconArr = [
   {
-    src: instagram,
-    alt: 'Instagram logo',
+    Icon: SiInstagram,
     link: 'https://www.instagram.com/yourprofile',
+    label: 'Instagram',
   },
   {
-    src: tiktok,
-    alt: 'TikTok logo',
-    link: 'https://www.tiktok.com/@yourprofile',
-  },
-  {
-    src: linkedin,
-    alt: 'LinkedIn logo',
-    link: 'https://www.linkedin.com/in/yourprofile',
-  },
-  {
-    src: youtube,
-    alt: 'YouTube logo',
-    link: 'https://www.youtube.com/channel/yourchannel',
-  },
-  {
-    src: twitter,
-    alt: 'Twitter logo',
+    Icon: SiX,
     link: 'https://twitter.com/yourprofile',
+    label: 'X',
+  },
+  {
+    Icon: SiLinkedin,
+    link: 'https://www.linkedin.com/in/yourprofile',
+    label: 'LinkedIn',
+  },
+  {
+    Icon: SiDribbble,
+    link: 'https://dribbble.com/yourprofile',
+    label: 'Dribbble',
+  },
+  {
+    Icon: SiBehance,
+    link: 'https://www.behance.net/yourprofile',
+    label: 'Behance',
   },
 ];
 
@@ -70,16 +73,20 @@ const Footer = () => {
         </div>
 
         <div className='flex gap-4'>
-          {imgArr.map((img, index) => (
+          {iconArr.map(({ Icon, link, label }, index) => (
             <motion.a
-              key={img.link}
-              href={img.link}
+              key={link}
+              href={link}
+              target='_blank'
+              rel='noopener noreferrer'
               whileHover={{ scale: 1.2, rotate: 5 }}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
+              aria-label={label}
+              className='text-white font-extralight hover:text-[#DCA685] transition-colors flex items-center'
             >
-              <Image src={img.src} alt={img.alt} width={20} height={20} />
+              <Icon size={20} strokeWidth={0.1} />
             </motion.a>
           ))}
         </div>
@@ -116,7 +123,7 @@ const Footer = () => {
         ))}
       </motion.ul>
 
-      {/* Bottom section: Copyright */}
+      {/* Bottom section */}
       <div className='pt-6 pb-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-[#d5dbe6]'>
         <p>© {new Date().getFullYear()} UIX Design Lab</p>
         <p>All rights reserved.</p>

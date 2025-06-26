@@ -100,7 +100,7 @@ const Welcoming: React.FC = () => {
             <span className='text-reveal text-reveal-7'>E</span>
           </h1>
           <p className='text-xl md:text-2xl font-light tracking-wide text-cyan-200 fade-in-up'>
-            The Infinite Universe
+            The Infinite Possibilities
           </p>
         </div>
 
@@ -110,7 +110,7 @@ const Welcoming: React.FC = () => {
             <div className='loading-planet'></div>
           </div>
           <p className='text-sm tracking-widest text-gray-400 pulse-text font-light uppercase'>
-            Crafting Tomorrow’s Orbit
+            Designing Tomorrow’s Trajectory
           </p>
         </div>
       </div>

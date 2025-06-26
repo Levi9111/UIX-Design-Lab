@@ -168,14 +168,9 @@ const DesktopNavbar = ({ url }: { url: string }) => {
           >
             <motion.div
               whileHover={{
-                rotate: 360,
                 scale: 1.1,
               }}
               transition={{ duration: 0.6, ease: 'easeInOut' }}
-              animate={{
-                rotate: scrolled ? 45 : 0,
-                transition: { duration: 0.4, ease: 'easeOut' },
-              }}
             >
               <Image
                 src={logo}

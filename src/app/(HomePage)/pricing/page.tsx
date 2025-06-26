@@ -118,7 +118,7 @@ const PricingSection = () => {
 
       <div className='max-w-7xl mx-auto px-6 relative z-10'>
         <PlanetText
-          title='Cosmic Pricing Plans'
+          title='Power Up Your Plans'
           subtitle='Choose your journey through the digital cosmos. Each plan is crafted to launch your project into orbit.'
         />
 
@@ -218,7 +218,7 @@ const PricingSection = () => {
             whileTap={{ scale: 0.95 }}
             className='px-8 py-3 rounded-full border-2 border-purple-500/50 text-purple-300 hover:bg-purple-500/10 hover:border-purple-400 transition-all duration-300'
           >
-            Contact Our Space Team
+            Contact Our Team
           </motion.button>
         </motion.div>
       </div>

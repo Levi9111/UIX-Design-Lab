@@ -182,7 +182,7 @@ const Portfolio = () => {
                     src={service.image}
                     alt={service.title}
                     fill
-                    className='object-cover object-center'
+                    className='object-center'
                     sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
                   />
                 </div>
