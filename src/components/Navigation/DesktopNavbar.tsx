@@ -6,6 +6,7 @@ import Image from 'next/image';
 import logo from '../../../public/logos/logo.svg';
 import Button from '../elements/Button';
 import Route from '../elements/Route';
+import Link from 'next/link';
 
 const links = [
   { title: 'Home', id: 'home' },
@@ -207,7 +208,7 @@ const DesktopNavbar = ({ url }: { url: string }) => {
 
         {url === '/' && (
           <motion.ul
-            className='flex gap-8 items-center justify-center px-10 py-6 rounded-full h-full border w-[50%]'
+            className='flex gap-8 items-center justify-center px-10 py-6 rounded-full h-full border w-[55%]'
             initial='hidden'
             animate={scrolled ? 'scrolled' : 'default'}
             //@ts-expect-error
@@ -259,6 +260,13 @@ const DesktopNavbar = ({ url }: { url: string }) => {
                 />
               </motion.li>
             ))}
+            <motion.li
+              className='text-xl text-silver-mist cursor-pointer relative group font-medium'
+              whileHover='hover'
+              whileTap={{ scale: 0.95 }}
+            >
+              <Link href='/about-us'>About Us</Link>
+            </motion.li>
           </motion.ul>
         )}
 

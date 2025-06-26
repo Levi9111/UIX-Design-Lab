@@ -69,7 +69,7 @@ const cardData: CardData[] = [
     gradientFrom: 'blue-900/40',
     gradientTo: 'purple-900/40',
     borderColor: 'blue-400/30',
-    iconColor: 'yellow-400',
+    iconColor: 'white',
   },
   {
     id: 'quality',
@@ -92,7 +92,7 @@ const cardData: CardData[] = [
     gradientFrom: 'teal-900/40',
     gradientTo: 'cyan-900/40',
     borderColor: 'teal-400/30',
-    iconColor: 'teal-400',
+    iconColor: 'white',
   },
   {
     id: 'reliability',
@@ -103,7 +103,7 @@ const cardData: CardData[] = [
     gradientFrom: 'emerald-900/40',
     gradientTo: 'green-900/40',
     borderColor: 'emerald-400/30',
-    iconColor: 'emerald-400',
+    iconColor: 'white',
   },
   {
     id: 'support',
@@ -118,7 +118,7 @@ const cardData: CardData[] = [
     id: 'expertise',
     type: 'stat',
     icon: TrendingUp,
-    color: 'orange-400',
+    color: 'blue-400',
     title: 'Expert',
     subtitle: 'Craftsmanship',
     duration: 16,

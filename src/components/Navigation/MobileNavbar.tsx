@@ -5,6 +5,7 @@ import Image from 'next/image';
 import logo from '../../../public/logos/logo.svg';
 import Button from '../elements/Button';
 import Route from '../elements/Route';
+import Link from 'next/link';
 
 const links = [
   { title: 'Home', id: 'home' },
@@ -69,13 +70,14 @@ const MobileNavbar = ({ url }: { url: string }) => {
                   if (el) {
                     el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }
-
-                  // setIsOpen(false);
                 }}
               >
                 {link.title}
               </li>
             ))}
+            <li className='text-silver-mist text-base font-medium border-b border-gray-700 pb-1'>
+              <Link href='/about-us'>About Us</Link>
+            </li>
             <Route link='/get-in-touch'>
               <Button>Get in touch</Button>
             </Route>
