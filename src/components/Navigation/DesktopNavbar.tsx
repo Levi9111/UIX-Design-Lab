@@ -265,7 +265,32 @@ const DesktopNavbar = ({ url }: { url: string }) => {
               whileHover='hover'
               whileTap={{ scale: 0.95 }}
             >
-              <Link href='/about-us'>About Us</Link>
+              <Link href='/about-us'>
+                <motion.span
+                  animate={{
+                    fontSize: scrolled ? '18px' : '20px',
+                    transition: { duration: 0.3, ease: 'easeOut' },
+                  }}
+                >
+                  About Us
+                </motion.span>
+                <motion.div
+                  className='absolute left-0 -bottom-1 h-0.5 bg-gradient-to-r from-platinum to-white origin-left scale-x-0 group-hover:scale-x-100'
+                  style={{
+                    background: `linear-gradient(90deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.8) 100%)`,
+                  }}
+                  transition={{
+                    duration: 0.3,
+                    ease: [0.25, 0.46, 0.45, 0.94],
+                  }}
+                />
+
+                {/* Hover glow effect */}
+                <motion.div
+                  className='absolute inset-0 rounded-md bg-white/5 opacity-0 group-hover:opacity-100 -z-10'
+                  transition={{ duration: 0.2 }}
+                />
+              </Link>
             </motion.li>
           </motion.ul>
         )}

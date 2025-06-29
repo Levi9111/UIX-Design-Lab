@@ -8,6 +8,7 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import { accordionData } from '.';
+import SupportModal from './SupportModal';
 
 const AccordionItem = ({
   question,
@@ -74,7 +75,11 @@ const AccordionItem = ({
   </motion.div>
 );
 
-const SupportCard = () => {
+const SupportCard = ({
+  setShowSupportModal,
+}: {
+  setShowSupportModal: (showModal: boolean) => void;
+}) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -105,6 +110,7 @@ const SupportCard = () => {
         <motion.button
           whileTap={{ scale: 0.95 }}
           className='relative group w-full sm:w-auto'
+          onClick={() => setShowSupportModal(true)}
         >
           {/* Button glow */}
           <div className='absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg blur opacity-60 group-active:opacity-80 transition-opacity' />
@@ -122,6 +128,7 @@ const SupportCard = () => {
 
 const MobileFAQs = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [showSupportModal, setShowSupportModal] = useState(false);
 
   const toggleAccordion = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -158,9 +165,13 @@ const MobileFAQs = () => {
 
         {/* Support Card */}
         <div className='max-w-sm mx-auto'>
-          <SupportCard />
+          <SupportCard setShowSupportModal={setShowSupportModal} />
         </div>
       </div>
+      <SupportModal
+        isOpen={showSupportModal}
+        onClose={() => setShowSupportModal(false)}
+      />
     </div>
   );
 };
