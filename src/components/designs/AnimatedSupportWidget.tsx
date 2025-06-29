@@ -56,7 +56,7 @@ const ForDesktop = () => {
       <div
         className={`relative bg-gradient-to-br from-slate-900/90 via-slate-800/95 to-slate-900/90 
         backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl transition-all duration-700 ease-out
-        overflow-hidden ${isExpanded ? 'h-[340px] w-[280px]' : 'h-16 w-16'}`}
+        overflow-hidden ${isExpanded ? 'h-[280px] w-[280px]' : 'h-16 w-16'}`}
         style={{
           boxShadow: isExpanded
             ? '0 20px 40px -12px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05)'
@@ -118,7 +118,7 @@ const ForDesktop = () => {
 
         {/* Expanded Content */}
         <div
-          className={`relative z-10 pt-20 px-4 pb-4 transition-all duration-500 ease-out ${
+          className={`relative z-10 pt-7 px-4 pb-4 transition-all duration-500 ease-out ${
             isExpanded
               ? 'opacity-100 translate-y-0 pointer-events-auto'
               : 'opacity-0 translate-y-4 pointer-events-none'
