@@ -8,6 +8,7 @@ import {
   Share2,
   Code,
 } from 'lucide-react';
+import { PlanetText } from '../elements/PlanetText';
 
 export const serviceData = [
   {
@@ -170,9 +171,14 @@ export type ServiceCardProps = {
 
 const Services = () => {
   return (
-    <div id='services' className='relative'>
+    <section id='services' className='relative uix-center'>
+      <PlanetText
+        btnText='Our Services'
+        title='What We Provide'
+        subtitle='Crafting digital experiences that captivate, convert, and inspire. From concept to deployment, we bring your vision to life.'
+      />
       <ProvidedServices />
-    </div>
+    </section>
   );
 };
 
