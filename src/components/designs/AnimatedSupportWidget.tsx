@@ -310,7 +310,7 @@ const ForMobile = () => {
           <div className='relative flex items-center justify-center'>
             {/* Rotating border */}
             <div
-              className={`absolute -left-0.5 -top-0.5 inset-0 w-7 h-7 border-2 border-transparent border-t-cyan-400 border-r-purple-400 
+              className={`absolute -left-1 -top-1 inset-0 w-7 h-7 border-2 border-transparent border-t-cyan-400 border-r-purple-400 
               rounded-full transition-all duration-600 ${
                 isExpanded ? 'animate-spin' : 'animate-pulse'
               }`}
