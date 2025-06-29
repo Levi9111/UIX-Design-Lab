@@ -261,6 +261,8 @@ const DesktopNavbar = ({ url }: { url: string }) => {
               </motion.li>
             ))}
             <motion.li
+              key='About Us'
+              variants={linkVariants}
               className='text-xl text-silver-mist cursor-pointer relative group font-medium'
               whileHover='hover'
               whileTap={{ scale: 0.95 }}
@@ -274,6 +276,8 @@ const DesktopNavbar = ({ url }: { url: string }) => {
                 >
                   About Us
                 </motion.span>
+
+                {/* Underline */}
                 <motion.div
                   className='absolute left-0 -bottom-1 h-0.5 bg-gradient-to-r from-platinum to-white origin-left scale-x-0 group-hover:scale-x-100'
                   style={{
@@ -285,7 +289,7 @@ const DesktopNavbar = ({ url }: { url: string }) => {
                   }}
                 />
 
-                {/* Hover glow effect */}
+                {/* Glow */}
                 <motion.div
                   className='absolute inset-0 rounded-md bg-white/5 opacity-0 group-hover:opacity-100 -z-10'
                   transition={{ duration: 0.2 }}
