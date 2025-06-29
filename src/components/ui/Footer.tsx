@@ -15,6 +15,21 @@ import logo from '../../../public/logos/logo.svg';
 
 const iconArr = [
   {
+    Icon: SiBehance,
+    link: 'https://www.behance.net/yourprofile',
+    label: 'Behance',
+  },
+  {
+    Icon: SiDribbble,
+    link: 'https://dribbble.com/yourprofile',
+    label: 'Dribbble',
+  },
+  {
+    Icon: SiLinkedin,
+    link: 'https://www.linkedin.com/in/yourprofile',
+    label: 'LinkedIn',
+  },
+  {
     Icon: SiInstagram,
     link: 'https://www.instagram.com/yourprofile',
     label: 'Instagram',
@@ -23,21 +38,6 @@ const iconArr = [
     Icon: SiX,
     link: 'https://twitter.com/yourprofile',
     label: 'X',
-  },
-  {
-    Icon: SiLinkedin,
-    link: 'https://www.linkedin.com/in/yourprofile',
-    label: 'LinkedIn',
-  },
-  {
-    Icon: SiDribbble,
-    link: 'https://dribbble.com/yourprofile',
-    label: 'Dribbble',
-  },
-  {
-    Icon: SiBehance,
-    link: 'https://www.behance.net/yourprofile',
-    label: 'Behance',
   },
 ];
 

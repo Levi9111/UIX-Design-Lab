@@ -16,8 +16,8 @@ export const serviceData = [
     shortTitle: 'Web',
     tags: ['Responsive', 'User-Centered', 'Interactive'],
     icon: Monitor,
-    gradient: 'from-blue-500 to-purple-600',
-    hoverGradient: 'from-blue-600 to-purple-700',
+    gradient: 'from-indigo-500 to-sky-500',
+    hoverGradient: 'from-indigo-600 to-sky-600',
     description:
       'Create stunning, responsive websites that engage and convert visitors.',
     features: [
@@ -38,8 +38,8 @@ export const serviceData = [
     shortTitle: 'Landing',
     tags: ['Engaging', 'High Conversion', 'Fast'],
     icon: Rocket,
-    gradient: 'from-emerald-500 to-teal-600',
-    hoverGradient: 'from-emerald-600 to-teal-700',
+    gradient: 'from-teal-500 to-lime-500',
+    hoverGradient: 'from-teal-600 to-lime-600',
     description:
       'High-converting landing pages that drive results and maximize ROI.',
     features: [
@@ -60,8 +60,8 @@ export const serviceData = [
     shortTitle: 'App',
     tags: ['iOS & Android', 'UI/UX', 'Prototyping'],
     icon: Smartphone,
-    gradient: 'from-orange-500 to-red-600',
-    hoverGradient: 'from-orange-600 to-red-700',
+    gradient: 'from-rose-500 to-fuchsia-500',
+    hoverGradient: 'from-rose-600 to-fuchsia-600',
     description:
       'Intuitive mobile apps that users love and keep coming back to.',
     features: [
@@ -82,8 +82,8 @@ export const serviceData = [
     shortTitle: 'Dashboard',
     tags: ['Data Visualization', 'Components', 'Usability'],
     icon: BarChart3,
-    gradient: 'from-cyan-500 to-blue-600',
-    hoverGradient: 'from-cyan-600 to-blue-700',
+    gradient: 'from-cyan-500 to-violet-500',
+    hoverGradient: 'from-cyan-600 to-violet-600',
     description:
       'Data-driven dashboards that make complex information accessible.',
     features: [
@@ -104,8 +104,8 @@ export const serviceData = [
     shortTitle: 'Social',
     tags: ['Visuals', 'Branding', 'Platform Optimized'],
     icon: Share2,
-    gradient: 'from-pink-500 to-rose-600',
-    hoverGradient: 'from-pink-600 to-rose-700',
+    gradient: 'from-pink-500 to-amber-500',
+    hoverGradient: 'from-pink-600 to-amber-600',
     description:
       'Eye-catching social media designs that boost engagement and brand awareness.',
     features: [
@@ -126,8 +126,8 @@ export const serviceData = [
     shortTitle: 'Dev',
     tags: ['Next.js', 'MERN Stack', 'WordPress'],
     icon: Code,
-    gradient: 'from-violet-500 to-indigo-600',
-    hoverGradient: 'from-violet-600 to-indigo-700',
+    gradient: 'from-purple-600 to-blue-600',
+    hoverGradient: 'from-purple-700 to-blue-700',
     description:
       'Full-stack development solutions built with modern technologies.',
     features: [

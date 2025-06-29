@@ -321,15 +321,12 @@ const DesktopNavbar = ({ url }: { url: string }) => {
                   exit={{ opacity: 0, scale: 0.8 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <Button>
-                    <motion.span
-                      animate={{
-                        fontSize: scrolled ? '14px' : '16px',
-                        transition: { duration: 0.3, ease: 'easeOut' },
-                      }}
-                    >
-                      Get in touch
-                    </motion.span>
+                  <Button
+                    onClick={() => {
+                      window.open('/get-in-touch');
+                    }}
+                  >
+                    Get in touch
                   </Button>
                 </motion.div>
               )}

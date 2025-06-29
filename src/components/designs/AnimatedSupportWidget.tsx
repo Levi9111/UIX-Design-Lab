@@ -1,15 +1,9 @@
 'use client';
 
-import {
-  MessageCircle,
-  X,
-  MessageSquare,
-  Send,
-  Zap,
-  Users,
-} from 'lucide-react';
+import { MessageCircle, X, Zap, Users } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useMedia } from '../hooks/useMedia';
+import { Telegram, WhatsApp } from 'developer-icons';
 
 const ForDesktop = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -152,7 +146,7 @@ const ForDesktop = () => {
               />
 
               <div className='relative z-10 p-1 bg-green-500/20 rounded-lg'>
-                <MessageSquare className='w-5 h-5 text-green-300' />
+                <WhatsApp className='w-7 h-7 text-green-300' />
               </div>
 
               <div className='flex-1 text-left relative z-10'>
@@ -184,7 +178,7 @@ const ForDesktop = () => {
               />
 
               <div className='relative z-10 p-1 bg-blue-500/20 rounded-lg'>
-                <Send className='w-5 h-5 text-blue-300' />
+                <Telegram className='w-7 h-7 text-blue-300' />
               </div>
 
               <div className='flex-1 text-left relative z-10'>
@@ -367,7 +361,7 @@ const ForMobile = () => {
               <div className='absolute inset-0 bg-green-400/30 rounded-xl scale-0 group-active:scale-100 group-active:opacity-0 opacity-50 transition-all duration-200' />
 
               <div className='relative z-10 flex items-center justify-center h-full'>
-                <MessageSquare className='w-6 h-6 text-green-300 group-hover:text-green-200 transition-colors duration-300' />
+                <WhatsApp className='w-7 h-7 text-green-300 group-hover:text-green-200 transition-colors duration-300' />
               </div>
 
               {/* Active indicator */}
@@ -389,7 +383,7 @@ const ForMobile = () => {
               <div className='absolute inset-0 bg-blue-400/30 rounded-xl scale-0 group-active:scale-100 group-active:opacity-0 opacity-50 transition-all duration-200' />
 
               <div className='relative z-10 flex items-center justify-center h-full'>
-                <Send className='w-5 h-5 text-blue-300 group-hover:text-blue-200 transition-colors duration-300' />
+                <Telegram className='w-7 h-7 text-blue-300 group-hover:text-blue-200 transition-colors duration-300' />
               </div>
 
               {/* Active indicator */}

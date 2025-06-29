@@ -7,8 +7,11 @@ import GalacticModal from '../ui/GalacticModal';
 import clsx from 'clsx';
 
 // Unified styling constants
-const UNIFIED_GRADIENT = 'from-blue-500 via-purple-500 to-pink-500';
-// const UNIFIED_HOVER_GRADIENT = 'from-blue-600 via-purple-600 to-pink-600';
+const UNIFIED_GRADIENT =
+  'from-blue-300/10 via-sky-400/15 to-cyan-500/10 bg-opacity-20 backdrop-blur-xl';
+const UNIFIED_HOVER_GRADIENT =
+  'from-blue-600/30 via-sky-500/25 to-cyan-600/20 backdrop-blur-2xl';
+
 const UNIFIED_ICON_GRADIENT = 'from-blue-500 to-purple-600';
 
 const ServiceCard: React.FC<ServiceCardProps> = ({
@@ -27,18 +30,22 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       ref={cardRef}
       onClick={onClick}
       className={clsx(
-        `group relative overflow-hidden rounded-2xl bg-gradient-to-br p-[2px] transition-all duration-700 ease-out transform cursor-pointer`,
+        'group relative overflow-hidden rounded-2xl p-[1px] transition-all duration-700 ease-out transform cursor-pointer',
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0',
-        // isHovered ? UNIFIED_HOVER_GRADIENT : UNIFIED_GRADIENT,
+        'bg-blue-300/5 border border-blue-300/10 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.1)] ',
       )}
-      style={{ transitionDelay: `${index * 150}ms` }}
+      style={{
+        transitionDelay: `${index * 150}ms`,
+        // background:
+        //   'linear-gradient(135deg, rgba(59, 130, 246, 0.3) 0%, rgba(139, 92, 246, 0.2) 100%)',
+      }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Shimmer effect */}
       <div className='absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform -skew-x-12 -translate-x-full group-hover:translate-x-full animation-duration-1000'></div>
 
-      <div className='relative h-full bg-slate-900/95 backdrop-blur-sm rounded-2xl p-8 transition-all duration-500 group-hover:bg-slate-900/90'>
+      <div className='relative h-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 transition-all duration-500 group-hover:bg-white/10'>
         {/* Sparkles icon */}
         <div className='absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0'>
           <Sparkles className='w-5 h-5 text-white/40 animate-pulse' />

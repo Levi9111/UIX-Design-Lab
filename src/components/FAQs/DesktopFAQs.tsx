@@ -2,7 +2,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronDown, HelpCircle, MessageCircle } from 'lucide-react';
-import { FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import { accordionData } from '.';
 import SupportModal from './SupportModal';
 
