@@ -7,6 +7,7 @@ import Navbar from '@/components/Navigation';
 import SpaceBackground from '@/components/designs/SpaceBackground/index';
 import { useMedia } from '@/components/hooks/useMedia';
 import LoadingDesign from '@/components/designs/LoadingDesign';
+import AnimatedSupportWidget from '@/components/designs/AnimatedSupportWidget';
 
 export default function HomeLayout({
   children,
@@ -30,8 +31,8 @@ export default function HomeLayout({
       <Navbar />
       <SpaceBackground device={device} />
       <Suspense fallback={<LoadingDesign />}>{children}</Suspense>
-
       <Footer />
+      <AnimatedSupportWidget />
     </main>
   );
 }
