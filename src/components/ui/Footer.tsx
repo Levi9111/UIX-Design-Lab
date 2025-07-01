@@ -44,7 +44,7 @@ const iconArr = [
 const footerList = [
   {
     title: 'Features',
-    link: '',
+    link: '/features',
   },
   {
     title: 'Pricing',
@@ -52,7 +52,7 @@ const footerList = [
   },
   {
     title: 'Contact',
-    link: '',
+    link: '/get-in-touch',
   },
   {
     title: 'Updates',
