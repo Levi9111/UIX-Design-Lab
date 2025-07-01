@@ -36,8 +36,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       )}
       style={{
         transitionDelay: `${index * 150}ms`,
-        // background:
-        //   'linear-gradient(135deg, rgba(59, 130, 246, 0.3) 0%, rgba(139, 92, 246, 0.2) 100%)',
+        background:
+          'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)',
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -45,7 +45,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       {/* Shimmer effect */}
       <div className='absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform -skew-x-12 -translate-x-full group-hover:translate-x-full animation-duration-1000'></div>
 
-      <div className='relative h-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 transition-all duration-500 group-hover:bg-white/10'>
+      <div className='relative h-full rounded-2xl p-8 transition-all duration-500 '>
         {/* Sparkles icon */}
         <div className='absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0'>
           <Sparkles className='w-5 h-5 text-white/40 animate-pulse' />
