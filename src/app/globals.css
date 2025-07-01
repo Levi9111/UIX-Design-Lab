@@ -475,3 +475,34 @@ body {
 .animation-delay-1000 {
   animation-delay: 1s;
 }
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .group:active {
+    transform: scale(0.98);
+  }
+
+  input,
+  textarea,
+  button {
+    min-height: 44px;
+  }
+
+  input:focus,
+  textarea:focus {
+    scroll-margin-top: 100px;
+  }
+}
+
+/* glaucy background */
+/* <section className='relative min-h-screen bg-gradient-to-b from-[#04070d] via-[#0a0f1a] to-[#1a1f2e] px-4 py-10 text-silver-mist overflow-hidden'> */
