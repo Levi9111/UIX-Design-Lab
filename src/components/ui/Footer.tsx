@@ -55,8 +55,8 @@ const footerList = [
     link: '/get-in-touch',
   },
   {
-    title: 'Updates',
-    link: '',
+    title: 'Abouts',
+    link: '/about-us',
   },
 ];
 
