@@ -117,7 +117,7 @@ const MobileStories = () => {
             exit={{ opacity: 0, x: '-100%' }}
             transition={{
               duration: 0.5,
-              ease: [0.25, 0.46, 0.45, 0.94], // Custom easing for smoother motion
+              ease: [0.25, 0.46, 0.45, 0.94],
             }}
             className='bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-2xl w-full'
           >
@@ -234,22 +234,23 @@ const MobileStories = () => {
       </div>
 
       {/* Enhanced Dot Indicators */}
-      <div className='flex justify-center items-center gap-3'>
+      <div className='flex justify-center items-center gap-3 mt-4'>
         {testimonials.map((_, i) => (
           <motion.button
             key={`dot-${i}`}
             onClick={() => goToSlide(i)}
-            className={`relative overflow-hidden rounded-full transition-all duration-300 ${
+            className={`relative flex items-center justify-center overflow-hidden rounded-full transition-all duration-300 ${
               i === activeIndex
                 ? 'w-8 h-3 bg-white'
                 : 'w-3 h-3 bg-white/30 hover:bg-white/50'
             }`}
+            style={{ minHeight: '12px' }} // Ensures consistent vertical space
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
             {i === activeIndex && isAutoPlaying && (
               <motion.div
-                className='absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400'
+                className='absolute left-0 top-0 h-full bg-gradient-to-r from-blue-400 to-purple-400'
                 initial={{ width: '0%' }}
                 animate={{ width: '100%' }}
                 transition={{ duration: 5, ease: 'linear' }}

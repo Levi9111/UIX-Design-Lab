@@ -9,6 +9,8 @@ import { useMedia } from '@/components/hooks/useMedia';
 import DesktopGetInTouch from './DesktopGetInTouch';
 import TabletGetInTouch from './TabletGetInTouch';
 import MobileGetInTouch from './MobileGetInTouch';
+import Route from '../elements/Route';
+import Button from '../elements/Button';
 
 export interface FormData {
   name: string;
@@ -109,6 +111,10 @@ const GetInTouch = () => {
         {device === 'tablet' && <TabletGetInTouch />}
         {device === 'mobile' && <MobileGetInTouch />}
       </div>
+
+      <Route link='/' className='w-full flex justify-center'>
+        <Button>Back to Home</Button>
+      </Route>
     </section>
   );
 };

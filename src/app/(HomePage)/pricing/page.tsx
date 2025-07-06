@@ -1,5 +1,6 @@
 'use client';
 import { PlanetText } from '@/components/elements/PlanetText';
+import Route from '@/components/elements/Route';
 import { easeInOut, motion } from 'framer-motion';
 import { LucideIcon, Monitor, Rocket, ShieldCheck } from 'lucide-react';
 
@@ -213,13 +214,15 @@ const PricingSection = () => {
             Need a custom solution? Let’s build something extraordinary
             together.
           </p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className='px-8 py-3 rounded-full border-2 border-purple-500/50 text-purple-300 hover:bg-purple-500/10 hover:border-purple-400 transition-all duration-300'
-          >
-            Contact Our Team
-          </motion.button>
+          <Route link='/get-in-touch'>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className='px-8 py-3 rounded-full border-2 border-purple-500/50 text-purple-300 hover:bg-purple-500/10 hover:border-purple-400 transition-all duration-300'
+            >
+              Contact Our Team
+            </motion.button>
+          </Route>
         </motion.div>
       </div>
     </section>

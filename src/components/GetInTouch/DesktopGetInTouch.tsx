@@ -33,16 +33,15 @@ const DesktopGetInTouch = () => {
   };
 
   return (
-    <div className='relative  px-4 sm:px-6 lg:px-6 py-20 text-silver-mist overflow-hidden'>
+    <div className='relative px-6 py-20 text-silver-mist overflow-hidden'>
       {/* Background Elements */}
       <div className='absolute inset-0 z-0 pointer-events-none'>
-        {/* Optional animated background */}
         <div className='absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/3 via-transparent to-transparent' />
       </div>
 
-      <div className='relative z-10 '>
-        {/* 3-Column Layout */}
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10'>
+      <div className='relative z-10'>
+        {/* 3-Column Layout with wider form */}
+        <div className='grid grid-cols-[1fr_1fr_1.3fr] gap-6 mt-10'>
           {/* Column 1 - Social Cards */}
           <div className='space-y-4'>
             {socialCards.map((social) => (
@@ -129,7 +128,7 @@ const DesktopGetInTouch = () => {
               <button
                 type='submit'
                 disabled={isLoading}
-                className='w-full py-3 bg-gradient-to-r from-blue-500 hover:from-purple-600 to-purple-600 hover:to-blue-500 text-silver-mist font-semibold rounded-md  transition duration-300 disabled:opacity-70 cursor-pointer disabled:cursor-not-allowed'
+                className='w-full py-3 bg-gradient-to-r from-blue-500 hover:from-purple-600 to-purple-600 hover:to-blue-500 text-silver-mist font-semibold rounded-md transition duration-300 disabled:opacity-70 cursor-pointer disabled:cursor-not-allowed'
               >
                 {isLoading ? 'Sending...' : 'Send Your Message'}
               </button>
