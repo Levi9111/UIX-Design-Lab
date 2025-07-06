@@ -1,5 +1,6 @@
 'use client';
 import { motion, AnimatePresence } from 'framer-motion';
+import { X } from 'lucide-react';
 import { FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 
 interface SupportModalProps {
@@ -28,7 +29,7 @@ const SupportModal: React.FC<SupportModalProps> = ({ isOpen, onClose }) => {
               className='absolute top-3 right-4 text-white/70 hover:text-white text-xl'
               onClick={onClose}
             >
-              ×
+              <X />
             </button>
 
             <h3 className='text-xl font-semibold text-white mb-2'>
@@ -43,7 +44,7 @@ const SupportModal: React.FC<SupportModalProps> = ({ isOpen, onClose }) => {
                 href='https://wa.me/your-number'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='hover:scale-110 transition-transform text-green-500 text-4xl'
+                className='text-green-500 text-2xl border border-green-500 p-4 rounded-full transition-all hover:scale-110 hover:bg-green-500/10'
               >
                 <FaWhatsapp />
               </a>
@@ -51,7 +52,7 @@ const SupportModal: React.FC<SupportModalProps> = ({ isOpen, onClose }) => {
                 href='https://t.me/your-username'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='hover:scale-110 transition-transform text-blue-400 text-4xl'
+                className='text-blue-400 text-2xl border border-blue-400 p-4 rounded-full transition-all hover:scale-110 hover:bg-blue-400/10'
               >
                 <FaTelegramPlane />
               </a>
