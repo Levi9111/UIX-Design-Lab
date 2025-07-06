@@ -1,10 +1,10 @@
 'use client';
-import React, { useState, useRef, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useRef, useEffect } from 'react';
 import { ServiceCardProps, serviceData, Service } from '.';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import GalacticModal from '../ui/GalacticModal';
 import clsx from 'clsx';
+import Route from '../elements/Route';
 
 // Unified styling constants
 const UNIFIED_GRADIENT =
@@ -100,7 +100,6 @@ const ProvidedServices = () => {
   const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  const router = useRouter();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -168,16 +167,16 @@ const ProvidedServices = () => {
           ))}
         </div>
 
-        {/* CTA Button */}
-        <div
-          className='text-center mt-20'
-          onClick={() => router.push('/select-your-project')}
+        <Route
+          link='/select-your-project'
+          className='w-full flex justify-center'
         >
-          <button className='inline-flex items-center gap-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full px-8 py-4 text-white font-semibold transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 cursor-pointer group'>
+          {' '}
+          <button className='text-center mt-20 inline-flex items-center gap-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full px-8 py-4 text-white font-semibold transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 cursor-pointer group'>
             <span>Ready to Start Your Project?</span>
             <ArrowRight className='w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-2' />
           </button>
-        </div>
+        </Route>
       </div>
 
       {/* Modal */}

@@ -79,7 +79,7 @@ const FeaturesHomePage = () => {
   return (
     <section
       ref={sectionRef}
-      className='relative py-32 px-4 sm:px-8 lg:px-12 text-white overflow-hidden'
+      className='relative pt-24 px-4 sm:px-8 lg:px-12 text-white overflow-hidden'
     >
       {/* Subtle background */}
       <div className='absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-transparent pointer-events-none z-0' />
@@ -90,7 +90,7 @@ const FeaturesHomePage = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className='text-center mb-20'
+          className='text-center md:mb-20 mb-10'
         >
           <PlanetText
             title='What Makes Us Stand Out'
@@ -171,7 +171,7 @@ const FeatureCard = ({ feature }: { feature: Feature; index: number }) => {
 
       {/* Icon */}
       <div
-        className={`w-14 h-14 flex items-center justify-center rounded-xl bg-gradient-to-br ${feature.accentColor} mb-4 shadow-lg`}
+        className={`w-14 h-14 flex items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 mb-4 shadow-lg`}
       >
         <feature.icon className='w-7 h-7 text-white' />
       </div>

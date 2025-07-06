@@ -100,7 +100,7 @@ const MobileGetInTouch = () => {
                     type='submit'
                     className='group relative w-full py-3.5 px-4 rounded-xl font-bold text-white overflow-hidden transition-all duration-300 hover:scale-[1.02] active:scale-[0.96] shadow-lg'
                   >
-                    <div className='absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transition-all duration-300' />
+                    <div className='absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300' />
                     <div className='absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 opacity-0 group-active:opacity-100 transition-opacity duration-150' />
 
                     <div className='absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -skew-x-12 -translate-x-full group-active:translate-x-full transition-transform duration-600' />
