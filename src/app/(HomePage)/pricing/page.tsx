@@ -2,7 +2,7 @@
 import { PlanetText } from '@/components/elements/PlanetText';
 import Route from '@/components/elements/Route';
 import { easeInOut, motion } from 'framer-motion';
-import { LucideIcon, Monitor, Rocket, ShieldCheck } from 'lucide-react';
+import { LucideIcon, Monitor, Rocket, ShieldCheck, Home } from 'lucide-react';
 
 // ------------------ Types ------------------ //
 
@@ -211,18 +211,30 @@ const PricingSection = () => {
           className='text-center mt-16'
         >
           <p className='text-gray-400 mb-6'>
-            Need a custom solution? Let’s build something extraordinary
+            Need a custom solution? Let's build something extraordinary
             together.
           </p>
-          <Route link='/get-in-touch'>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className='px-8 py-3 rounded-full border-2 border-purple-500/50 text-purple-300 hover:bg-purple-500/10 hover:border-purple-400 transition-all duration-300'
-            >
-              Contact Our Team
-            </motion.button>
-          </Route>
+          <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
+            <Route link='/get-in-touch'>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className='px-8 py-3 rounded-full border-2 border-purple-500/50 text-purple-300 hover:bg-purple-500/10 hover:border-purple-400 transition-all duration-300'
+              >
+                Contact Our Team
+              </motion.button>
+            </Route>
+            <Route link='/'>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className='px-8 py-3 rounded-full border-2 border-blue-500/50 text-blue-300 hover:bg-blue-500/10 hover:border-blue-400 transition-all duration-300 flex items-center gap-2'
+              >
+                <Home className='w-4 h-4' />
+                Back to Home
+              </motion.button>
+            </Route>
+          </div>
         </motion.div>
       </div>
     </section>
