@@ -206,78 +206,77 @@ const DesktopNavbar = ({ url }: { url: string }) => {
 
         {/* Desktop Nav with smooth background transition */}
 
-        {url === '/' && (
-          <motion.ul
-            className='flex gap-8 items-center justify-center px-10 py-6 rounded-full h-full border w-[55%]'
-            initial='hidden'
-            animate={scrolled ? 'scrolled' : 'default'}
-            //@ts-expect-error
-            variants={navListVariants}
-            style={{
-              transform: `translateY(${scrolled ? '0px' : '0px'})`,
-            }}
-          >
-            {links.map((link, i) => (
-              <motion.li
-                key={link.title}
-                custom={i}
-                variants={linkVariants}
-                className='text-xl text-silver-mist cursor-pointer relative group font-medium'
-                whileHover='hover'
-                whileTap={{ scale: 0.95 }}
-                onClick={() => {
-                  const el = document.getElementById(link.id);
-                  if (el) {
-                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }
-                }}
-              >
-                <motion.span
-                  animate={{
-                    fontSize: scrolled ? '18px' : '20px',
-                    transition: { duration: 0.3, ease: 'easeOut' },
+        <motion.ul
+          className='flex gap-8 items-center justify-center px-10 py-6 rounded-full h-full border w-[55%]'
+          initial='hidden'
+          animate={scrolled ? 'scrolled' : 'default'}
+          //@ts-expect-error
+          variants={navListVariants}
+          style={{
+            transform: `translateY(${scrolled ? '0px' : '0px'})`,
+          }}
+        >
+          {url === '/' ? (
+            <>
+              {links.map((link, i) => (
+                <motion.li
+                  key={link.title}
+                  custom={i}
+                  variants={linkVariants}
+                  className='text-xl text-silver-mist cursor-pointer relative group font-medium'
+                  whileHover='hover'
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    const el = document.getElementById(link.id);
+                    if (el) {
+                      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
                   }}
                 >
-                  {link.title}
-                </motion.span>
+                  <motion.span
+                    animate={{
+                      fontSize: scrolled ? '18px' : '20px',
+                      transition: { duration: 0.3, ease: 'easeOut' },
+                    }}
+                  >
+                    {link.title}
+                  </motion.span>
 
-                {/* Enhanced underline animation */}
-                <motion.div
-                  className='absolute left-0 -bottom-1 h-0.5 bg-gradient-to-r from-platinum to-white origin-left scale-x-0 group-hover:scale-x-100'
-                  style={{
-                    background: `linear-gradient(90deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.8) 100%)`,
-                  }}
-                  transition={{
-                    duration: 0.3,
-                    ease: [0.25, 0.46, 0.45, 0.94],
-                  }}
-                />
+                  <motion.div
+                    className='absolute left-0 -bottom-1 h-0.5 bg-gradient-to-r from-platinum to-white origin-left scale-x-0 group-hover:scale-x-100'
+                    style={{
+                      background: `linear-gradient(90deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.8) 100%)`,
+                    }}
+                    transition={{
+                      duration: 0.3,
+                      ease: [0.25, 0.46, 0.45, 0.94],
+                    }}
+                  />
 
-                {/* Hover glow effect */}
-                <motion.div
-                  className='absolute inset-0 rounded-md bg-white/5 opacity-0 group-hover:opacity-100 -z-10'
-                  transition={{ duration: 0.2 }}
-                />
-              </motion.li>
-            ))}
+                  <motion.div
+                    className='absolute inset-0 rounded-md bg-white/5 opacity-0 group-hover:opacity-100 -z-10'
+                    transition={{ duration: 0.2 }}
+                  />
+                </motion.li>
+              ))}
+            </>
+          ) : (
             <motion.li
-              key='About Us'
+              key='BackToHome'
               variants={linkVariants}
               className='text-xl text-silver-mist cursor-pointer relative group font-medium'
               whileHover='hover'
               whileTap={{ scale: 0.95 }}
             >
-              <Link href='/about-us'>
+              <Link href='/'>
                 <motion.span
                   animate={{
                     fontSize: scrolled ? '18px' : '20px',
                     transition: { duration: 0.3, ease: 'easeOut' },
                   }}
                 >
-                  About Us
+                  ← Back to Home
                 </motion.span>
-
-                {/* Underline */}
                 <motion.div
                   className='absolute left-0 -bottom-1 h-0.5 bg-gradient-to-r from-platinum to-white origin-left scale-x-0 group-hover:scale-x-100'
                   style={{
@@ -288,16 +287,48 @@ const DesktopNavbar = ({ url }: { url: string }) => {
                     ease: [0.25, 0.46, 0.45, 0.94],
                   }}
                 />
-
-                {/* Glow */}
                 <motion.div
                   className='absolute inset-0 rounded-md bg-white/5 opacity-0 group-hover:opacity-100 -z-10'
                   transition={{ duration: 0.2 }}
                 />
               </Link>
             </motion.li>
-          </motion.ul>
-        )}
+          )}
+
+          <motion.li
+            key='About Us'
+            variants={linkVariants}
+            className='text-xl text-silver-mist cursor-pointer relative group font-medium'
+            whileHover='hover'
+            whileTap={{ scale: 0.95 }}
+          >
+            <Link href='/about-us'>
+              <motion.span
+                animate={{
+                  fontSize: scrolled ? '18px' : '20px',
+                  transition: { duration: 0.3, ease: 'easeOut' },
+                }}
+              >
+                About Us
+              </motion.span>
+
+              <motion.div
+                className='absolute left-0 -bottom-1 h-0.5 bg-gradient-to-r from-platinum to-white origin-left scale-x-0 group-hover:scale-x-100'
+                style={{
+                  background: `linear-gradient(90deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.8) 100%)`,
+                }}
+                transition={{
+                  duration: 0.3,
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                }}
+              />
+              <motion.div
+                className='absolute inset-0 rounded-md bg-white/5 opacity-0 group-hover:opacity-100 -z-10'
+                transition={{ duration: 0.2 }}
+              />
+            </Link>
+          </motion.li>
+        </motion.ul>
 
         {/* Desktop CTA with smooth fade */}
         <Route link='/get-in-touch' className='absolute right-0'>

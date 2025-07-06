@@ -54,29 +54,45 @@ const MobileNavbar = ({ url }: { url: string }) => {
       </div>
 
       <AnimatePresence>
-        {url === '/' && isOpen && (
+        {isOpen && (
           <motion.ul
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             className='mt-3 space-y-3 bg-rich-black/70 px-3 py-3 rounded-md border border-gray-700'
           >
-            {links.map((link) => (
-              <li
-                key={link.title}
-                className='text-silver-mist text-base font-medium border-b border-gray-700 pb-1'
-                onClick={() => {
-                  const el = document.getElementById(link.id);
-                  if (el) {
-                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }
-                }}
-              >
-                {link.title}
+            {url === '/' ? (
+              <>
+                {links.map((link) => (
+                  <li
+                    key={link.title}
+                    className='text-silver-mist text-base font-medium border-b border-gray-700 pb-1'
+                    onClick={() => {
+                      const el = document.getElementById(link.id);
+                      if (el) {
+                        el.scrollIntoView({
+                          behavior: 'smooth',
+                          block: 'start',
+                        });
+                      }
+                    }}
+                  >
+                    {link.title}
+                  </li>
+                ))}
+              </>
+            ) : (
+              <li className='text-silver-mist text-base font-medium border-b border-gray-700 pb-1'>
+                <Link href='/' onClick={() => setIsOpen(false)}>
+                  ← Back to Home
+                </Link>
               </li>
-            ))}
+            )}
+
             <li className='text-silver-mist text-base font-medium border-b border-gray-700 pb-1'>
-              <Link href='/about-us'>About Us</Link>
+              <Link href='/about-us' onClick={() => setIsOpen(false)}>
+                About Us
+              </Link>
             </li>
             <Route link='/get-in-touch'>
               <Button>Get in touch</Button>
