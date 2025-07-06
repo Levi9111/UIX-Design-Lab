@@ -52,7 +52,7 @@ const SupportModal: React.FC<SupportModalProps> = ({ isOpen, onClose }) => {
                 href='https://t.me/your-username'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='text-blue-400 text-2xl border border-blue-400 p-3 rounded-full transition-all hover:scale-110 hover:bg-blue-400/10'
+                className='text-blue-400 text-3xl border border-blue-400 p-3 rounded-full transition-all hover:scale-110 hover:bg-blue-400/10'
               >
                 <FaTelegramPlane />
               </a>
