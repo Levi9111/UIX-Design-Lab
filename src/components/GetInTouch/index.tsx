@@ -1,8 +1,8 @@
 'use client';
 
 import { Mail, Phone, MapPin } from 'lucide-react';
-import { Facebook, LinkedIn } from 'developer-icons';
-import { BsBehance } from 'react-icons/bs';
+import { Facebook, Instagram, LinkedIn } from 'developer-icons';
+import { BsBehance, BsDribbble } from 'react-icons/bs';
 import { SiX } from 'react-icons/si';
 import { PlanetText } from '@/components/elements/PlanetText';
 import { useMedia } from '@/components/hooks/useMedia';
@@ -20,48 +20,48 @@ export interface FormData {
 
 export const socialCards = [
   {
-    platform: 'LinkedIn',
-    handle: '@uixdl',
-    icon: LinkedIn,
-    color: 'from-blue-400 to-blue-600',
-    bgColor: 'bg-blue-500/5',
-    borderColor: 'border-blue-500/20',
-    hoverBg: 'hover:bg-blue-500/10',
-    href: '#',
-    description: 'Professional Network',
-  },
-  {
     platform: 'Behance',
     handle: '@uixdl',
     icon: BsBehance,
-    color: 'from-purple-400 to-purple-600',
-    bgColor: 'bg-purple-500/5',
-    borderColor: 'border-purple-500/20',
-    hoverBg: 'hover:bg-purple-500/10',
+    color: 'from-[#1769ff] to-[#0039cb]',
+    bgColor: 'bg-[#1769ff]/10',
+    borderColor: 'border-[#1769ff]/20',
+    hoverBg: 'hover:bg-[#1769ff]/20',
     href: '#',
     description: 'Creative Portfolio',
   },
   {
-    platform: 'X',
+    platform: 'Dribbble',
     handle: '@uixdl',
-    icon: SiX,
-    color: 'from-zinc-700 to-black',
-    bgColor: 'bg-zinc-900/15',
-    borderColor: 'border-zinc-800/20',
-    hoverBg: 'hover:bg-zinc-800/30',
-    href: 'https://x.com/uixdl',
-    description: 'Latest Updates',
+    icon: BsDribbble,
+    color: 'from-[#ea4c89] to-[#c51d6b]',
+    bgColor: 'bg-[#ea4c89]/10',
+    borderColor: 'border-[#ea4c89]/20',
+    hoverBg: 'hover:bg-[#ea4c89]/20',
+    href: '#',
+    description: 'Creative Portfolio',
   },
   {
-    platform: 'Facebook',
+    platform: 'LinkedIn',
     handle: '@uixdl',
-    icon: Facebook,
-    color: 'from-indigo-400 to-indigo-600',
-    bgColor: 'bg-indigo-500/5',
-    borderColor: 'border-indigo-500/20',
-    hoverBg: 'hover:bg-indigo-500/10',
+    icon: LinkedIn,
+    color: 'from-[#0A66C2] to-[#004182]',
+    bgColor: 'bg-[#0A66C2]/10',
+    borderColor: 'border-[#0A66C2]/20',
+    hoverBg: 'hover:bg-[#0A66C2]/20',
     href: '#',
-    description: 'Community Hub',
+    description: 'Professional Network',
+  },
+  {
+    platform: 'Instagram',
+    handle: '@uixdl',
+    icon: Instagram,
+    color: 'from-[#f58529] via-[#dd2a7b] to-[#8134af]',
+    bgColor: 'bg-[#dd2a7b]/10',
+    borderColor: 'border-[#dd2a7b]/20',
+    hoverBg: 'hover:bg-[#dd2a7b]/20',
+    href: 'https://x.com/uixdl',
+    description: 'Latest Updates',
   },
 ];
 
