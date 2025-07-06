@@ -142,6 +142,26 @@ const DesktopGetInTouch = () => {
           </div>
         </div>
 
+        {/* Book a Call Section */}
+        <div className='mt-10 p-6 rounded-xl border border-white/10 bg-white/5 text-center'>
+          <h3 className='text-xl font-bold text-silver-mist mb-2'>
+            Book a Free 15-Minute Call
+          </h3>
+          <p className='text-sm text-gray-400 mb-4'>
+            Have a concept or question? Let’s jump on a quick call to discuss
+            and validate your ideas.
+          </p>
+          <button
+            type='button'
+            onClick={
+              () => window.open('https://calendly.com/yourname/10min', '_blank') // Replace with your actual link
+            }
+            className='inline-block px-6 py-3 bg-gradient-to-r from-purple-500 hover:from-blue-600 to-blue-600 hover:to-purple-500 text-silver-mist font-semibold rounded-md transition duration-300'
+          >
+            Schedule a Call
+          </button>
+        </div>
+
         {/* Bottom Note */}
         <div className='mt-10 text-center'>
           <div className='inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full'>

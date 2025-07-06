@@ -1,12 +1,13 @@
 'use client';
 
 import { contactInfo, socialCards } from '.';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Sparkles, ShieldCheck, Clock } from 'lucide-react';
 
 const TabletGetInTouch = () => {
   return (
     <div className='relative px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 text-silver-mist overflow-hidden'>
       <div className='relative z-10 max-w-6xl mx-auto'>
+        {/* Grid Section */}
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mt-6 sm:mt-8 lg:mt-10'>
           {/* Left: Contact & Social Cards */}
           <div className='space-y-3 sm:space-y-4 lg:max-h-[600px] lg:overflow-y-auto lg:pr-2'>
@@ -86,6 +87,61 @@ const TabletGetInTouch = () => {
               </form>
             </div>
           </div>
+        </div>
+
+        <div className='mt-16 sm:mt-20 block lg:hidden'>
+          <h2 className='text-xl sm:text-2xl font-bold text-silver-mist mb-6 text-center'>
+            Why Work With Us?
+          </h2>
+          <div className='grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6'>
+            <div className='flex flex-col items-center text-center bg-white/5 border border-white/10 rounded-xl p-4 sm:p-6 hover:scale-[1.02] transition-transform'>
+              <Sparkles className='w-6 h-6 text-purple-400 mb-3' />
+              <h4 className='text-sm sm:text-base font-semibold text-white'>
+                Creative Solutions
+              </h4>
+              <p className='text-xs text-gray-400 mt-1'>
+                We think outside the box to bring your vision to life.
+              </p>
+            </div>
+            <div className='flex flex-col items-center text-center bg-white/5 border border-white/10 rounded-xl p-4 sm:p-6 hover:scale-[1.02] transition-transform'>
+              <ShieldCheck className='w-6 h-6 text-blue-400 mb-3' />
+              <h4 className='text-sm sm:text-base font-semibold text-white'>
+                Trusted & Reliable
+              </h4>
+              <p className='text-xs text-gray-400 mt-1'>
+                We ensure secure and professional handling of your project.
+              </p>
+            </div>
+            <div className='flex flex-col items-center text-center bg-white/5 border border-white/10 rounded-xl p-4 sm:p-6 hover:scale-[1.02] transition-transform'>
+              <Clock className='w-6 h-6 text-pink-400 mb-3' />
+              <h4 className='text-sm sm:text-base font-semibold text-white'>
+                Fast Turnaround
+              </h4>
+              <p className='text-xs text-gray-400 mt-1'>
+                On-time delivery without sacrificing quality.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Book a Call Section  */}
+        <div className='mt-10 p-6 rounded-xl border border-white/10 bg-white/5 text-center'>
+          <h3 className='text-xl font-bold text-silver-mist mb-2'>
+            Book a Free 15-Minute Call
+          </h3>
+          <p className='text-sm text-gray-400 mb-4'>
+            Have a concept or question? Let’s jump on a quick call to discuss
+            and validate your ideas.
+          </p>
+          <button
+            type='button'
+            onClick={
+              () => window.open('https://calendly.com/yourname/10min', '_blank') // Replace with your actual link
+            }
+            className='inline-block px-6 py-3 bg-gradient-to-r from-purple-500 hover:from-blue-600 to-blue-600 hover:to-purple-500 text-silver-mist font-semibold rounded-md transition duration-300'
+          >
+            Schedule a Call
+          </button>
         </div>
       </div>
     </div>

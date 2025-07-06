@@ -15,7 +15,6 @@ const MobileGetInTouch = () => {
                 animation: 'slideInUp 0.6s ease-out forwards',
               }}
             >
-              {/* Subtle glow effect */}
               <div className='absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
 
               <div
@@ -33,7 +32,6 @@ const MobileGetInTouch = () => {
                 </p>
               </div>
 
-              {/* Tap Arrow Indicator */}
               <div className='opacity-0 group-hover:opacity-60 transition-all duration-300'>
                 <svg
                   className='w-4 h-4 text-gray-400'
@@ -55,10 +53,8 @@ const MobileGetInTouch = () => {
           {/* Updated Form Styles */}
           <div className='relative mt-8 group'>
             <div className='absolute -inset-0.5 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-2xl blur opacity-40 group-focus-within:opacity-60 transition-opacity duration-500' />
-
             <div className='relative p-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-xl'>
               <div className='absolute inset-0 rounded-2xl bg-gradient-to-br from-white/10 via-transparent to-white/5' />
-
               <div className='relative z-10'>
                 <div className='flex items-center gap-2 mb-5'>
                   <div className='w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse' />
@@ -101,9 +97,7 @@ const MobileGetInTouch = () => {
                   >
                     <div className='absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300' />
                     <div className='absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 opacity-0 group-active:opacity-100 transition-opacity duration-150' />
-
                     <div className='absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-active:translate-x-full transition-transform duration-600' />
-
                     <span className='relative flex items-center justify-center gap-2 text-sm'>
                       Send Message
                     </span>
@@ -111,6 +105,26 @@ const MobileGetInTouch = () => {
                 </form>
               </div>
             </div>
+          </div>
+
+          {/* Free Call Section */}
+          <div className='mt-10 p-5 rounded-2xl border border-white/10 bg-gradient-to-r from-purple-600/20 to-blue-600/20 backdrop-blur-md text-center shadow-xl'>
+            <h3 className='text-lg font-bold text-white mb-2'>
+              Book a Free 15-Minute Call
+            </h3>
+            <p className='text-sm text-gray-300 mb-4'>
+              Have an idea or question? Let’s chat and explore how we can help.
+            </p>
+            <button
+              type='button'
+              onClick={
+                () =>
+                  window.open('https://calendly.com/yourname/10min', '_blank') // Replace with your real link
+              }
+              className='w-full py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl hover:from-purple-600 hover:to-blue-500 transition-all duration-300'
+            >
+              Schedule a Call
+            </button>
           </div>
         </div>
       </div>
