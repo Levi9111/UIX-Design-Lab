@@ -1,6 +1,8 @@
 'use client';
 
+import Button from '@/components/elements/Button';
 import { PlanetText } from '@/components/elements/PlanetText';
+import Route from '@/components/elements/Route';
 import {
   motion,
   useInView,
@@ -79,13 +81,13 @@ const FeaturesHomePage = () => {
   return (
     <section
       ref={sectionRef}
-      className='relative pt-24 px-4 sm:px-8 lg:px-12 text-white overflow-hidden'
+      className='relative pt-24 px-4 sm:px-8 lg:px-12 text-white'
     >
       {/* Subtle background */}
       <div className='absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-transparent pointer-events-none z-0' />
       <div className='absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-gradient-to-br from-indigo-500/5 to-fuchsia-500/5 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2 z-0' />
 
-      <div className='relative z-10 max-w-7xl mx-auto'>
+      <div className='relative z-10 pb-10 uix-center'>
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -117,6 +119,10 @@ const FeaturesHomePage = () => {
           ))}
         </motion.div>
       </div>
+
+      <Route link='/' className='w-full flex justify-center'>
+        <Button>Back to home</Button>
+      </Route>
     </section>
   );
 };
