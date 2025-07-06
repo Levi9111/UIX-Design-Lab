@@ -6,7 +6,7 @@ const PreFooterContent = () => {
           support@uixdl.com
         </h3>
         <div className='max-w-[750px] mx-auto mt-6 sm:mt-8'>
-          <ul className='border border-[#232323] rounded-full py-4 sm:py-5 md:py-6 px-4 sm:px-6 md:px-8 lg:px-12 flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-6 md:gap-x-8 gap-y-3 sm:gap-y-4 md:gap-y-6 md:justify-between bg-[#0b0b0b]/30 backdrop-blur-md'>
+          <ul className='border border-[#232323] rounded-full py-4 sm:py-5 md:py-7 px-4 sm:px-6 md:px-8 lg:px-10 flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-6 md:gap-x-7 gap-y-3 sm:gap-y-4 md:gap-y-6 md:justify-between bg-[rgb(4,3,13)]/30 backdrop-blur-md'>
             {[
               'ASSAI in action',
               'Advantages',

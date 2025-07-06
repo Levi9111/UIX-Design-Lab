@@ -33,7 +33,7 @@ export const aboutUsData = [
   },
   {
     name: 'Shanjid Ahmad',
-    designation: 'Full Stack Developer',
+    designation: 'Full Stack Web Developer',
     role: 'developer',
     description: 'Building robust digital solutions',
   },
