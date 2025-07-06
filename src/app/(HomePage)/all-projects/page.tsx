@@ -66,8 +66,8 @@ const AllProjects = () => {
           transition={{ duration: 0.6 }}
         >
           <PlanetText
-            title='Our Full Portfolio'
-            subtitle='Browse through a complete collection of our recent work and collaborations.'
+            title='Recent Work'
+            subtitle='A curated selection of projects that reflect our passion and precision.'
           />
         </motion.div>
 
