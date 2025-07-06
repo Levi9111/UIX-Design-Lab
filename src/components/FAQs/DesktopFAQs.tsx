@@ -1,5 +1,5 @@
 'use client';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronDown, HelpCircle, MessageCircle } from 'lucide-react';
 import { accordionData } from '.';
@@ -20,15 +20,6 @@ const AccordionItem = ({
   onClick: () => void;
   index: number;
 }) => {
-  const contentRef = useRef<HTMLDivElement>(null);
-  const [contentHeight, setContentHeight] = useState(0);
-
-  useEffect(() => {
-    if (contentRef.current) {
-      setContentHeight(contentRef.current.scrollHeight);
-    }
-  }, [answer]);
-
   const borderGradient = isOpen
     ? 'linear-gradient(135deg, rgba(59, 130, 246, 0.3) 0%, rgba(139, 92, 246, 0.2) 100%)'
     : 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)';
@@ -138,16 +129,7 @@ const DesktopFAQs = () => {
 
   return (
     <div className='hidden lg:block relative overflow-hidden'>
-      <div
-        className='absolute inset-0 opacity-20'
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: '60px 60px',
-        }}
-      />
+      <div className='absolute inset-0 opacity-20' />
 
       <div className='relative z-10 max-w-7xl mx-auto px-6 py-20'>
         <div className='flex flex-col lg:flex-row items-start justify-center gap-12'>
