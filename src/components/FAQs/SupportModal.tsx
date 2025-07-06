@@ -13,7 +13,7 @@ const SupportModal: React.FC<SupportModalProps> = ({ isOpen, onClose }) => {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className='fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4'
+          className='fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-0'
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -44,7 +44,7 @@ const SupportModal: React.FC<SupportModalProps> = ({ isOpen, onClose }) => {
                 href='https://wa.me/your-number'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='text-green-500 text-2xl border border-green-500 p-4 rounded-full transition-all hover:scale-110 hover:bg-green-500/10'
+                className='text-green-500 text-3xl border border-green-500 p-3 rounded-full transition-all hover:scale-110 hover:bg-green-500/10'
               >
                 <FaWhatsapp />
               </a>
@@ -52,7 +52,7 @@ const SupportModal: React.FC<SupportModalProps> = ({ isOpen, onClose }) => {
                 href='https://t.me/your-username'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='text-blue-400 text-2xl border border-blue-400 p-4 rounded-full transition-all hover:scale-110 hover:bg-blue-400/10'
+                className='text-blue-400 text-2xl border border-blue-400 p-3 rounded-full transition-all hover:scale-110 hover:bg-blue-400/10'
               >
                 <FaTelegramPlane />
               </a>
