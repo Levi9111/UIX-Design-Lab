@@ -1,9 +1,8 @@
 'use client';
 
 import { Mail, Phone, MapPin } from 'lucide-react';
-import { Facebook, Instagram, LinkedIn } from 'developer-icons';
+import { Instagram, LinkedIn } from 'developer-icons';
 import { BsBehance, BsDribbble } from 'react-icons/bs';
-import { SiX } from 'react-icons/si';
 import { PlanetText } from '@/components/elements/PlanetText';
 import { useMedia } from '@/components/hooks/useMedia';
 import DesktopGetInTouch from './DesktopGetInTouch';
@@ -27,7 +26,7 @@ export const socialCards = [
     bgColor: 'bg-[#1769ff]/10',
     borderColor: 'border-[#1769ff]/20',
     hoverBg: 'hover:bg-[#1769ff]/20',
-    href: '#',
+    href: 'https://www.behance.net/sktahsinahmed',
     description: 'Creative Portfolio',
   },
   {
@@ -38,7 +37,7 @@ export const socialCards = [
     bgColor: 'bg-[#ea4c89]/10',
     borderColor: 'border-[#ea4c89]/20',
     hoverBg: 'hover:bg-[#ea4c89]/20',
-    href: '#',
+    href: 'https://dribbble.com/sktahsinahmed',
     description: 'Creative Portfolio',
   },
   {

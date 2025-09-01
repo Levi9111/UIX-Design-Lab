@@ -16,12 +16,12 @@ import logo from '../../../public/logos/logo.svg';
 const iconArr = [
   {
     Icon: SiBehance,
-    link: 'https://www.behance.net/yourprofile',
+    link: 'https://www.behance.net/sktahsinahmed',
     label: 'Behance',
   },
   {
     Icon: SiDribbble,
-    link: 'https://dribbble.com/yourprofile',
+    link: 'https://dribbble.com/sktahsinahmed',
     label: 'Dribbble',
   },
   {
@@ -36,7 +36,7 @@ const iconArr = [
   },
   {
     Icon: SiX,
-    link: 'https://twitter.com/yourprofile',
+    link: 'https://x.com/UIXDesignLab?t=Nk_18DFhoDwRkck8O-_OCw&s=09',
     label: 'X',
   },
 ];

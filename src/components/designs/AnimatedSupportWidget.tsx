@@ -32,14 +32,11 @@ const ForDesktop = () => {
   };
 
   const handleWhatsApp = () => {
-    window.open(
-      'https://wa.me/1234567890?text=Hello! I need support.',
-      '_blank',
-    );
+    window.open('https://wa.me/+8801759745923', '_blank');
   };
 
   const handleTelegram = () => {
-    window.open('https://t.me/yourusername', '_blank');
+    window.open('https://t.me/SkTahsinAhmed', '_blank');
   };
 
   if (!isVisible) return null;
@@ -252,10 +249,7 @@ const ForMobile = () => {
   const handleWhatsApp = () => {
     setActiveButton('whatsapp');
     setTimeout(() => {
-      window.open(
-        'https://wa.me/1234567890?text=Hello! I need support.',
-        '_blank',
-      );
+      window.open('https://wa.me/+8801759745923', '_blank');
       setActiveButton(null);
     }, 200);
   };
@@ -263,7 +257,7 @@ const ForMobile = () => {
   const handleTelegram = () => {
     setActiveButton('telegram');
     setTimeout(() => {
-      window.open('https://t.me/yourusername', '_blank');
+      window.open('https://t.me/SkTahsinAhmed', '_blank');
       setActiveButton(null);
     }, 200);
   };

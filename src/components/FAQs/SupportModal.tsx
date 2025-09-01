@@ -41,7 +41,7 @@ const SupportModal: React.FC<SupportModalProps> = ({ isOpen, onClose }) => {
 
             <div className='flex justify-center gap-6'>
               <a
-                href='https://wa.me/your-number'
+                href='https://wa.me/+8801759745923'
                 target='_blank'
                 rel='noopener noreferrer'
                 className='text-green-500 text-3xl border border-green-500 p-3 rounded-full transition-all hover:scale-110 hover:bg-green-500/10'
@@ -49,7 +49,7 @@ const SupportModal: React.FC<SupportModalProps> = ({ isOpen, onClose }) => {
                 <FaWhatsapp />
               </a>
               <a
-                href='https://t.me/your-username'
+                href='https://t.me/SkTahsinAhmed'
                 target='_blank'
                 rel='noopener noreferrer'
                 className='text-blue-400 text-3xl border border-blue-400 p-3 rounded-full transition-all hover:scale-110 hover:bg-blue-400/10'
