@@ -26,7 +26,7 @@ const iconArr = [
   },
   {
     Icon: SiLinkedin,
-    link: 'https://www.linkedin.com/in/yourprofile',
+    link: 'https://www.linkedin.com/in/sktahsinahmed?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
     label: 'LinkedIn',
   },
   {

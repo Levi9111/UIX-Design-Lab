@@ -48,7 +48,7 @@ export const socialCards = [
     bgColor: 'bg-[#0A66C2]/10',
     borderColor: 'border-[#0A66C2]/20',
     hoverBg: 'hover:bg-[#0A66C2]/20',
-    href: '#',
+    href: 'https://www.linkedin.com/in/sktahsinahmed?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
     description: 'Professional Network',
   },
   {
