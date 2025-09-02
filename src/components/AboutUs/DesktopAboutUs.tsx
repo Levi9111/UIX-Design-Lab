@@ -296,7 +296,12 @@ const TeamMemberCard = ({
                 whileHover={{ x: 5 }}
                 transition={{ duration: 0.2 }}
               >
-                <span>View Profile</span>
+                <a
+                  href='https://www.behance.net/sktahsinahmed  '
+                  target='_blank'
+                >
+                  View Profile
+                </a>
                 <ChevronRight className='w-4 h-4' />
               </motion.div>
             )}
