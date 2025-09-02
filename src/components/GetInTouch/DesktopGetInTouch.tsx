@@ -5,6 +5,12 @@ import { contactInfo, socialCards, FormData } from '.';
 import { Clock, ExternalLink } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
+const SERVICE_ID = process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID!;
+const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAIL_JS_TEMPLATE_ID!;
+const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAIL_JS_PUBLIC_KEY!;
+const AUTO_REPLY_TEMPLATE_ID =
+  process.env.NEXT_PUBLIC_EMAIL_JS_AUTO_REPLY_TEMPLATE_ID!;
+
 const DesktopGetInTouch = () => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -26,26 +32,19 @@ const DesktopGetInTouch = () => {
     if (!form.current) return;
 
     setIsLoading(true);
-    emailjs
-      .sendForm(
-        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
-        form.current,
-        'YOUR_PUBLIC_KEY', // Replace with your EmailJS public key
-      )
-      .then(
-        (result) => {
-          console.log('Email sent successfully:', result.text);
-          setSubmitted(true);
-          setIsLoading(false);
-          setTimeout(() => setSubmitted(false), 4000);
-          setFormData({ name: '', email: '', message: '' });
-        },
-        (error) => {
-          console.error('Email sending error:', error.text);
-          setIsLoading(false);
-        },
-      );
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY).then(
+      (result) => {
+        console.log('Email sent successfully:', result.text);
+        setSubmitted(true);
+        setIsLoading(false);
+        setTimeout(() => setSubmitted(false), 4000);
+        setFormData({ name: '', email: '', message: '' });
+      },
+      (error) => {
+        console.error('Email sending error:', error.text);
+        setIsLoading(false);
+      },
+    );
   };
 
   return (

@@ -20,7 +20,7 @@ export interface FormData {
 export const socialCards = [
   {
     platform: 'Behance',
-    handle: '@uixdl',
+    handle: 'Tahsin Ahmed',
     icon: BsBehance,
     color: 'from-[#1769ff] to-[#0039cb]',
     bgColor: 'bg-[#1769ff]/10',
@@ -31,7 +31,7 @@ export const socialCards = [
   },
   {
     platform: 'Dribbble',
-    handle: '@uixdl',
+    handle: 'Sk Tahsin Ahmed',
     icon: BsDribbble,
     color: 'from-[#ea4c89] to-[#c51d6b]',
     bgColor: 'bg-[#ea4c89]/10',
@@ -42,7 +42,7 @@ export const socialCards = [
   },
   {
     platform: 'LinkedIn',
-    handle: '@uixdl',
+    handle: 'Sk Tahsin Ahmed',
     icon: LinkedIn,
     color: 'from-[#0A66C2] to-[#004182]',
     bgColor: 'bg-[#0A66C2]/10',
@@ -53,13 +53,13 @@ export const socialCards = [
   },
   {
     platform: 'Instagram',
-    handle: '@uixdl',
+    handle: 'sk.tahmed',
     icon: Instagram,
     color: 'from-[#f58529] via-[#dd2a7b] to-[#8134af]',
     bgColor: 'bg-[#dd2a7b]/10',
     borderColor: 'border-[#dd2a7b]/20',
     hoverBg: 'hover:bg-[#dd2a7b]/20',
-    href: 'https://x.com/uixdl',
+    href: 'https://www.instagram.com/sk.tahmed/',
     description: 'Latest Updates',
   },
 ];
