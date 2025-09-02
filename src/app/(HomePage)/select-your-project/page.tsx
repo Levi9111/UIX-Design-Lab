@@ -1,17 +1,6 @@
 'use client';
 import React, { useState, useRef, useEffect } from 'react';
-import {
-  Monitor,
-  Rocket,
-  Smartphone,
-  BarChart3,
-  Share2,
-  Code,
-  ArrowRight,
-  Sparkles,
-  Check,
-  ArrowLeft,
-} from 'lucide-react';
+import { ArrowRight, Sparkles, Check, ArrowLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { serviceData } from '@/components/Services';
 import { PlanetText } from '@/components/elements/PlanetText';
