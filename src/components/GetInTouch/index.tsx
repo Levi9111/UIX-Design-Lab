@@ -67,7 +67,8 @@ export const socialCards = [
 export const contactInfo = [
   {
     label: 'Email',
-    value: 'support@uixdl.com',
+    // value: 'support@uixdl.com',
+    value: 'sktahsinahmed@gmail.com',
     icon: Mail,
     color: 'text-emerald-400',
     bgColor: 'bg-emerald-500/10',

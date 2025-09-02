@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { contactInfo, socialCards, FormData } from '.';
 import { Clock, ExternalLink } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const DesktopGetInTouch = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -12,6 +13,7 @@ const DesktopGetInTouch = () => {
   });
   const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const form = useRef<HTMLFormElement>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -19,17 +21,31 @@ const DesktopGetInTouch = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
+    if (!form.current) return;
 
-    setTimeout(() => {
-      console.log('Submitted:', formData);
-      setSubmitted(true);
-      setIsLoading(false);
-      setTimeout(() => setSubmitted(false), 4000);
-      setFormData({ name: '', email: '', message: '' });
-    }, 1500);
+    setIsLoading(true);
+    emailjs
+      .sendForm(
+        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        form.current,
+        'YOUR_PUBLIC_KEY', // Replace with your EmailJS public key
+      )
+      .then(
+        (result) => {
+          console.log('Email sent successfully:', result.text);
+          setSubmitted(true);
+          setIsLoading(false);
+          setTimeout(() => setSubmitted(false), 4000);
+          setFormData({ name: '', email: '', message: '' });
+        },
+        (error) => {
+          console.error('Email sending error:', error.text);
+          setIsLoading(false);
+        },
+      );
   };
 
   return (
@@ -94,7 +110,7 @@ const DesktopGetInTouch = () => {
             <h3 className='text-xl font-bold text-silver-mist mb-4'>
               Have an Idea? Let us Know
             </h3>
-            <form onSubmit={handleSubmit} className='space-y-4'>
+            <form ref={form} onSubmit={handleSubmit} className='space-y-4'>
               <div className='flex gap-4'>
                 <input
                   type='text'
