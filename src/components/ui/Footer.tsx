@@ -65,7 +65,12 @@ const Footer = () => {
     <footer className='w-full px-4 md:px-8 lg:px-16 pt-12 bg-background/20 text-white'>
       {/* Top section: Logo and Socials */}
       <div className='flex flex-col md:flex-row items-center justify-between gap-6'>
-        <div className='flex items-center gap-3'>
+        <div
+          className='flex items-center gap-3 cursor-pointer'
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+        >
           <Image src={logo} alt='Logo' width={43} height={44} />
           <h4 className='font-dm-sans font-semibold text-lg sm:text-xl tracking-wide text-platinum'>
             Design lab

@@ -105,11 +105,15 @@ const DesktopGetInTouch = () => {
           </div>
 
           {/* Column 3 - Contact Form */}
-          <div className='p-6 rounded-xl border border-white/10 bg-white/5'>
-            <h3 className='text-xl font-bold text-silver-mist mb-4'>
+          <div className='p-6 pt-3 rounded-xl border border-white/10 bg-white/5'>
+            <h3 className='text-2xl font-bold text-white mb-6'>
               Have an Idea? Let us Know
             </h3>
-            <form ref={form} onSubmit={handleSubmit} className='space-y-4'>
+            <form
+              ref={form}
+              onSubmit={handleSubmit}
+              className='flex flex-col gap-3 justify-evenly h-full pb-12'
+            >
               <div className='flex gap-4'>
                 <input
                   type='text'
@@ -137,7 +141,7 @@ const DesktopGetInTouch = () => {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                className='w-full px-4 py-3 rounded-md bg-black/10 border border-white/10 text-silver-mist placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-400 resize-none'
+                className='flex-1 w-full px-4 py-3 rounded-md bg-black/10 border border-white/10 text-silver-mist placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-400 resize-none'
               ></textarea>
 
               <button
