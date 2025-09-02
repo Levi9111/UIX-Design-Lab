@@ -287,7 +287,7 @@ const TeamMemberCard = ({
           >
             <div className='flex items-center gap-2 text-sm text-gray-400'>
               <Sparkles className='w-4 h-4' />
-              <span>Team Member</span>
+              <span>Team Lead</span>
             </div>
 
             {layoutStyle === 'featured' && (
@@ -490,7 +490,7 @@ const DesktopAboutUs = () => {
           <h3 className='text-2xl font-bold text-white mb-4'>
             Ready to Work Together?
           </h3>
-          <p className='text-gray-300 mb-6 max-w-2xl mx-auto'>
+          <p className='text-gray-300 mb-12 max-w-2xl mx-auto'>
             Our diverse team combines creativity, technical expertise, and
             strategic thinking to deliver exceptional results for every project.
           </p>
