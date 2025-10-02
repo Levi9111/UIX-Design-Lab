@@ -14,13 +14,13 @@ export const aboutUsData = [
     description: 'Visionary leader driving creative excellence',
   },
   {
-    name: 'Alamgir Hossain',
+    name: 'A. Hossain',
     designation: 'Co-Founder & Designer',
     role: 'co-founder',
     description: 'Strategic designer with innovative mindset',
   },
   {
-    name: 'Ashik Elahi',
+    name: 'Asher Elahi',
     designation: 'Designer',
     role: 'designer',
     description: 'Crafting beautiful user experiences',
