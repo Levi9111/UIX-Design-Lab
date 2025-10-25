@@ -14,7 +14,7 @@ export const aboutUsData = [
     description: 'Visionary leader driving creative excellence',
   },
   {
-    name: 'A. Hossain',
+    name: 'A. H Siddiqui',
     designation: 'Co-Founder & Designer',
     role: 'co-founder',
     description: 'Strategic designer with innovative mindset',
