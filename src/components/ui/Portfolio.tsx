@@ -44,7 +44,7 @@ export const serviceDetailsData: ServiceDetail[] = [
     image: gemesisDashboard,
   },
   {
-    title: 'The Graph',
+    title: '$MAO Token',
     description:
       'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: graph,
@@ -68,13 +68,13 @@ export const serviceDetailsData: ServiceDetail[] = [
     image: nftperp,
   },
   {
-    title: 'Dog Coin',
+    title: 'Doge Coin',
     description:
       'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: dogCoin,
   },
   {
-    title: 'The Graph',
+    title: '$MAO Token',
     description:
       'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: graph,
@@ -86,7 +86,7 @@ export const serviceDetailsData: ServiceDetail[] = [
     image: arxNetwork,
   },
   {
-    title: 'The Graph',
+    title: '$MAO Token',
     description:
       'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: graph2,
