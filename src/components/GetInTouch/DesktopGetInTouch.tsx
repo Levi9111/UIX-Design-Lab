@@ -48,7 +48,7 @@ const DesktopGetInTouch = () => {
   };
 
   return (
-    <div className='relative px-6 py-20 text-silver-mist overflow-hidden'>
+    <div className='relative px-6 pb-20 text-silver-mist overflow-hidden'>
       {/* Background Elements */}
       <div className='absolute inset-0 z-0 pointer-events-none'>
         <div className='absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/3 via-transparent to-transparent' />
