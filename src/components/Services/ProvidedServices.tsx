@@ -9,8 +9,6 @@ import Route from '../elements/Route';
 // Unified styling constants
 const UNIFIED_GRADIENT =
   'from-blue-300/10 via-sky-400/15 to-cyan-500/10 bg-opacity-20 backdrop-blur-xl';
-const UNIFIED_HOVER_GRADIENT =
-  'from-blue-600/30 via-sky-500/25 to-cyan-600/20 backdrop-blur-2xl';
 
 const UNIFIED_ICON_GRADIENT = 'from-blue-500 to-purple-600';
 
@@ -20,7 +18,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   isVisible,
   onClick,
 }) => {
-  const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
   const IconComponent = service.icon;
@@ -39,8 +36,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         background:
           'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)',
       }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       {/* Shimmer effect */}
       <div className='absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform -skew-x-12 -translate-x-full group-hover:translate-x-full animation-duration-1000'></div>
@@ -54,13 +49,11 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         {/* Icon container */}
         <div className='relative mb-6'>
           <div
-            className={`w-16 h-16 rounded-xl bg-gradient-to-br ${UNIFIED_ICON_GRADIENT} p-3 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}
-          >
-            <IconComponent className='w-full h-full text-white drop-shadow-lg' />
-          </div>
-          <div
             className={`absolute inset-0 w-16 h-16 rounded-xl bg-gradient-to-br ${UNIFIED_ICON_GRADIENT} opacity-0 group-hover:opacity-30 blur-xl transition-all duration-500 group-hover:scale-125`}
           ></div>
+          <div className='p-3 rounded-2xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 border border-purple-400/30 w-16 h-16 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-3'>
+            <IconComponent className='w-9 h-9 text-purple-300' />
+          </div>
         </div>
 
         {/* Title */}
@@ -132,28 +125,6 @@ const ProvidedServices = () => {
       <div className='absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse animation-delay-1000'></div>
 
       <div className='max-w-7xl mx-auto relative z-10'>
-        {/* Header */}
-        {/* <div className='text-center mb-16'>
-          <div className='inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-6 py-2 mb-6'>
-            <Sparkles className='w-4 h-4 text-blue-400 animate-spin' />
-            <span className='text-white/80 text-sm font-medium'>
-              Our Services
-            </span>
-          </div>
-
-          <h2 className='text-5xl md:text-7xl font-bold bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent mb-6 animate-fade-in'>
-            What We{' '}
-            <span className='inline-block bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient-x'>
-              Provide
-            </span>
-          </h2>
-
-          <p className='text-xl text-white/60 max-w-2xl mx-auto leading-relaxed'>
-            Crafting digital experiences that captivate, convert, and inspire.
-            From concept to deployment, we bring your vision to life.
-          </p>
-        </div> */}
-
         {/* Services Grid */}
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
           {serviceData.map((service, index) => (

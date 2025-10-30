@@ -16,8 +16,7 @@ export const serviceData = [
     shortTitle: 'Web',
     tags: ['Responsive', 'User-Centered', 'Interactive'],
     icon: Monitor,
-    gradient: 'from-indigo-500 to-sky-500',
-    hoverGradient: 'from-indigo-600 to-sky-600',
+
     description:
       'Create stunning, responsive websites that engage and convert visitors.',
     features: [
@@ -39,8 +38,6 @@ export const serviceData = [
     shortTitle: 'Landing',
     tags: ['Engaging', 'High Conversion', 'Fast'],
     icon: Rocket,
-    gradient: 'from-teal-500 to-lime-500',
-    hoverGradient: 'from-teal-600 to-lime-600',
     description:
       'High-converting landing pages that drive results and maximize ROI.',
     features: [
@@ -83,8 +80,6 @@ export const serviceData = [
     shortTitle: 'Dashboard',
     tags: ['Data Visualization', 'Components', 'Usability'],
     icon: BarChart3,
-    gradient: 'from-cyan-500 to-violet-500',
-    hoverGradient: 'from-cyan-600 to-violet-600',
     description:
       'Data-driven dashboards that make complex information accessible.',
     features: [
@@ -105,8 +100,6 @@ export const serviceData = [
     shortTitle: 'Social',
     tags: ['Visuals', 'Branding', 'Platform Optimized'],
     icon: Share2,
-    gradient: 'from-pink-500 to-amber-500',
-    hoverGradient: 'from-pink-600 to-amber-600',
     description:
       'Eye-catching social media designs that boost engagement and brand awareness.',
     features: [
@@ -128,8 +121,6 @@ export const serviceData = [
     shortTitle: 'Dev',
     tags: ['React', 'Next.js', 'MERN Stack', 'WordPress', 'Server Development'],
     icon: Code,
-    gradient: 'from-purple-600 to-blue-600',
-    hoverGradient: 'from-purple-700 to-blue-700',
     description:
       'Full-stack development solutions built with modern technologies.',
     features: [
