@@ -58,8 +58,6 @@ export const serviceData = [
     shortTitle: 'App',
     tags: ['iOS & Android', 'UI/UX', 'Prototyping'],
     icon: Smartphone,
-    gradient: 'from-rose-500 to-fuchsia-500',
-    hoverGradient: 'from-rose-600 to-fuchsia-600',
     description:
       'Intuitive mobile apps that users love and keep coming back to.',
     features: [
@@ -149,8 +147,6 @@ export type Service = {
   title: string;
   shortTitle: string;
   tags: string[];
-  gradient: string;
-  hoverGradient: string;
   description: string;
   features: string[];
   cta: string;
