@@ -9,8 +9,6 @@ type ServiceType = {
   title: string;
   tags: string[];
   icon: React.ElementType;
-  gradient: string;
-  hoverGradient: string;
   description: string;
   features: string[];
 };
@@ -38,32 +36,26 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   return (
     <div
       ref={cardRef}
-      className={`group relative overflow-hidden rounded-2xl bg-gradient-to-br ${
-        isSelected
-          ? service.hoverGradient
-          : isHovered
-          ? service.hoverGradient
-          : service.gradient
-      } p-[2px] transition-all duration-700 ease-out transform cursor-pointer ${
+      className={`group relative overflow-hidden rounded-2xl bg-gradient-to-br  p-[2px] transition-all duration-700 ease-out transform cursor-pointer ${
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
       } ${isSelected ? 'scale-105 shadow-2xl' : 'hover:scale-105'}`}
       style={{
         transitionDelay: `${index * 150}ms`,
-        boxShadow: isSelected
-          ? `0 25px 50px -12px ${
-              service.gradient.includes('blue')
-                ? '#3b82f680'
-                : service.gradient.includes('emerald')
-                ? '#10b98180'
-                : service.gradient.includes('orange')
-                ? '#f9731680'
-                : service.gradient.includes('cyan')
-                ? '#06b6d480'
-                : service.gradient.includes('pink')
-                ? '#ec489980'
-                : '#8b5cf680'
-            }`
-          : undefined,
+        // boxShadow: isSelected
+        //   ? `0 25px 50px -12px ${
+        //       service.gradient.includes('blue')
+        //         ? '#3b82f680'
+        //         : service.gradient.includes('emerald')
+        //         ? '#10b98180'
+        //         : service.gradient.includes('orange')
+        //         ? '#f9731680'
+        //         : service.gradient.includes('cyan')
+        //         ? '#06b6d480'
+        //         : service.gradient.includes('pink')
+        //         ? '#ec489980'
+        //         : '#8b5cf680'
+        //     }`
+        //   : undefined,
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -95,13 +87,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         {/* Icon with breathing animation */}
         <div className='relative mb-6'>
           <div
-            className={`w-16 h-16 rounded-xl bg-gradient-to-br ${service.gradient} p-3 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}
+            className={`w-16 h-16 rounded-xl bg-gradient-to-br p-3 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}
           >
             <IconComponent className='w-full h-full text-white drop-shadow-lg' />
           </div>
           {/* Icon glow effect */}
           <div
-            className={`absolute inset-0 w-16 h-16 rounded-xl bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-30 blur-xl transition-all duration-500 group-hover:scale-125`}
+            className={`absolute inset-0 w-16 h-16 rounded-xl bg-gradient-to-br opacity-0 group-hover:opacity-30 blur-xl transition-all duration-500 group-hover:scale-125`}
           ></div>
         </div>
 
@@ -141,7 +133,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               }}
             >
               <div
-                className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${service.gradient} mr-3`}
+                className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r mr-3`}
               ></div>
               {feature}
             </div>
@@ -164,9 +156,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
         {/* Bottom gradient line */}
         <div
-          className={`absolute bottom-0 left-0 h-1 bg-gradient-to-r ${
-            service.gradient
-          } transform transition-transform duration-500 origin-left ${
+          className={`absolute bottom-0 left-0 h-1 bg-gradient-to-r transform transition-transform duration-500 origin-left ${
             isSelected ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
           }`}
         ></div>
