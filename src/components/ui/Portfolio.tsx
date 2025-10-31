@@ -28,6 +28,7 @@ type ServiceDetail = {
   title: string;
   description: string;
   image: StaticImageData;
+  category: string;
 };
 
 export const serviceDetailsData: ServiceDetail[] = [
@@ -36,108 +37,126 @@ export const serviceDetailsData: ServiceDetail[] = [
     description:
       'A community of MKR token holders govern the Maker Protocol, the smart contracts that power Dai.',
     image: maker,
+    category: 'UI/UX Design',
   },
   {
     title: 'Gemesis Dashboard',
     description:
       'An ai that generate art, create NFT collections, staking contracts and much more!',
     image: gemesisDashboard,
+    category: 'Dashboard',
   },
   {
     title: '$MAO Token',
     description:
       'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: graph,
+    category: 'Development',
   },
   {
     title: 'Raydium',
     description:
       'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: raydium,
+    category: 'Landing Page',
   },
   {
     title: 'My Shell Dashboard',
     description:
       'We bridge AI and Blockchain through Agentic Framework, open-source models, and AI creator community.',
     image: myShellDashboard,
+    category: 'Dashboard',
   },
   {
     title: 'Nftperp',
     description:
       'Think you can predict the floor prices for CryptoPunks, Bored Ape Yacht Clubs, Doodles, and other blue-chip NFT projects?',
     image: nftperp,
+    category: 'UI/UX Design',
   },
   {
     title: 'Doge Coin',
     description:
       'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: dogCoin,
+    category: 'Development',
   },
   {
     title: '$MAO Token',
     description:
       'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: graph,
+    category: 'Landing Page',
   },
   {
     title: 'ARX Network',
     description:
       'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: arxNetwork,
+    category: 'UI/UX Design',
   },
   {
     title: '$MAO Token',
     description:
       'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: graph2,
+    category: 'Dashboard',
   },
   {
     title: 'Pixia',
     description:
       'An ai that generate art, create NFT collections, staking contracts and much more!',
     image: pixia,
+    category: 'Development',
   },
   {
     title: 'Boogy',
     description:
       'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: boogy,
+    category: 'Development',
   },
   {
     title: 'Astar 2.0',
     description:
       'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: aster,
+    category: 'UI/UX Desing',
   },
   {
     title: 'Dino Token',
     description:
       'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: dino,
+    category: 'UI/UX Design',
   },
   {
     title: 'Ghriyo Real Estate ',
     description:
       'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: ghriyoRealEstate,
+    category: 'Development',
   },
   {
     title: 'Savitri Token',
     description:
       'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: savitryToken,
+    category: 'UI/UX Design',
   },
   {
     title: 'Texor.Cloud AI',
     description:
       'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: texor,
+    category: 'UI/UX Design',
   },
   {
     title: 'Savitri Token',
     description:
       'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: savitryToken,
+    category: 'Dashboard',
   },
 ];
 

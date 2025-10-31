@@ -17,25 +17,15 @@ type NavigationLink = {
 
 const navigationLinks: NavigationLink[] = [
   { title: 'All Categories', path: '', type: 2, category: 'all' },
-  { title: 'UI/UX Design', path: '', type: 1, category: 'design' },
-  { title: 'Dashboard', path: '', type: 1, category: 'dashboard' },
-  { title: 'Development', path: '', type: 1, category: 'development' },
-  { title: 'Landing Page', path: '', type: 1, category: 'landing page' },
+  { title: 'UI/UX Design', path: '', type: 1, category: 'UI/UX Design' },
+  { title: 'Dashboard', path: '', type: 1, category: 'Dashboard' },
+  { title: 'Development', path: '', type: 1, category: 'Development' },
+  { title: 'Landing Page', path: '', type: 1, category: 'Landing Page' },
 ];
 
 // Add categories to your service data for filtering
 const categorizedServiceData = serviceDetailsData.map((service, index) => ({
   ...service,
-  category:
-    index % 4 === 0
-      ? 'design'
-      : index % 4 === 1
-      ? 'dashboard'
-      : index % 4 === 2
-      ? 'development'
-      : index % 4 === 3
-      ? 'landing page'
-      : 'design',
   id: index,
 }));
 
