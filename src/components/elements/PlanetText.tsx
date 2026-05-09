@@ -91,7 +91,7 @@ const MobilePlanetText: React.FC<PlanetTextProps> = ({
         </div>
       )}
 
-      <motion.h3
+      <motion.h2
         initial='hidden'
         whileInView='show'
         viewport={{ once: true, amount: 0.8 }}
@@ -99,7 +99,7 @@ const MobilePlanetText: React.FC<PlanetTextProps> = ({
         className='text-2xl font-bold text-white mb-3 leading-tight'
       >
         {title}
-      </motion.h3>
+      </motion.h2>
 
       <motion.p
         initial='hidden'
@@ -443,7 +443,7 @@ const DesktopPlanetText: React.FC<PlanetTextProps> = ({
         </div>
       )}
 
-      <motion.h3
+      <motion.h2
         initial='hidden'
         whileInView='show'
         viewport={{ once: true, amount: 0.6 }}
@@ -475,7 +475,7 @@ const DesktopPlanetText: React.FC<PlanetTextProps> = ({
             ease: 'easeInOut',
           }}
         />
-      </motion.h3>
+      </motion.h2>
 
       <motion.div
         initial='hidden'
