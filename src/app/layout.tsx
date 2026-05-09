@@ -88,9 +88,11 @@ export default function RootLayout({
       addressCountry: 'US', // Adjust as necessary
     },
     sameAs: [
-      'https://twitter.com/uixdesignlab', // Replace with actual social links
-      'https://linkedin.com/company/uixdesignlab',
-      'https://github.com/uixdesignlab',
+      'https://x.com/UIXDesignLab?t=Nk_18DFhoDwRkck8O-_OCw&s=09',
+      'https://www.linkedin.com/in/sktahsinahmed?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+      'https://www.behance.net/sktahsinahmed',
+      'https://dribbble.com/sktahsinahmed',
+      'https://www.instagram.com/yourprofile',
     ],
   };
 
