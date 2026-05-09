@@ -3,39 +3,39 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import {
-  SiInstagram,
-  SiX,
-  SiLinkedin,
-  SiDribbble,
-  SiBehance,
-} from 'react-icons/si';
+  FaBehance,
+  FaDribbble,
+  FaLinkedinIn,
+  FaInstagram,
+  FaXTwitter,
+} from 'react-icons/fa6';
 
 import Image from 'next/image';
 import logo from '../../../public/logos/logo.svg';
 
 const iconArr = [
   {
-    Icon: SiBehance,
+    Icon: FaBehance,
     link: 'https://www.behance.net/sktahsinahmed',
     label: 'Behance',
   },
   {
-    Icon: SiDribbble,
+    Icon: FaDribbble,
     link: 'https://dribbble.com/sktahsinahmed',
     label: 'Dribbble',
   },
   {
-    Icon: SiLinkedin,
+    Icon: FaLinkedinIn,
     link: 'https://www.linkedin.com/in/sktahsinahmed?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
     label: 'LinkedIn',
   },
   {
-    Icon: SiInstagram,
+    Icon: FaInstagram,
     link: 'https://www.instagram.com/yourprofile',
     label: 'Instagram',
   },
   {
-    Icon: SiX,
+    Icon: FaXTwitter,
     link: 'https://x.com/UIXDesignLab?t=Nk_18DFhoDwRkck8O-_OCw&s=09',
     label: 'X',
   },
