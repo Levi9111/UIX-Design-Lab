@@ -10,12 +10,9 @@ import TabletGetInTouch from './TabletGetInTouch';
 import MobileGetInTouch from './MobileGetInTouch';
 import Route from '../elements/Route';
 import Button from '../elements/Button';
+import { SOCIAL_LINKS } from '@/lib/constants/socials';
 
-export interface FormData {
-  name: string;
-  email: string;
-  message: string;
-}
+export type { FormData } from './useContactForm';
 
 export const socialCards = [
   {
@@ -26,7 +23,7 @@ export const socialCards = [
     bgColor: 'bg-[#1769ff]/10',
     borderColor: 'border-[#1769ff]/20',
     hoverBg: 'hover:bg-[#1769ff]/20',
-    href: 'https://www.behance.net/sktahsinahmed',
+    href: SOCIAL_LINKS.behance,
     description: 'Creative Portfolio',
   },
   {
@@ -37,7 +34,7 @@ export const socialCards = [
     bgColor: 'bg-[#ea4c89]/10',
     borderColor: 'border-[#ea4c89]/20',
     hoverBg: 'hover:bg-[#ea4c89]/20',
-    href: 'https://dribbble.com/sktahsinahmed',
+    href: SOCIAL_LINKS.dribbble,
     description: 'Creative Portfolio',
   },
   {
@@ -48,7 +45,7 @@ export const socialCards = [
     bgColor: 'bg-[#0A66C2]/10',
     borderColor: 'border-[#0A66C2]/20',
     hoverBg: 'hover:bg-[#0A66C2]/20',
-    href: 'https://www.linkedin.com/in/sktahsinahmed?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+    href: SOCIAL_LINKS.linkedin,
     description: 'Professional Network',
   },
   {
@@ -59,7 +56,7 @@ export const socialCards = [
     bgColor: 'bg-[#dd2a7b]/10',
     borderColor: 'border-[#dd2a7b]/20',
     hoverBg: 'hover:bg-[#dd2a7b]/20',
-    href: 'https://www.instagram.com/sk.tahmed/',
+    href: SOCIAL_LINKS.instagram,
     description: 'Latest Updates',
   },
 ];
@@ -95,8 +92,10 @@ export const contactInfo = [
 const GetInTouch = () => {
   const device = useMedia();
 
+  if (!device) return null;
+
   return (
-    <section className='relatice uix-center min-h-screen bg-[#04070d]/40'>
+    <section className='relative uix-center min-h-screen bg-[#04070d]/40'>
       <div className='absolute inset-0 z-0 pointer-events-none'>
         {/* Subtle grid pattern */}
         <div className='absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]' />

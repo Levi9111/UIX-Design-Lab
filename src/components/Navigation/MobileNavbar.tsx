@@ -6,14 +6,9 @@ import logo from '../../../public/logos/logo.svg';
 import Button from '../elements/Button';
 import Route from '../elements/Route';
 import Link from 'next/link';
+import { NAV_LINKS } from '@/lib/constants/navLinks';
 
-const links = [
-  { title: 'Home', id: 'home' },
-  { title: 'Services', id: 'services' },
-  { title: 'Portfolio', id: 'portfolio' },
-  { title: 'Review', id: 'review' },
-  { title: 'FAQ', id: 'faq' },
-];
+const links = NAV_LINKS;
 
 const lineProps =
   'w-full h-[2px] bg-platinum rounded transition-all duration-300';

@@ -2,7 +2,7 @@
 import { PlanetText } from '@/components/elements/PlanetText';
 import Route from '@/components/elements/Route';
 import { easeInOut, motion } from 'framer-motion';
-import { LucideIcon, Monitor, Rocket, ShieldCheck, Home } from 'lucide-react';
+import { Monitor, Rocket, ShieldCheck } from 'lucide-react';
 import DesktopPricing from './DesktopPricing';
 import { useMedia } from '../hooks/useMedia';
 import TabletPricing from './TabletPricing';
@@ -71,6 +71,8 @@ export const serviceData = [
 
 const PricingSection = () => {
   const device = useMedia();
+
+  if (!device) return null;
 
   return (
     <section className='py-24 relative overflow-hidden'>

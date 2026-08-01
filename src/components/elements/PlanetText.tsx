@@ -24,15 +24,6 @@ type PlanetTextProps = {
   btnText?: string | ReactNode;
 };
 
-const desktopSubtitleVariants: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { delay: 0.3, duration: 0.6, ease: 'easeOut' },
-  },
-};
-
 // Mobile animations - simplified and performant
 const mobileTitleVariants: Variants = {
   hidden: { opacity: 0, y: 20 },

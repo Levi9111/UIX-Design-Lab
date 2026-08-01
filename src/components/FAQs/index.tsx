@@ -42,6 +42,8 @@ export const accordionData = [
 const FAQs = () => {
   const device = useMedia();
 
+  if (!device) return null;
+
   return (
     <section id='faq' className='md:pt-48 pt-16 relative'>
       <PlanetText
@@ -54,7 +56,7 @@ const FAQs = () => {
           </>
         }
       />
-      {device === 'desktop' ? <DesktopFAQs /> : <MobileFAQs />};
+      {device === 'desktop' ? <DesktopFAQs /> : <MobileFAQs />}
     </section>
   );
 };

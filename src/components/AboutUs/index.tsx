@@ -50,6 +50,9 @@ export const getIconForRole = (designation: string) => {
 
 const AboutUs = () => {
   const device = useMedia();
+
+  if (!device) return null;
+
   return (
     <section className='py-24'>
       <PlanetText

@@ -94,43 +94,10 @@ const GalacticModal: React.FC<GalacticModalProps> = ({
 
             {/* Content */}
             <div
-              className='text-white/90 leading-relaxed space-y-4 relative z-10 h-full overflow-y-scroll pr-2 md:pb-16 pb-20 2xl:pl-0'
-              style={{
-                scrollbarWidth: 'thin',
-              }}
+              className='text-white/90 leading-relaxed space-y-4 relative z-10 h-full overflow-y-scroll pr-2 md:pb-16 pb-20 2xl:pl-0 galactic-modal-scroll'
             >
               {children}
             </div>
-
-            <style>{`
-              /* Firefox */
-              * {
-                scrollbar-width: thin;
-                scrollbar-color: #7c3aed #1e1e2e;
-              }
-
-              /* WebKit (Chrome, Edge, Safari) */
-              ::-webkit-scrollbar {
-                width: 8px;
-              }
-
-              ::-webkit-scrollbar-track {
-                background: rgba(255, 255, 255, 0.05);
-                border-radius: 8px;
-              }
-
-              ::-webkit-scrollbar-thumb {
-                background: linear-gradient(180deg, #8b5cf6, #6366f1);
-                border-radius: 10px;
-                box-shadow: 0 0 8px rgba(139, 92, 246, 0.5);
-                transition: background 0.3s ease;
-              }
-
-              ::-webkit-scrollbar-thumb:hover {
-                background: linear-gradient(180deg, #a78bfa, #818cf8);
-                box-shadow: 0 0 10px rgba(167, 139, 250, 0.8);
-              }
-            `}</style>
 
             {/* Bottom glow ring */}
             <div className='absolute bottom-0 left-1/2 -translate-x-1/2 w-[120%] h-[1px] bg-gradient-to-r from-transparent via-purple-400/50 to-transparent blur-sm opacity-50' />

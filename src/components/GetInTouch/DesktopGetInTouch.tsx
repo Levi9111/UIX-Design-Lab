@@ -1,51 +1,13 @@
 'use client';
 
-import { useState, useRef } from 'react';
-import { contactInfo, socialCards, FormData } from '.';
+import { contactInfo, socialCards } from '.';
 import { Clock, ExternalLink } from 'lucide-react';
-import emailjs from '@emailjs/browser';
-
-const SERVICE_ID = process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID!;
-const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAIL_JS_TEMPLATE_ID!;
-const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAIL_JS_PUBLIC_KEY!;
-const AUTO_REPLY_TEMPLATE_ID =
-  process.env.NEXT_PUBLIC_EMAIL_JS_AUTO_REPLY_TEMPLATE_ID!;
+import { useContactForm } from './useContactForm';
+import { CALENDLY_URL } from '@/lib/constants/site';
 
 const DesktopGetInTouch = () => {
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    message: '',
-  });
-  const [submitted, setSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const form = useRef<HTMLFormElement>(null);
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!form.current) return;
-
-    setIsLoading(true);
-    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY).then(
-      (result) => {
-        console.log('Email sent successfully:', result.text);
-        setSubmitted(true);
-        setIsLoading(false);
-        setTimeout(() => setSubmitted(false), 4000);
-        setFormData({ name: '', email: '', message: '' });
-      },
-      (error) => {
-        console.error('Email sending error:', error.text);
-        setIsLoading(false);
-      },
-    );
-  };
+  const { formData, submitted, isLoading, error, form, handleChange, handleSubmit } =
+    useContactForm();
 
   return (
     <div className='relative px-6 pb-20 text-silver-mist overflow-hidden'>
@@ -63,6 +25,8 @@ const DesktopGetInTouch = () => {
               <a
                 key={social.platform}
                 href={social.href}
+                target='_blank'
+                rel='noopener noreferrer'
                 className={`group flex items-center justify-between p-5 rounded-xl border ${social.borderColor} ${social.bgColor} ${social.hoverBg} transition-all duration-300`}
               >
                 <div className='flex items-center gap-4'>
@@ -157,6 +121,9 @@ const DesktopGetInTouch = () => {
                   Message sent successfully!
                 </div>
               )}
+              {error && (
+                <div className='text-sm text-red-400 mt-2'>{error}</div>
+              )}
             </form>
           </div>
         </div>
@@ -167,14 +134,12 @@ const DesktopGetInTouch = () => {
             Book a Free 15-Minute Call
           </h3>
           <p className='text-sm text-gray-400 mb-4'>
-            Have a concept or question? Let’s jump on a quick call to discuss
+            Have a concept or question? Let's jump on a quick call to discuss
             and validate your ideas.
           </p>
           <button
             type='button'
-            onClick={
-              () => window.open('https://calendly.com/yourname/10min', '_blank') // Replace with your actual link
-            }
+            onClick={() => window.open(CALENDLY_URL, '_blank')}
             className='inline-block px-6 py-3 bg-gradient-to-r from-purple-500 hover:from-blue-600 to-blue-600 hover:to-purple-500 text-silver-mist font-semibold rounded-md transition duration-300'
           >
             Schedule a Call

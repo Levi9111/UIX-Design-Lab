@@ -504,5 +504,62 @@ body {
   }
 }
 
-/* glaucy background */
-/* <section className='relative min-h-screen bg-gradient-to-b from-[#04070d] via-[#0a0f1a] to-[#1a1f2e] px-4 py-10 text-silver-mist overflow-hidden'> */
+
+/* ─── Support widget float animations ─────────────────────────────────────── */
+/* (Moved here from inline <style> tags in AnimatedSupportWidget.tsx)         */
+
+@keyframes widget-float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+@keyframes widget-float-mobile {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(0.5deg);
+  }
+}
+
+.animate-widget-float {
+  animation: widget-float 4s ease-in-out infinite;
+}
+
+.animate-widget-float-mobile {
+  animation: widget-float-mobile 3.5s ease-in-out infinite;
+}
+
+/* ─── GalacticModal scoped scrollbar ──────────────────────────────────────── */
+/* Scoped to .galactic-modal-scroll to avoid overriding page-level scrollbars */
+
+.galactic-modal-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #7c3aed #1e1e2e;
+}
+
+.galactic-modal-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.galactic-modal-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.galactic-modal-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #8b5cf6, #6366f1);
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.5);
+}
+
+.galactic-modal-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #a78bfa, #818cf8);
+  box-shadow: 0 0 10px rgba(167, 139, 250, 0.8);
+}

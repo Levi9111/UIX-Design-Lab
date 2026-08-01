@@ -12,33 +12,14 @@ import {
 
 import Image from 'next/image';
 import logo from '../../../public/logos/logo.svg';
+import { SOCIAL_LINKS } from '@/lib/constants/socials';
 
 const iconArr = [
-  {
-    Icon: FaBehance,
-    link: 'https://www.behance.net/sktahsinahmed',
-    label: 'Behance',
-  },
-  {
-    Icon: FaDribbble,
-    link: 'https://dribbble.com/sktahsinahmed',
-    label: 'Dribbble',
-  },
-  {
-    Icon: FaLinkedinIn,
-    link: 'https://www.linkedin.com/in/sktahsinahmed?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
-    label: 'LinkedIn',
-  },
-  {
-    Icon: FaInstagram,
-    link: 'https://www.instagram.com/yourprofile',
-    label: 'Instagram',
-  },
-  {
-    Icon: FaXTwitter,
-    link: 'https://x.com/UIXDesignLab?t=Nk_18DFhoDwRkck8O-_OCw&s=09',
-    label: 'X',
-  },
+  { Icon: FaBehance, link: SOCIAL_LINKS.behance, label: 'Behance' },
+  { Icon: FaDribbble, link: SOCIAL_LINKS.dribbble, label: 'Dribbble' },
+  { Icon: FaLinkedinIn, link: SOCIAL_LINKS.linkedin, label: 'LinkedIn' },
+  { Icon: FaInstagram, link: SOCIAL_LINKS.instagram, label: 'Instagram' },
+  { Icon: FaXTwitter, link: SOCIAL_LINKS.twitter, label: 'X' },
 ];
 
 const footerList = [

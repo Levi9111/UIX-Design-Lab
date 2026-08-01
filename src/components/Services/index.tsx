@@ -44,7 +44,7 @@ export const serviceData = [
       'Landing Page Designing',
       'Per Section Image Fixing',
       'Custom Design Support',
-      'Modern Hero Desing Concept',
+      'Modern Hero Design Concept',
     ],
     cta: 'Launch your high-conversion landing page!',
     timeToDeliver: '5-7 business days',

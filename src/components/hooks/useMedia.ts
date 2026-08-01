@@ -1,9 +1,14 @@
 import { useEffect, useState } from 'react';
 
-export const useMedia = () => {
-  const [device, setDevice] = useState<'mobile' | 'tablet' | 'desktop'>(
-    'desktop',
-  );
+export type DeviceType = 'mobile' | 'tablet' | 'desktop';
+
+/**
+ * Returns the current device breakpoint.
+ * Returns `null` until the first client-side measurement is done,
+ * preventing hydration mismatches between SSR and client renders.
+ */
+export const useMedia = (): DeviceType | null => {
+  const [device, setDevice] = useState<DeviceType | null>(null);
 
   useEffect(() => {
     const checkDevice = () => {

@@ -8,7 +8,8 @@ const Navbar = () => {
   const device = useMedia();
   const url = usePathname();
 
-  console.log(url);
+  if (!device) return null;
+
   return (
     <>
       {device === 'desktop' ? (

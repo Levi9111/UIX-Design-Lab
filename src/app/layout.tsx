@@ -2,14 +2,14 @@ import type { Metadata } from 'next';
 import './globals.css';
 import clsx from 'clsx';
 import { dmSans, spaceGrotesk } from './fonts';
-
-const siteUrl = 'https://uixdesignlab.com'; // Replace with your actual domain
+import { SITE_URL, SITE_NAME } from '@/lib/constants/site';
+import { SOCIAL_LINKS } from '@/lib/constants/socials';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: 'UIX Design Lab | Creative Design & Development Agency',
-    template: '%s | UIX Design Lab',
+    default: `${SITE_NAME} | Creative Design & Development Agency`,
+    template: `%s | ${SITE_NAME}`,
   },
   description:
     'UIX Design Lab is a creative design and development agency specializing in platform UI/UX, full-stack web development (MERN, Next.js, NestJS), dashboard design, mobile and app design, and WordPress websites.',
@@ -23,28 +23,28 @@ export const metadata: Metadata = {
     'Mobile App Design',
     'Creative Agency',
     'WordPress Development',
-    'UIX Design Lab',
+    SITE_NAME,
   ],
-  authors: [{ name: 'UIX Design Lab' }],
-  creator: 'UIX Design Lab',
-  publisher: 'UIX Design Lab',
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   openGraph: {
-    title: 'UIX Design Lab | Creative Design & Development Agency',
+    title: `${SITE_NAME} | Creative Design & Development Agency`,
     description:
       'We blend design thinking with technical excellence to build fast, functional, and visually compelling digital experiences.',
-    url: siteUrl,
-    siteName: 'UIX Design Lab',
+    url: SITE_URL,
+    siteName: SITE_NAME,
     images: [
       {
-        url: '/logos/logo.svg', // Ideally a PNG/JPG for better social preview support
+        url: '/logos/logo.svg',
         width: 1200,
         height: 630,
-        alt: 'UIX Design Lab Logo',
+        alt: `${SITE_NAME} Logo`,
       },
     ],
     locale: 'en_US',
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'UIX Design Lab | Creative Design & Development Agency',
+    title: `${SITE_NAME} | Creative Design & Development Agency`,
     description:
       'Creative design and development agency specializing in platform UI/UX and full-stack web development.',
     images: ['/logos/logo.svg'],
@@ -78,26 +78,20 @@ export default function RootLayout({
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'UIX Design Lab',
-    url: siteUrl,
-    logo: `${siteUrl}/logos/logo.svg`,
+    name: SITE_NAME,
+    url: SITE_URL,
+    logo: `${SITE_URL}/logos/logo.svg`,
     description:
       'UIX Design Lab is a creative design and development agency specializing in platform UI/UX and full-stack web development.',
     address: {
       '@type': 'PostalAddress',
-      addressCountry: 'US', // Adjust as necessary
+      addressCountry: 'BD',
     },
-    sameAs: [
-      'https://x.com/UIXDesignLab?t=Nk_18DFhoDwRkck8O-_OCw&s=09',
-      'https://www.linkedin.com/in/sktahsinahmed?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
-      'https://www.behance.net/sktahsinahmed',
-      'https://dribbble.com/sktahsinahmed',
-      'https://www.instagram.com/yourprofile',
-    ],
+    sameAs: Object.values(SOCIAL_LINKS),
   };
 
   return (
-    <html lang='en' className={(spaceGrotesk.variable, dmSans.variable)}>
+    <html lang='en' className={clsx(spaceGrotesk.variable, dmSans.variable)}>
       <head>
         <script
           type='application/ld+json'

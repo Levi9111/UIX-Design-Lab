@@ -7,14 +7,9 @@ import logo from '../../../public/logos/logo.svg';
 import Button from '../elements/Button';
 import Route from '../elements/Route';
 import Link from 'next/link';
+import { NAV_LINKS } from '@/lib/constants/navLinks';
 
-const links = [
-  { title: 'Home', id: 'home' },
-  { title: 'Services', id: 'services' },
-  { title: 'Portfolio', id: 'portfolio' },
-  { title: 'Review', id: 'review' },
-  { title: 'FAQ', id: 'faq' },
-];
+const links = NAV_LINKS;
 
 const DesktopNavbar = ({ url }: { url: string }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -88,7 +83,7 @@ const DesktopNavbar = ({ url }: { url: string }) => {
     },
   };
 
-  const navListVariants = {
+  const navListVariants: Variants = {
     default: {
       backgroundColor: 'rgba(0, 0, 0, 0)',
       backdropFilter: 'blur(0px)',
@@ -210,11 +205,7 @@ const DesktopNavbar = ({ url }: { url: string }) => {
           className='flex gap-8 items-center justify-center px-10 py-6 rounded-full h-full border w-[55%]'
           initial='hidden'
           animate={scrolled ? 'scrolled' : 'default'}
-          //@ts-expect-error
           variants={navListVariants}
-          style={{
-            transform: `translateY(${scrolled ? '0px' : '0px'})`,
-          }}
         >
           {url === '/' ? (
             <>

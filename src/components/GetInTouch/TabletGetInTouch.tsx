@@ -2,8 +2,13 @@
 
 import { contactInfo, socialCards } from '.';
 import { ExternalLink, Sparkles, ShieldCheck, Clock } from 'lucide-react';
+import { useContactForm } from './useContactForm';
+import { CALENDLY_URL } from '@/lib/constants/site';
 
 const TabletGetInTouch = () => {
+  const { formData, submitted, isLoading, error, form, handleChange, handleSubmit } =
+    useContactForm();
+
   return (
     <div className='relative px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 text-silver-mist overflow-hidden'>
       <div className='relative z-10 max-w-6xl mx-auto'>
@@ -18,6 +23,8 @@ const TabletGetInTouch = () => {
                 <a
                   key={idx}
                   href={isSocial ? item.href : undefined}
+                  target={isSocial ? '_blank' : undefined}
+                  rel={isSocial ? 'noopener noreferrer' : undefined}
                   className={`group flex items-start justify-between p-4 sm:p-5 rounded-xl border ${
                     isSocial
                       ? `${item.borderColor} ${item.bgColor} ${item.hoverBg}`
@@ -54,36 +61,58 @@ const TabletGetInTouch = () => {
             })}
           </div>
 
-          {/* Right: Contact Form */}
+          {/* Right: Contact Form — wired to emailjs */}
           <div className='lg:sticky lg:top-6 lg:self-start'>
             <div className='p-4 sm:p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm'>
               <h3 className='text-lg sm:text-xl font-bold text-silver-mist mb-4 sm:mb-6'>
                 Have an Idea? Let us Know
               </h3>
-              <form className='space-y-4 sm:space-y-5'>
+              <form ref={form} onSubmit={handleSubmit} className='space-y-4 sm:space-y-5'>
                 <div className='flex flex-col sm:flex-row gap-3 sm:gap-4'>
                   <input
                     type='text'
+                    name='name'
                     placeholder='Name'
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
                     className='w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-md bg-black/10 border border-white/10 text-silver-mist placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-400 focus:border-blue-400 transition-all duration-200 text-sm sm:text-base'
                   />
                   <input
                     type='email'
+                    name='email'
                     placeholder='Email'
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
                     className='w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-md bg-black/10 border border-white/10 text-silver-mist placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-400 focus:border-blue-400 transition-all duration-200 text-sm sm:text-base'
                   />
                 </div>
                 <textarea
+                  name='message'
                   rows={4}
                   placeholder='Project Details'
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
                   className='w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-md bg-black/10 border border-white/10 text-silver-mist placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-400 focus:border-blue-400 resize-none transition-all duration-200 text-sm sm:text-base'
                 ></textarea>
                 <button
                   type='submit'
-                  className='w-full py-2.5 sm:py-3 bg-gradient-to-r from-blue-500 hover:from-purple-600 to-purple-600 hover:to-blue-500 text-silver-mist font-semibold rounded-md transition-all duration-300 hover:scale-[1.02] hover:shadow-lg text-sm sm:text-base'
+                  disabled={isLoading}
+                  className='w-full py-2.5 sm:py-3 bg-gradient-to-r from-blue-500 hover:from-purple-600 to-purple-600 hover:to-blue-500 text-silver-mist font-semibold rounded-md transition-all duration-300 hover:scale-[1.02] hover:shadow-lg text-sm sm:text-base disabled:opacity-70 disabled:cursor-not-allowed'
                 >
-                  Send Your Message
+                  {isLoading ? 'Sending...' : 'Send Your Message'}
                 </button>
+
+                {submitted && (
+                  <p className='text-sm text-emerald-400 text-center'>
+                    Message sent successfully!
+                  </p>
+                )}
+                {error && (
+                  <p className='text-sm text-red-400 text-center'>{error}</p>
+                )}
               </form>
             </div>
           </div>
@@ -124,20 +153,18 @@ const TabletGetInTouch = () => {
           </div>
         </div>
 
-        {/* Book a Call Section  */}
+        {/* Book a Call Section */}
         <div className='mt-10 p-6 rounded-xl border border-white/10 bg-white/5 text-center'>
           <h3 className='text-xl font-bold text-silver-mist mb-2'>
             Book a Free 15-Minute Call
           </h3>
           <p className='text-sm text-gray-400 mb-4'>
-            Have a concept or question? Let’s jump on a quick call to discuss
+            Have a concept or question? Let's jump on a quick call to discuss
             and validate your ideas.
           </p>
           <button
             type='button'
-            onClick={
-              () => window.open('https://calendly.com/yourname/10min', '_blank') // Replace with your actual link
-            }
+            onClick={() => window.open(CALENDLY_URL, '_blank')}
             className='inline-block px-6 py-3 bg-gradient-to-r from-purple-500 hover:from-blue-600 to-blue-600 hover:to-purple-500 text-silver-mist font-semibold rounded-md transition duration-300'
           >
             Schedule a Call
