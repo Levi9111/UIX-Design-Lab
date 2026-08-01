@@ -5,7 +5,6 @@ import {
   Variants,
   useScroll,
   useTransform,
-  useSpring,
 } from 'framer-motion';
 import { ReactNode, useRef } from 'react';
 import {
@@ -24,7 +23,7 @@ type PlanetTextProps = {
   btnText?: string | ReactNode;
 };
 
-// Mobile animations - simplified and performant
+// Mobile animations - lightweight & performant
 const mobileTitleVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   show: {
@@ -59,8 +58,8 @@ const MobilePlanetText: React.FC<PlanetTextProps> = ({
 }) => {
   return (
     <div className='relative z-10 mx-auto w-full max-w-sm px-4 py-8 text-center'>
-      {/* Simplified static background */}
-      <div className='absolute left-1/2 top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2'>
+      {/* Static background rings */}
+      <div className='absolute left-1/2 top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2 pointer-events-none'>
         <div className='w-48 h-48 rounded-full border border-white/5' />
         <div className='absolute inset-4 rounded-full border border-white/3' />
       </div>
@@ -105,25 +104,23 @@ const MobilePlanetText: React.FC<PlanetTextProps> = ({
   );
 };
 
-// Enhanced Desktop animations - more complex and engaging
+// High-performance GPU-accelerated Desktop animations
 const desktopTitleVariants: Variants = {
   hidden: {
     opacity: 0,
-    y: 100,
-    scale: 0.8,
-    filter: 'blur(8px)',
+    y: 50,
+    scale: 0.95,
   },
   show: {
     opacity: 1,
     y: 0,
     scale: 1,
-    filter: 'blur(0px)',
     transition: {
       type: 'spring',
-      stiffness: 100,
-      damping: 15,
+      stiffness: 120,
+      damping: 18,
       mass: 0.8,
-      delay: 0.2,
+      delay: 0.1,
     },
   },
 };
@@ -131,22 +128,17 @@ const desktopTitleVariants: Variants = {
 const enhancedSubtitleVariants: Variants = {
   hidden: {
     opacity: 0,
-    y: 60,
-    scale: 0.95,
-    filter: 'blur(4px)',
+    y: 30,
+    scale: 0.98,
   },
   show: {
     opacity: 1,
     y: 0,
     scale: 1,
-    filter: 'blur(0px)',
     transition: {
-      delay: 0.5,
-      duration: 0.8,
+      delay: 0.3,
+      duration: 0.6,
       ease: [0.25, 0.46, 0.45, 0.94],
-      type: 'spring',
-      stiffness: 80,
-      damping: 12,
     },
   },
 };
@@ -161,20 +153,7 @@ const floatingIconVariants: Variants = {
       type: 'spring',
       stiffness: 200,
       damping: 15,
-      delay: 0.8,
-    },
-  },
-};
-
-const orbitVariants: Variants = {
-  hidden: { opacity: 0, scale: 0 },
-  show: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      delay: 0.6,
-      duration: 1.2,
-      ease: [0.25, 0.46, 0.45, 0.94],
+      delay: 0.5,
     },
   },
 };
@@ -186,38 +165,31 @@ const DesktopPlanetText: React.FC<PlanetTextProps> = ({
   btnText,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Direct GPU Scroll Transformations (bypasses JS spring math overhead)
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start end', 'end start'],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-  const scale = useTransform(
-    scrollYProgress,
-    [0, 0.2, 0.8, 1],
-    [0.8, 1, 1, 0.9],
-  );
-
-  const springY = useSpring(y, { stiffness: 100, damping: 30 });
+  const y = useTransform(scrollYProgress, [0, 1], [60, -60]);
+  const opacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0, 1, 1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.95, 1, 1, 0.95]);
 
   return (
     <motion.div
       ref={containerRef}
-      style={{ y: springY, opacity, scale }}
-      className='relative z-10 mx-auto w-full max-w-4xl px-4 py-16 text-center overflow-hidden'
+      style={{ y, opacity, scale }}
+      className='relative z-10 mx-auto w-full max-w-4xl px-4 py-16 text-center overflow-hidden transform-gpu'
     >
-      {/* Enhanced animated background with multiple layers */}
-      <div className='absolute left-1/2 top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2'>
-        {/* Main orbital rings */}
-        <motion.svg
-          className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'
-          width={400}
-          height={400}
+      {/* Animated background with GPU-accelerated SVG rings */}
+      <div className='absolute left-1/2 top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2 pointer-events-none'>
+        <svg
+          className='w-[400px] h-[400px]'
           viewBox='0 0 400 400'
           fill='none'
         >
-          {/* Outer ring with gradient */}
+          {/* Outer ring */}
           <motion.circle
             cx={200}
             cy={200}
@@ -225,20 +197,12 @@ const DesktopPlanetText: React.FC<PlanetTextProps> = ({
             stroke='url(#gradient1)'
             strokeWidth={1}
             fill='none'
-            initial={{ rotate: 0, scale: 0.5, opacity: 0 }}
-            animate={{
-              rotate: 360,
-              scale: 1,
-              opacity: 1,
-            }}
-            transition={{
-              rotate: { duration: 100, repeat: Infinity, ease: 'linear' },
-              scale: { duration: 1.5, ease: 'easeOut', delay: 0.3 },
-              opacity: { duration: 1.5, ease: 'easeOut', delay: 0.3 },
-            }}
+            className='transform-gpu origin-center'
+            animate={{ rotate: 360 }}
+            transition={{ duration: 100, repeat: Infinity, ease: 'linear' }}
           />
 
-          {/* Middle ring */}
+          {/* Middle dashed ring */}
           <motion.circle
             cx={200}
             cy={200}
@@ -247,17 +211,9 @@ const DesktopPlanetText: React.FC<PlanetTextProps> = ({
             strokeWidth={1}
             strokeDasharray='5,10'
             fill='none'
-            initial={{ rotate: 0, scale: 0.3, opacity: 0 }}
-            animate={{
-              rotate: -360,
-              scale: 1,
-              opacity: 1,
-            }}
-            transition={{
-              rotate: { duration: 80, repeat: Infinity, ease: 'linear' },
-              scale: { duration: 1.2, ease: 'easeOut', delay: 0.5 },
-              opacity: { duration: 1.2, ease: 'easeOut', delay: 0.5 },
-            }}
+            className='transform-gpu origin-center'
+            animate={{ rotate: -360 }}
+            transition={{ duration: 80, repeat: Infinity, ease: 'linear' }}
           />
 
           {/* Inner pulsing core */}
@@ -268,20 +224,18 @@ const DesktopPlanetText: React.FC<PlanetTextProps> = ({
             stroke='rgba(255,255,255,0.05)'
             strokeWidth={2}
             fill='rgba(255,255,255,0.02)'
-            initial={{ scale: 0, opacity: 0 }}
             animate={{
-              scale: [1, 1.1, 1],
+              scale: [1, 1.08, 1],
               opacity: [0.5, 0.8, 0.5],
             }}
             transition={{
               duration: 4,
               repeat: Infinity,
               ease: 'easeInOut',
-              delay: 0.7,
             }}
           />
 
-          {/* Gradient definitions */}
+          {/* Gradient definition */}
           <defs>
             <linearGradient id='gradient1' x1='0%' y1='0%' x2='100%' y2='100%'>
               <stop
@@ -298,9 +252,9 @@ const DesktopPlanetText: React.FC<PlanetTextProps> = ({
               />
             </linearGradient>
           </defs>
-        </motion.svg>
+        </svg>
 
-        {/* Floating accent elements */}
+        {/* Floating accent icons */}
         <motion.div
           variants={floatingIconVariants}
           initial='hidden'
@@ -311,7 +265,7 @@ const DesktopPlanetText: React.FC<PlanetTextProps> = ({
           <motion.div
             animate={{
               rotate: 360,
-              y: [0, -20, 0],
+              y: [0, -15, 0],
             }}
             transition={{
               rotate: { duration: 20, repeat: Infinity, ease: 'linear' },
@@ -332,12 +286,10 @@ const DesktopPlanetText: React.FC<PlanetTextProps> = ({
           <motion.div
             animate={{
               rotate: -360,
-              x: [0, 15, 0],
               y: [0, -10, 0],
             }}
             transition={{
               rotate: { duration: 25, repeat: Infinity, ease: 'linear' },
-              x: { duration: 8, repeat: Infinity, ease: 'easeInOut' },
               y: { duration: 5, repeat: Infinity, ease: 'easeInOut' },
             }}
           >
@@ -354,7 +306,7 @@ const DesktopPlanetText: React.FC<PlanetTextProps> = ({
         >
           <motion.div
             animate={{
-              scale: [1, 1.2, 1],
+              scale: [1, 1.15, 1],
               opacity: [0.3, 0.6, 0.3],
             }}
             transition={{
@@ -376,7 +328,7 @@ const DesktopPlanetText: React.FC<PlanetTextProps> = ({
             whileInView='show'
             viewport={{ once: true, amount: 0.6 }}
             variants={{
-              hidden: { opacity: 0, y: 30, scale: 0.9 },
+              hidden: { opacity: 0, y: 20, scale: 0.95 },
               show: {
                 opacity: 1,
                 y: 0,
@@ -384,52 +336,27 @@ const DesktopPlanetText: React.FC<PlanetTextProps> = ({
                 transition: {
                   type: 'spring',
                   stiffness: 150,
-                  damping: 12,
-                  delay: 0.1,
+                  damping: 15,
                 },
               },
             }}
             whileHover={{
               scale: 1.05,
-              y: -3,
+              y: -2,
               boxShadow: '0 10px 25px rgba(255,255,255,0.1)',
               transition: { duration: 0.2 },
             }}
             whileTap={{ scale: 0.98 }}
-            className='group relative px-6 py-3 rounded-full border border-white/20 flex items-center justify-center gap-2 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-white/30 transition-all duration-300 overflow-hidden'
+            className='group relative px-6 py-3 rounded-full border border-white/20 flex items-center justify-center gap-2 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-white/30 transition-all duration-300 overflow-hidden cursor-pointer'
           >
-            {/* Button background glow effect */}
-            <motion.div
-              className='absolute inset-0 rounded-full bg-gradient-to-r from-white/5 to-white/10 opacity-0 group-hover:opacity-100'
-              initial={false}
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            <Globe
+              size={16}
+              className='text-white/70 group-hover:text-white transition-colors relative z-10 animate-spin duration-300'
             />
-
-            <motion.div
-              // animate={{ rotate: [0, 15, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-              className='animate-spin duration-150'
-            >
-              <Globe
-                size={16}
-                className='text-white/70 group-hover:text-white transition-colors relative z-10'
-              />
-            </motion.div>
             <p className='text-sm text-white/70 group-hover:text-white font-medium uppercase tracking-wider transition-colors relative z-10'>
               {btnText}
             </p>
-            <motion.div
-              className='opacity-0 group-hover:opacity-100 transition-opacity relative z-10'
-              animate={{ x: [0, 3, 0] }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-            >
-              <ArrowUpRight size={14} className='text-white/70' />
-            </motion.div>
+            <ArrowUpRight size={14} className='text-white/70 opacity-0 group-hover:opacity-100 transition-opacity relative z-10' />
           </motion.button>
         </div>
       )}
@@ -451,21 +378,6 @@ const DesktopPlanetText: React.FC<PlanetTextProps> = ({
         >
           {title}
         </motion.span>
-
-        {/* Title accent glow */}
-        <motion.div
-          className='absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 opacity-0'
-          animate={{
-            x: ['-100%', '100%'],
-            opacity: [0, 0.6, 0],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            repeatDelay: 4,
-            ease: 'easeInOut',
-          }}
-        />
       </motion.h2>
 
       <motion.div
@@ -488,23 +400,23 @@ const DesktopPlanetText: React.FC<PlanetTextProps> = ({
           className='absolute bottom-0 left-1/2 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent'
           initial={{ width: '0%', x: '-50%' }}
           whileInView={{ width: '60%' }}
-          transition={{ delay: 1, duration: 1.5, ease: 'easeOut' }}
+          transition={{ delay: 0.6, duration: 1.2, ease: 'easeOut' }}
         />
       </motion.div>
 
-      {/* Additional decorative elements */}
+      {/* Decorative vertical lines */}
       <motion.div
         className='absolute top-1/2 left-8 w-1 h-16 bg-gradient-to-b from-transparent via-white/20 to-transparent'
         initial={{ scaleY: 0, opacity: 0 }}
         whileInView={{ scaleY: 1, opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
+        transition={{ delay: 0.8, duration: 0.6 }}
       />
 
       <motion.div
         className='absolute top-1/2 right-8 w-1 h-16 bg-gradient-to-b from-transparent via-white/20 to-transparent'
         initial={{ scaleY: 0, opacity: 0 }}
         whileInView={{ scaleY: 1, opacity: 1 }}
-        transition={{ delay: 1.4, duration: 0.8 }}
+        transition={{ delay: 0.9, duration: 0.6 }}
       />
     </motion.div>
   );
@@ -513,6 +425,8 @@ const DesktopPlanetText: React.FC<PlanetTextProps> = ({
 // Main responsive component
 export const PlanetText: React.FC<PlanetTextProps> = (props) => {
   const device = useMedia();
+  if (!device) return null;
+
   return (
     <>
       {device === 'mobile' ? (
