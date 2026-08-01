@@ -1,6 +1,7 @@
 'use client';
+
 import Route from '@/components/elements/Route';
-import { easeInOut, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { serviceData } from '.';
 import { Home } from 'lucide-react';
 
@@ -10,8 +11,8 @@ const DesktopPricing = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
       },
     },
   };
@@ -19,8 +20,8 @@ const DesktopPricing = () => {
   const cardVariants = {
     hidden: {
       opacity: 0,
-      y: 50,
-      scale: 0.9,
+      y: 40,
+      scale: 0.95,
     },
     visible: {
       opacity: 1,
@@ -30,22 +31,7 @@ const DesktopPricing = () => {
         type: 'spring' as const,
         damping: 20,
         stiffness: 100,
-        duration: 0.6,
-      },
-    },
-  };
-
-  const glowVariants = {
-    initial: {
-      boxShadow: '0 0 20px rgba(147, 51, 234, 0.1)',
-    },
-    hover: {
-      boxShadow:
-        '0 0 40px rgba(147, 51, 234, 0.3), 0 0 80px rgba(147, 51, 234, 0.1)',
-      scale: 1.02,
-      transition: {
-        duration: 0.3,
-        ease: easeInOut, // use a valid easing string
+        duration: 0.5,
       },
     },
   };
@@ -59,21 +45,16 @@ const DesktopPricing = () => {
         viewport={{ once: true }}
         className='grid md:grid-cols-3 gap-8 lg:gap-12'
       >
-        {serviceData.map((service, index) => (
+        {serviceData.map((service) => (
           <motion.div
-            key={index}
+            key={service.title}
             variants={cardVariants}
-            className='relative group'
+            className='relative group transform-gpu'
           >
-            <motion.div
-              variants={glowVariants}
-              initial='initial'
-              whileHover='hover'
-              className='relative bg-gradient-to-br from-[#121417] to-[#1c1f24] backdrop-blur-xl rounded-3xl p-8 border border-purple-500/20 hover:border-purple-400/40 transition-all duration-500 h-full flex flex-col'
-            >
+            <div className='relative bg-gradient-to-br from-[#121417] to-[#1c1f24] backdrop-blur-xl rounded-3xl p-8 border border-purple-500/20 group-hover:border-purple-400/50 transition-all duration-300 h-full flex flex-col shadow-xl group-hover:shadow-2xl group-hover:shadow-purple-500/10'>
               {/* Floating orb */}
               <div className='absolute top-4 right-4 w-3 h-3 bg-purple-400 rounded-full opacity-60 group-hover:opacity-100 transition-opacity'>
-                <div className='absolute inset-0 w-3 h-3 bg-purple-400 rounded-full animate-ping'></div>
+                <div className='absolute inset-0 w-3 h-3 bg-purple-400 rounded-full animate-ping' />
               </div>
 
               {/* Header */}
@@ -98,33 +79,28 @@ const DesktopPricing = () => {
               <div className='flex-1 mb-8'>
                 <ul className='space-y-4'>
                   {service.features.map((feature, i) => (
-                    <motion.li
+                    <li
                       key={i}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.1 * i, duration: 0.4 }}
-                      viewport={{ once: true }}
                       className='flex items-start gap-3 text-gray-300'
                     >
-                      <div className='w-2 h-2 rounded-full bg-gradient-to-r from-purple-400 to-blue-400 mt-2 flex-shrink-0'></div>
+                      <div className='w-2 h-2 rounded-full bg-gradient-to-r from-purple-400 to-blue-400 mt-2 flex-shrink-0' />
                       <span className='text-sm leading-relaxed'>{feature}</span>
-                    </motion.li>
+                    </li>
                   ))}
                 </ul>
               </div>
 
               {/* CTA */}
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className='w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold text-lg shadow-xl hover:shadow-purple-500/25 transition-all duration-300'
-              >
-                Launch Project
-              </motion.button>
-            </motion.div>
-
-            {/* Ambient glow */}
-            <div className='absolute inset-0 bg-gradient-to-r from-purple-500/5 to-blue-500/5 rounded-3xl blur-xl group-hover:from-purple-500/10 group-hover:to-blue-500/10 transition-all duration-500 -z-10'></div>
+              <Route link='/select-your-project'>
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className='w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold text-lg shadow-xl hover:shadow-purple-500/25 transition-all duration-300 cursor-pointer'
+                >
+                  Launch Project
+                </motion.button>
+              </Route>
+            </div>
           </motion.div>
         ))}
       </motion.div>
@@ -133,7 +109,7 @@ const DesktopPricing = () => {
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
         viewport={{ once: true }}
         className='text-center mt-16'
       >
@@ -145,7 +121,7 @@ const DesktopPricing = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className='px-8 py-3 rounded-full border-2 border-purple-500/50 text-purple-300 hover:bg-purple-500/10 hover:border-purple-400 transition-all duration-300'
+              className='px-8 py-3 rounded-full border-2 border-purple-500/50 text-purple-300 hover:bg-purple-500/10 hover:border-purple-400 transition-all duration-300 cursor-pointer'
             >
               Contact Our Team
             </motion.button>
@@ -154,7 +130,7 @@ const DesktopPricing = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className='px-8 py-3 rounded-full border-2 border-blue-500/50 text-blue-300 hover:bg-blue-500/10 hover:border-blue-400 transition-all duration-300 flex items-center gap-2'
+              className='px-8 py-3 rounded-full border-2 border-blue-500/50 text-blue-300 hover:bg-blue-500/10 hover:border-blue-400 transition-all duration-300 flex items-center gap-2 cursor-pointer'
             >
               <Home className='w-4 h-4' />
               Back to Home
