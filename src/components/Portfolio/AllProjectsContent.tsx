@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Button from '@/components/elements/Button';
 import { PlanetText } from '@/components/elements/PlanetText';
 import Link from 'next/link';
-import { serviceDetailsData } from '@/components/ui/Portfolio';
+import { serviceDetailsData } from '@/components/Portfolio';
 
 type NavigationLink = {
   title: string;
@@ -173,7 +173,7 @@ const AllProjects = () => {
                           src={service.image}
                           alt={service.title}
                           fill
-                          className=''
+                          className='object-cover object-center'
                           sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
                         />
                       </div>

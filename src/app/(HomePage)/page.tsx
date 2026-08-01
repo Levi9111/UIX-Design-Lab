@@ -4,7 +4,7 @@ import Services from '@/components/Services';
 import Showcase from '@/components/Showcase';
 import Stories from '@/components/Stories';
 import Hero from '@/components/ui/Hero';
-import Portfolio from '@/components/ui/Portfolio';
+import Portfolio from '@/components/Portfolio';
 
 const HomePage = () => {
   return (

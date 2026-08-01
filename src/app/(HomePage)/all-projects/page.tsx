@@ -1,4 +1,4 @@
-import AllProjects from './AllProjectsContent';
+import AllProjects from '@/components/Portfolio/AllProjectsContent';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {

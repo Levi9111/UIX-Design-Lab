@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Button from '../elements/Button';
 import { PlanetText } from '../elements/PlanetText';
 import { motion } from 'framer-motion';
+
 import maker from '../../../public/images/project-images/maker.png';
 import gemesisDashboard from '../../../public/images/project-images/gemesis-dashboard.png';
 import graph from '../../../public/images/project-images/the-graph.png';
@@ -42,21 +43,21 @@ export const serviceDetailsData: ServiceDetail[] = [
   {
     title: 'Gemesis Dashboard',
     description:
-      'An ai that generate art, create NFT collections, staking contracts and much more!',
+      'An AI that generates art, creates NFT collections, staking contracts, and much more!',
     image: gemesisDashboard,
     category: 'Dashboard',
   },
   {
     title: '$MAO Token',
     description:
-      'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
+      'Maker is building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: graph,
     category: 'Development',
   },
   {
     title: 'Raydium',
     description:
-      'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
+      'Maker is building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: raydium,
     category: 'Landing Page',
   },
@@ -77,84 +78,84 @@ export const serviceDetailsData: ServiceDetail[] = [
   {
     title: 'Doge Coin',
     description:
-      'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
+      'Maker is building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: dogCoin,
     category: 'Development',
   },
   {
     title: '$MAO Token',
     description:
-      'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
+      'Maker is building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: graph,
     category: 'Landing Page',
   },
   {
     title: 'ARX Network',
     description:
-      'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
+      'Maker is building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: arxNetwork,
     category: 'UI/UX Design',
   },
   {
     title: '$MAO Token',
     description:
-      'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
+      'Maker is building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: graph2,
     category: 'Dashboard',
   },
   {
     title: 'Pixia',
     description:
-      'An ai that generate art, create NFT collections, staking contracts and much more!',
+      'An AI that generates art, creates NFT collections, staking contracts, and much more!',
     image: pixia,
     category: 'Development',
   },
   {
     title: 'Boogy',
     description:
-      'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
+      'Maker is building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: boogy,
     category: 'Development',
   },
   {
     title: 'Astar 2.0',
     description:
-      'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
+      'Maker is building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: aster,
-    category: 'UI/UX Desing',
+    category: 'UI/UX Design',
   },
   {
     title: 'Dino Token',
     description:
-      'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
+      'Maker is building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: dino,
     category: 'UI/UX Design',
   },
   {
-    title: 'Ghriyo Real Estate ',
+    title: 'Ghriyo Real Estate',
     description:
-      'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
+      'Maker is building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: ghriyoRealEstate,
     category: 'Development',
   },
   {
     title: 'Savitri Token',
     description:
-      'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
+      'Maker is building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: savitryToken,
     category: 'UI/UX Design',
   },
   {
     title: 'Texor.Cloud AI',
     description:
-      'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
+      'Maker is building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: texor,
     category: 'UI/UX Design',
   },
   {
     title: 'Savitri Token',
     description:
-      'Maker is a building an AI consumer layer that connects users, creators, and open-source AI researchers.',
+      'Maker is building an AI consumer layer that connects users, creators, and open-source AI researchers.',
     image: savitryToken,
     category: 'Dashboard',
   },
@@ -185,51 +186,52 @@ const Portfolio = () => {
         {/* Services Grid */}
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto'>
           {serviceDetailsData.slice(0, 6).map((service, index) => (
-            <motion.div
-              key={index}
-              className='bg-gradient-to-br from-[#121417] to-[#1c1f24] rounded-[32px] overflow-hidden border border-white/5 shadow-xl flex flex-col group hover:shadow-platinum/30 transition-all duration-500 hover:scale-[1.02] cursor-pointer'
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.08, duration: 0.5 }}
-              whileHover={{ y: -8 }}
-            >
-              {/* Image Container */}
-              <div className='relative h-60 bg-gradient-to-tr from-[#2e2e2e] via-[#1f1f1f] to-[#3a3a3a] overflow-hidden'>
-                <div className='absolute inset-0 group-hover:scale-110 transition-transform duration-700 ease-out'>
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className='object-center'
-                    sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
-                  />
+            <Link key={`${service.title}-${index}`} href='/all-projects' className='block group'>
+              <motion.div
+                className='h-full bg-gradient-to-br from-[#121417] to-[#1c1f24] rounded-[32px] overflow-hidden border border-white/5 shadow-xl flex flex-col group-hover:shadow-platinum/30 transition-all duration-500 hover:scale-[1.02] cursor-pointer'
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.08, duration: 0.5 }}
+                whileHover={{ y: -8 }}
+              >
+                {/* Image Container */}
+                <div className='relative h-60 bg-gradient-to-tr from-[#2e2e2e] via-[#1f1f1f] to-[#3a3a3a] overflow-hidden'>
+                  <div className='absolute inset-0 group-hover:scale-110 transition-transform duration-700 ease-out'>
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      className='object-cover object-center'
+                      sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
+                    />
+                  </div>
+
+                  {/* Overlay for better text readability */}
+                  <div className='absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
+
+                  {/* Subtle shine effect */}
+                  <div className='absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000' />
                 </div>
 
-                {/* Overlay for better text readability */}
-                <div className='absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
+                {/* Text Content */}
+                <div className='p-6 sm:p-8 bg-rich-black rounded-b-[32px] border-t border-white/5 flex-1 flex flex-col'>
+                  <h3 className='text-xl sm:text-2xl text-platinum font-semibold mb-3 group-hover:text-white transition-colors duration-300'>
+                    {service.title}
+                  </h3>
+                  <p className='text-roman-silver text-sm sm:text-base leading-relaxed flex-1 group-hover:text-platinum/90 transition-colors duration-300'>
+                    {service.description}
+                  </p>
 
-                {/* Optional: Add a subtle shine effect */}
-                <div className='absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000' />
-              </div>
-
-              {/* Text Content */}
-              <div className='p-6 sm:p-8 bg-rich-black rounded-b-[32px] border-t border-white/5 flex-1 flex flex-col'>
-                <h3 className='text-xl sm:text-2xl text-platinum font-semibold mb-3 group-hover:text-white transition-colors duration-300'>
-                  {service.title}
-                </h3>
-                <p className='text-roman-silver text-sm sm:text-base leading-relaxed flex-1 group-hover:text-platinum/90 transition-colors duration-300'>
-                  {service.description}
-                </p>
-
-                {/* Optional: Add a subtle CTA on hover */}
-                <div className='mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
-                  <span className='text-xs text-platinum/60 font-medium tracking-wider uppercase'>
-                    View Project →
-                  </span>
+                  {/* CTA link indicator */}
+                  <div className='mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
+                    <span className='text-xs text-platinum/60 font-medium tracking-wider uppercase'>
+                      View Project →
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </Link>
           ))}
         </div>
 
