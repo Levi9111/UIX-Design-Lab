@@ -4,7 +4,7 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 import { Instagram, LinkedIn } from 'developer-icons';
 import { BsBehance, BsDribbble } from 'react-icons/bs';
 import { PlanetText } from '@/components/elements/PlanetText';
-import { useMedia } from '@/components/hooks/useMedia';
+import { useMedia } from '@/hooks/useMedia';
 import DesktopGetInTouch from './DesktopGetInTouch';
 import TabletGetInTouch from './TabletGetInTouch';
 import MobileGetInTouch from './MobileGetInTouch';

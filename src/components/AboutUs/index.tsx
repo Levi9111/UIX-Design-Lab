@@ -2,7 +2,7 @@
 
 import { Code, Crown, Palette, TrendingUp, User, Users } from 'lucide-react';
 import { PlanetText } from '../elements/PlanetText';
-import { useMedia } from '../hooks/useMedia';
+import { useMedia } from '@/hooks/useMedia';
 import DesktopAboutUs from './DesktopAboutUs';
 import MobileAboutUs from './MobileAboutUs';
 

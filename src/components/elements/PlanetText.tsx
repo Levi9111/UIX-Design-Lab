@@ -16,7 +16,7 @@ import {
   Stars,
   ArrowUpRight,
 } from 'lucide-react';
-import { useMedia } from '../hooks/useMedia';
+import { useMedia } from '@/hooks/useMedia';
 
 type PlanetTextProps = {
   title: string | ReactNode;

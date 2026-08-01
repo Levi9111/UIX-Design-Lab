@@ -2,7 +2,7 @@
 
 import { MessageCircle, X, Zap, Users } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { useMedia } from '../hooks/useMedia';
+import { useMedia } from '@/hooks/useMedia';
 import { Telegram, WhatsApp } from 'developer-icons';
 import { WHATSAPP_URL, TELEGRAM_URL } from '@/lib/constants/site';
 

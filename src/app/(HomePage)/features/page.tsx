@@ -1,4 +1,4 @@
-import FeaturesHomePage from './FeaturesContent';
+import FeaturesHomePage from '@/components/Features/FeaturesContent';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {

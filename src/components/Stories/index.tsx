@@ -1,9 +1,9 @@
 'use client';
 import { PlanetText } from '../elements/PlanetText';
-import { useMedia } from '../hooks/useMedia';
-import DesktopStories from '../Stories/StoriesDesktop';
-import MobileStories from '../Stories/StoriesMobile';
-import TabletStories from '../Stories/StoriesTablet';
+import { useMedia } from '@/hooks/useMedia';
+import DesktopStories from './DesktopStories';
+import MobileStories from './MobileStories';
+import TabletStories from './TabletStories';
 
 const Stories = () => {
   const device = useMedia();

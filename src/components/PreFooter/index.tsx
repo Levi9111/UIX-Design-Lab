@@ -1,5 +1,5 @@
 'use client';
-import { useMedia } from '../hooks/useMedia';
+import { useMedia } from '@/hooks/useMedia';
 import MobilePreFooter from './MobilePreFooter';
 import TabAndBiggerPreFooter from './TabAndBiggerPreFooter';
 

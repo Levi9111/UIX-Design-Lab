@@ -1,6 +1,6 @@
 'use client';
 import { PlanetText } from '../elements/PlanetText';
-import { useMedia } from '../hooks/useMedia';
+import { useMedia } from '@/hooks/useMedia';
 import DesktopShowcase from './DesktopShowcase';
 import MobileShowcase from './MobileShowcase';
 

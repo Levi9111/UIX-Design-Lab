@@ -1,4 +1,4 @@
-import ProjectSelection from './ProjectSelectionContent';
+import ProjectSelection from '@/components/ProjectSelection/ProjectSelectionContent';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {

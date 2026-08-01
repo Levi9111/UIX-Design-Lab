@@ -5,7 +5,7 @@ import Footer from '@/components/ui/Footer';
 import Welcoming from '@/components/ui/Welcoming';
 import Navbar from '@/components/Navigation';
 import SpaceBackground from '@/components/designs/SpaceBackground';
-import { useMedia } from '@/components/hooks/useMedia';
+import { useMedia } from '@/hooks/useMedia';
 import LoadingDesign from '@/components/designs/LoadingDesign';
 import AnimatedSupportWidget from '@/components/designs/AnimatedSupportWidget';
 

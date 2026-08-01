@@ -4,7 +4,7 @@ import DesktopFAQs from './DesktopFAQs';
 import MobileFAQs from './MobileFAQs';
 import { PlanetText } from '../elements/PlanetText';
 import { HelpCircle, MessageCircle, Zap } from 'lucide-react';
-import { useMedia } from '../hooks/useMedia';
+import { useMedia } from '@/hooks/useMedia';
 
 export const accordionData = [
   {

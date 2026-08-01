@@ -4,7 +4,7 @@ import Route from '@/components/elements/Route';
 import { easeInOut, motion } from 'framer-motion';
 import { Monitor, Rocket, ShieldCheck } from 'lucide-react';
 import DesktopPricing from './DesktopPricing';
-import { useMedia } from '../hooks/useMedia';
+import { useMedia } from '@/hooks/useMedia';
 import TabletPricing from './TabletPricing';
 import MobilePricing from './MobilePricing';
 
