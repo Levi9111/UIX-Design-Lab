@@ -1,7 +1,15 @@
 'use client';
 
-import { motion, Variants, easeInOut, AnimatePresence } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import {
+  motion,
+  Variants,
+  easeInOut,
+  AnimatePresence,
+  useScroll,
+  useTransform,
+  useMotionValueEvent,
+} from 'framer-motion';
+import { useState } from 'react';
 import Image from 'next/image';
 import logo from '../../../public/logos/logo.svg';
 import Button from '../elements/Button';
@@ -11,135 +19,156 @@ import { NAV_LINKS } from '@/lib/constants/navLinks';
 
 const links = NAV_LINKS;
 
+// Static Variants declared outside the component to prevent recreation on re-renders
+const navVariants: Variants = {
+  hidden: { y: -100, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.6, ease: easeInOut },
+  },
+};
+
+const logoVariants: Variants = {
+  hidden: { scale: 0, rotate: -180, opacity: 0 },
+  visible: {
+    scale: 1,
+    rotate: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.8,
+      delay: 0.2,
+      type: 'spring',
+      stiffness: 100,
+      damping: 12,
+    },
+  },
+  hover: {
+    scale: 1.05,
+    transition: { duration: 0.2, type: 'spring', stiffness: 300 },
+  },
+};
+
+const linkVariants: Variants = {
+  hidden: { y: -20, opacity: 0 },
+  visible: (i: number) => ({
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      delay: 0.1 * i + 0.4,
+      ease: 'easeOut',
+      type: 'spring',
+      stiffness: 120,
+      damping: 10,
+    },
+  }),
+  hover: {
+    y: -3,
+    color: '#ffffff',
+    scale: 1.05,
+    transition: { duration: 0.2, type: 'spring', stiffness: 300 },
+  },
+};
+
+const navListVariants: Variants = {
+  default: {
+    backgroundColor: 'rgba(0, 0, 0, 0)',
+    backdropFilter: 'blur(0px)',
+    boxShadow: '0 0 0 0 rgba(0, 0, 0, 0)',
+    borderColor: 'rgba(255, 255, 255, 0)',
+  },
+  scrolled: {
+    backgroundColor: '#04070d',
+    backdropFilter: 'blur(20px)',
+    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+    borderColor: 'rgba(255, 255, 255, 0.1)',
+    transition: {
+      duration: 0.4,
+      ease: 'easeInOut',
+    },
+  },
+};
+
+const buttonVariants: Variants = {
+  hidden: {
+    scale: 0,
+    opacity: 0,
+    filter: 'blur(10px)',
+  },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 0.6,
+      delay: 0.8,
+      type: 'spring',
+      stiffness: 120,
+      damping: 12,
+    },
+  },
+  hover: {
+    scale: 1.05,
+    y: -2,
+    transition: { duration: 0.2, type: 'spring', stiffness: 300 },
+  },
+};
+
 const DesktopNavbar = ({ url }: { url: string }) => {
   const [scrolled, setScrolled] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
+  const [showLogoText, setShowLogoText] = useState(true);
+  const [showButton, setShowButton] = useState(true);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setScrollY(currentScrollY);
-      setScrolled(currentScrollY > 10);
-    };
+  const { scrollY } = useScroll();
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  // Hardware-accelerated MotionValues (DOM updates bypass React re-renders)
+  const logoOpacity = useTransform(scrollY, [0, 100], [1, 0]);
+  const logoScale = useTransform(scrollY, [0, 200], [1, 0.5]);
+  const logoBrightness = useTransform(scrollY, (y) => `brightness(${1 + y / 500})`);
 
-  // Calculate opacity and scale based on scroll
-  const logoOpacity = Math.max(0, 1 - scrollY / 100);
-  const logoScale = Math.max(0.5, 1 - scrollY / 200);
-  const buttonOpacity = Math.max(0, 1 - scrollY / 80);
-  const buttonScale = Math.max(0.8, 1 - scrollY / 150);
+  const buttonOpacity = useTransform(scrollY, [0, 80], [1, 0]);
+  const buttonScale = useTransform(scrollY, [0, 150], [1, 0.8]);
 
-  const navVariants = {
-    hidden: { y: -100, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.6, ease: easeInOut },
-    },
-  };
+  const navBackground = useTransform(scrollY, (y) =>
+    y > 10
+      ? 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%)'
+      : 'linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 100%)'
+  );
 
-  const logoVariants = {
-    hidden: { scale: 0, rotate: -180, opacity: 0 },
-    visible: {
-      scale: 1,
-      rotate: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        delay: 0.2,
-        type: 'spring' as const,
-        stiffness: 100,
-        damping: 12,
-      },
-    },
-    hover: {
-      scale: 1.05,
-      transition: { duration: 0.2, type: 'spring' as const, stiffness: 300 },
-    },
-  };
+  const navBackdropBlur = useTransform(scrollY, (y) =>
+    y > 10 ? 'blur(0px)' : `blur(${Math.min(10, y / 5)}px)`
+  );
 
-  const linkVariants: Variants = {
-    hidden: { y: -20, opacity: 0 },
-    visible: (i: number) => ({
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        delay: 0.1 * i + 0.4,
-        ease: 'easeOut',
-        type: 'spring',
-        stiffness: 120,
-        damping: 10,
-      },
-    }),
-    hover: {
-      y: -3,
-      color: '#ffffff',
-      scale: 1.05,
-      transition: { duration: 0.2, type: 'spring', stiffness: 300 },
-    },
-  };
+  const navBorderBottom = useTransform(scrollY, (y) =>
+    y > 10 ? 'none' : `1px solid rgba(128, 128, 128, ${Math.min(0.3, y / 100)})`
+  );
 
-  const navListVariants: Variants = {
-    default: {
-      backgroundColor: 'rgba(0, 0, 0, 0)',
-      backdropFilter: 'blur(0px)',
-      boxShadow: '0 0 0 0 rgba(0, 0, 0, 0)',
-      borderColor: 'rgba(255, 255, 255, 0)',
-    },
-    scrolled: {
-      backgroundColor: '#04070d',
-      backdropFilter: 'blur(20px)',
-      boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-      borderColor: 'rgba(255, 255, 255, 0.1)',
-      transition: {
-        duration: 0.4,
-        ease: 'easeInOut',
-      },
-    },
-  };
+  // Threshold event listener — triggers React state update ONLY when threshold is crossed
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    const isScrolled = latest > 10;
+    if (isScrolled !== scrolled) {
+      setScrolled(isScrolled);
+    }
 
-  const buttonVariants: Variants = {
-    hidden: {
-      scale: 0,
-      opacity: 0,
-      filter: 'blur(10px)',
-    },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      filter: 'blur(0px)',
-      transition: {
-        duration: 0.6,
-        delay: 0.8,
-        type: 'spring' as const,
-        stiffness: 120,
-        damping: 12,
-      },
-    },
-    hover: {
-      scale: 1.05,
-      y: -2,
-      transition: { duration: 0.2, type: 'spring' as const, stiffness: 300 },
-    },
-  };
+    const isLogoTextVisible = latest < 70; // 1 - 70/100 = 0.3 opacity threshold
+    if (isLogoTextVisible !== showLogoText) {
+      setShowLogoText(isLogoTextVisible);
+    }
+
+    const isButtonVisible = latest < 64; // 1 - 64/80 = 0.2 opacity threshold
+    if (isButtonVisible !== showButton) {
+      setShowButton(isButtonVisible);
+    }
+  });
 
   return (
     <motion.nav
-      className='fixed left-0 right-0 top-0 z-50 hidden lg:flex  transition-all duration-300 py-3 h-[100px] items-center'
+      className='fixed left-0 right-0 top-0 z-50 hidden lg:flex py-3 h-[100px] items-center'
       style={{
-        background: scrolled
-          ? `linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%)`
-          : `linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 100%)`,
-        backdropFilter: scrolled
-          ? 'blur(0px)'
-          : `blur(${Math.min(10, scrollY / 5)}px)`,
-        borderBottom: scrolled
-          ? 'none'
-          : `1px solid rgba(128, 128, 128, ${Math.min(0.3, scrollY / 100)})`,
+        background: navBackground,
+        backdropFilter: navBackdropBlur,
+        borderBottom: navBorderBottom,
         transition: 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
       }}
       variants={navVariants}
@@ -163,10 +192,9 @@ const DesktopNavbar = ({ url }: { url: string }) => {
             }}
           >
             <motion.div
-              whileHover={{
-                scale: 1.1,
-              }}
+              whileHover={{ scale: 1.1 }}
               transition={{ duration: 0.6, ease: 'easeInOut' }}
+              style={{ filter: logoBrightness }}
             >
               <Image
                 src={logo}
@@ -174,23 +202,17 @@ const DesktopNavbar = ({ url }: { url: string }) => {
                 width={56}
                 height={56}
                 className='w-12 h-12'
-                style={{
-                  filter: `brightness(${1 + scrollY / 500})`,
-                }}
               />
             </motion.div>
 
             <AnimatePresence>
-              {logoOpacity > 0.3 && (
+              {showLogoText && (
                 <motion.p
                   className='text-2xl font-semibold text-platinum'
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.3 }}
-                  style={{
-                    opacity: Math.max(0, logoOpacity - 0.2),
-                  }}
                 >
                   Design Lab
                 </motion.p>
@@ -199,8 +221,7 @@ const DesktopNavbar = ({ url }: { url: string }) => {
           </motion.div>
         </Route>
 
-        {/* Desktop Nav with smooth background transition */}
-
+        {/* Desktop Nav links with smooth background transition */}
         <motion.ul
           className='flex gap-8 items-center justify-center px-10 py-6 rounded-full h-full border w-[55%]'
           initial='hidden'
@@ -336,7 +357,7 @@ const DesktopNavbar = ({ url }: { url: string }) => {
             }}
           >
             <AnimatePresence>
-              {buttonOpacity > 0.2 && (
+              {showButton && (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}

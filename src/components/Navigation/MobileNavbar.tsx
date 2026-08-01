@@ -1,4 +1,5 @@
 'use client';
+
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
@@ -26,9 +27,10 @@ const MobileNavbar = ({ url }: { url: string }) => {
 
         {/* Animated Hamburger/X Icon */}
         <button
-          className='w-8 h-8 flex flex-col justify-center items-center gap-1 relative z-50'
+          className='w-8 h-8 flex flex-col justify-center items-center gap-1 relative z-50 cursor-pointer'
           onClick={() => setIsOpen((v) => !v)}
           aria-label={isOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isOpen}
         >
           <motion.span
             className={lineProps}
@@ -54,15 +56,17 @@ const MobileNavbar = ({ url }: { url: string }) => {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className='mt-3 space-y-3 bg-rich-black/70 px-3 py-3 rounded-md border border-gray-700'
+            transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className='mt-3 space-y-2 bg-rich-black/70 px-4 py-3 rounded-md border border-gray-700 overflow-hidden'
           >
             {url === '/' ? (
               <>
                 {links.map((link) => (
                   <li
                     key={link.title}
-                    className='text-silver-mist text-base font-medium border-b border-gray-700 pb-1'
+                    className='text-silver-mist text-base font-medium border-b border-gray-700/60 py-2 cursor-pointer hover:text-white transition-colors'
                     onClick={() => {
+                      setIsOpen(false);
                       const el = document.getElementById(link.id);
                       if (el) {
                         el.scrollIntoView({
@@ -77,21 +81,23 @@ const MobileNavbar = ({ url }: { url: string }) => {
                 ))}
               </>
             ) : (
-              <li className='text-silver-mist text-base font-medium border-b border-gray-700 pb-1'>
+              <li className='text-silver-mist text-base font-medium border-b border-gray-700/60 py-2'>
                 <Link href='/' onClick={() => setIsOpen(false)}>
                   ← Back to Home
                 </Link>
               </li>
             )}
 
-            <li className='text-silver-mist text-base font-medium border-b border-gray-700 pb-1'>
+            <li className='text-silver-mist text-base font-medium border-b border-gray-700/60 py-2'>
               <Link href='/about-us' onClick={() => setIsOpen(false)}>
                 About Us
               </Link>
             </li>
-            <Route link='/get-in-touch'>
-              <Button>Get in touch</Button>
-            </Route>
+            <li className='pt-2' onClick={() => setIsOpen(false)}>
+              <Route link='/get-in-touch'>
+                <Button>Get in touch</Button>
+              </Route>
+            </li>
           </motion.ul>
         )}
       </AnimatePresence>
