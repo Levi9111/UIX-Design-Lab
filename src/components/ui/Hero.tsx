@@ -12,9 +12,9 @@ const Hero = () => {
       id='home'
       className='relative pt-[110px] pb-[100px] md:pt-[170px] md:pb-[185px]'
     >
-      {/* Floating decorative elements  */}
+      {/* Floating decorative ambient glows */}
       <div className='pointer-events-none absolute w-40 h-40 bg-purple-500/10 blur-2xl rounded-full top-[10%] left-[5%] z-0 animate-pulse' />
-      <div className='pointer-events-none absolute w-32 h-32 bg-yellow-400/10 blur-2xl rounded-full bottom-[15%] right-[10%] z-0 animate-ping' />
+      <div className='pointer-events-none absolute w-32 h-32 bg-yellow-400/10 blur-2xl rounded-full bottom-[15%] right-[10%] z-0 animate-pulse' />
 
       <div className='uix-center relative z-10 flex flex-col items-center justify-center px-4 sm:px-6 text-center'>
         <motion.h1
@@ -23,7 +23,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8 }}
         >
-          A Design & Development Agency <br className='break' />
+          A Design & Development Agency <br className='hidden sm:inline' />
           Specializing in Powerful UI/UX
         </motion.h1>
 

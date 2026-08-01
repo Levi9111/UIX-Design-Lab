@@ -22,14 +22,12 @@ export const serviceData = [
     features: [
       'Custom Design',
       'Mobile Responsive',
-      // 'SEO Optimized',
-      'Hight Fidelity Wireframe',
+      'High Fidelity Wireframes',
       'Modern UI/UX',
     ],
     cta: 'Get your website designed professionally!',
     timeToDeliver: '3-4 business days',
     toolsUsed: ['Figma', 'Adobe XD', 'Framer', 'HTML/CSS'],
-    portfolioLink: 'https://yourportfolio.com/web-design',
     pricingTier: 'Standard',
     audience: 'Businesses, agencies, personal brands',
   },
@@ -49,7 +47,6 @@ export const serviceData = [
     cta: 'Launch your high-conversion landing page!',
     timeToDeliver: '5-7 business days',
     toolsUsed: ['Webflow', 'Figma', 'Unbounce'],
-    portfolioLink: 'https://yourportfolio.com/landing-pages',
     pricingTier: 'Basic',
     audience: 'Marketing teams, startups, product launches',
   },
@@ -69,7 +66,6 @@ export const serviceData = [
     cta: 'Design your mobile app from scratch!',
     timeToDeliver: '7-10 business days',
     toolsUsed: ['Figma', 'Sketch', 'InVision', 'ProtoPie'],
-    portfolioLink: 'https://yourportfolio.com/app-design',
     pricingTier: 'Premium',
     audience: 'Startups, tech companies, SaaS products',
   },
@@ -89,7 +85,6 @@ export const serviceData = [
     cta: 'Let’s build a powerful dashboard UI!',
     timeToDeliver: '6-8 business days',
     toolsUsed: ['Figma', 'Chart.js', 'D3.js', 'Tableau'],
-    portfolioLink: 'https://yourportfolio.com/dashboards',
     pricingTier: 'Standard',
     audience: 'Enterprise tools, analytics platforms, SaaS apps',
   },
@@ -104,13 +99,11 @@ export const serviceData = [
       'Multi-Platform',
       'Brand Guidelines',
       'Content Calendar',
-      // 'Engagement Tracking',
       'Flow Chart Design',
     ],
     cta: 'Boost your social media with stunning visuals!',
     timeToDeliver: '2-3 business days',
     toolsUsed: ['Canva', 'Photoshop', 'Illustrator', 'Buffer'],
-    portfolioLink: 'https://yourportfolio.com/social-media',
     pricingTier: 'Basic',
     audience: 'Brands, influencers, content creators',
   },
@@ -137,7 +130,6 @@ export const serviceData = [
       'Express',
       'WordPress',
     ],
-    portfolioLink: 'https://yourportfolio.com/development',
     pricingTier: 'Premium',
     audience: 'Founders, startups, agencies, enterprises',
   },
@@ -152,7 +144,7 @@ export type Service = {
   cta: string;
   timeToDeliver: string;
   toolsUsed: string[];
-  portfolioLink: string;
+  portfolioLink?: string;
   pricingTier: string;
   audience: string;
   icon: React.ElementType;
@@ -161,7 +153,6 @@ export type Service = {
 export type ServiceCardProps = {
   service: Service;
   index: number;
-  isVisible: boolean;
   onClick: () => void;
 };
 
