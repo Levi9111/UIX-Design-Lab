@@ -1,15 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 const randomColor = () =>
   ['#ffffff', '#a855f7', '#38bdf8', '#facc15', '#f472b6'][
     Math.floor(Math.random() * 5)
-  ];
-const getStarColor = () =>
-  ['#ffffff', '#93c5fd', '#f472b6', '#facc15', '#a855f7', '#5eead4'][
-    Math.floor(Math.random() * 6)
   ];
 
 const FloatingDot = ({
@@ -50,44 +46,37 @@ const FloatingDot = ({
   />
 );
 
-const TwinklingStar = ({
-  x,
-  y,
-  size = 2,
-  delay = 0,
-}: {
-  x: number;
-  y: number;
-  size?: number;
-  delay?: number;
-}) => {
-  const [color] = useState(getStarColor());
+const STAR_COLORS = ['#ffffff', '#93c5fd', '#f472b6', '#facc15', '#a855f7', '#5eead4'];
 
-  return (
-    <motion.div
-      className='absolute rounded-full'
-      style={{
-        width: size,
-        height: size,
-        top: `${y}%`,
-        left: `${x}%`,
-        backgroundColor: color,
-        opacity: 0.8,
-        boxShadow: `0 0 6px ${color}`,
-      }}
-      animate={{
-        scale: [1, 1.5, 1],
-        opacity: [0.4, 1, 0.4],
-      }}
-      transition={{
-        duration: 2,
-        delay,
-        repeat: Infinity,
-        ease: 'easeInOut',
-      }}
-    />
-  );
-};
+// Pre-generate 280 static star positions to prevent hydration churn
+const TWINKLE_STARS = Array.from({ length: 280 }, (_, i) => ({
+  id: i,
+  x: Math.floor(Math.random() * 1000) / 10,
+  y: Math.floor(Math.random() * 1000) / 10,
+  size: Math.random() > 0.5 ? 2 : 1,
+  color: STAR_COLORS[i % STAR_COLORS.length],
+  delay: Math.floor(Math.random() * 30) / 10,
+}));
+
+const TwinklingStars = () => (
+  <div className='absolute inset-0 pointer-events-none overflow-hidden'>
+    {TWINKLE_STARS.map((s) => (
+      <div
+        key={s.id}
+        className='twinkle-star'
+        style={{
+          width: `${s.size}px`,
+          height: `${s.size}px`,
+          top: `${s.y}%`,
+          left: `${s.x}%`,
+          backgroundColor: s.color,
+          boxShadow: `0 0 6px ${s.color}`,
+          animationDelay: `${s.delay}s`,
+        }}
+      />
+    ))}
+  </div>
+);
 
 const DriftingPlanet = ({
   startX,
@@ -262,16 +251,8 @@ const TabAndDesktopSpaceBackground = () => {
         );
       })}
 
-      {/* Twinkling stars */}
-      {Array.from({ length: 280 }).map((_, i) => (
-        <TwinklingStar
-          key={`star-${i}`}
-          x={Math.random() * 100}
-          y={Math.random() * 100}
-          size={Math.random() + 1}
-          delay={Math.random() * 3}
-        />
-      ))}
+      {/* Twinkling stars rendered via pure CSS keyframe animations */}
+      <TwinklingStars />
 
       {/* Drifting planets */}
       <DriftingPlanet

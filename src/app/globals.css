@@ -204,6 +204,25 @@ body {
   }
 }
 
+/* Twinkling star animation - 100% GPU compositor thread */
+@keyframes twinkle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
+
+.twinkle-star {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform, opacity;
+  animation: twinkle 2s ease-in-out infinite;
+}
+
 /* Orbital rings - enhanced for dark theme */
 .orbital-ring {
   position: absolute;
