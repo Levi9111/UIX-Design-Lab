@@ -23,7 +23,14 @@ export default function WelcomeGate({
   const device = useMedia();
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 4000);
+    const alreadySeen = sessionStorage.getItem('splashSeen');
+    if (alreadySeen) {
+      setIsLoading(false);
+      return;
+    }
+
+    sessionStorage.setItem('splashSeen', '1');
+    const timer = setTimeout(() => setIsLoading(false), 3200);
     return () => clearTimeout(timer);
   }, []);
 
