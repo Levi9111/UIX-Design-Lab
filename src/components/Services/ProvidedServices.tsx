@@ -36,7 +36,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       tabIndex={0}
       aria-label={`View details for ${service.title}`}
       className={clsx(
-        'group relative overflow-hidden rounded-2xl p-[1px] transition-all duration-700 ease-out transform cursor-pointer',
+        'group relative overflow-hidden rounded-2xl p-[1px] transition-all duration-700 ease-out transform cursor-pointer active:scale-[0.98] active:bg-white/5',
         'bg-blue-300/5 border border-blue-300/10 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.1)] focus:outline-none focus:ring-2 focus:ring-purple-400'
       )}
       style={{
@@ -123,7 +123,7 @@ const ProvidedServices = () => {
           link='/select-your-project'
           className='w-full flex justify-center'
         >
-          <button className='text-center mt-20 inline-flex items-center gap-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full px-8 py-4 text-white font-semibold transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 cursor-pointer group'>
+          <button className='text-center mt-10 md:mt-20 inline-flex items-center gap-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full px-8 py-4 text-white font-semibold transform transition-all duration-300 hover:scale-105 active:scale-95 hover:shadow-2xl hover:shadow-blue-500/25 cursor-pointer group'>
             <span>Ready to Start Your Project?</span>
             <ArrowRight className='w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-2' />
           </button>

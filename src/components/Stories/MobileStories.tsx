@@ -159,13 +159,9 @@ const MobileStories = () => {
                   {testimonials[activeIndex].role}
                 </p>
               </div>
-              <motion.div
-                className='w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0'
-                animate={{ rotate: 360 }}
-                transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-              >
-                <User className='w-4 h-4 text-white/60' />
-              </motion.div>
+              <div className='w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/10'>
+                <User className='w-4 h-4 text-white/80' />
+              </div>
             </div>
 
             {/* Quote */}
@@ -234,61 +230,59 @@ const MobileStories = () => {
             </motion.div>
           </motion.div>
         </AnimatePresence>
+      </div>
 
-        {/* Navigation Arrows */}
-        <motion.button
+      {/* Touch-optimized Navigation Control Bar */}
+      <div className='flex justify-center items-center gap-4 mt-4'>
+        <button
           onClick={prevSlide}
-          className='absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 hover:bg-white/20 transition-colors z-10'
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+          aria-label='Previous testimonial'
+          className='w-11 h-11 bg-white/10 active:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 transition-all cursor-pointer'
         >
           <ChevronLeft className='w-5 h-5 text-white' />
-        </motion.button>
-        <motion.button
+        </button>
+
+        <div className='flex items-center gap-2'>
+          {testimonials.map((_, i) => (
+            <button
+              key={`dot-${i}`}
+              onClick={() => goToSlide(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              className='w-10 h-10 flex items-center justify-center cursor-pointer'
+            >
+              <div
+                className={`relative overflow-hidden rounded-full transition-all duration-300 ${
+                  i === activeIndex
+                    ? 'w-8 h-3 bg-white'
+                    : 'w-3 h-3 bg-white/30 active:bg-white/60'
+                }`}
+              >
+                {i === activeIndex && isAutoPlaying && (
+                  <motion.div
+                    className='absolute left-0 top-0 h-full bg-gradient-to-r from-blue-400 to-purple-400'
+                    initial={{ width: '0%' }}
+                    animate={{ width: '100%' }}
+                    transition={{ duration: 5, ease: 'linear' }}
+                  />
+                )}
+              </div>
+            </button>
+          ))}
+        </div>
+
+        <button
           onClick={nextSlide}
-          className='absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 hover:bg-white/20 transition-colors z-10'
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+          aria-label='Next testimonial'
+          className='w-11 h-11 bg-white/10 active:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 transition-all cursor-pointer'
         >
           <ChevronRight className='w-5 h-5 text-white' />
-        </motion.button>
+        </button>
       </div>
 
-      {/* Enhanced Dot Indicators */}
-      <div className='flex justify-center items-center gap-3 mt-4'>
-        {testimonials.map((_, i) => (
-          <motion.button
-            key={`dot-${i}`}
-            onClick={() => goToSlide(i)}
-            className={`relative flex items-center justify-center overflow-hidden rounded-full transition-all duration-300 ${
-              i === activeIndex
-                ? 'w-8 h-3 bg-white'
-                : 'w-3 h-3 bg-white/30 hover:bg-white/50'
-            }`}
-            style={{ minHeight: '12px' }} // Ensures consistent vertical space
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {i === activeIndex && isAutoPlaying && (
-              <motion.div
-                className='absolute left-0 top-0 h-full bg-gradient-to-r from-blue-400 to-purple-400'
-                initial={{ width: '0%' }}
-                animate={{ width: '100%' }}
-                transition={{ duration: 5, ease: 'linear' }}
-              />
-            )}
-          </motion.button>
-        ))}
+      {/* Gesture indicator */}
+      <div className='text-center mt-3'>
+        <p className='text-xs text-gray-400'>Swipe cards or tap controls to navigate</p>
       </div>
-
-      {/* Auto-play indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isAutoPlaying ? 1 : 0 }}
-        className='text-center mt-4'
-      >
-        <p className='text-xs text-gray-400'>Auto-playing • Tap to pause</p>
-      </motion.div>
     </section>
   );
 };

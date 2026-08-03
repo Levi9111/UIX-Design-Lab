@@ -44,9 +44,11 @@ const AccordionItem = ({
           <motion.div
             animate={{ rotate: isOpen ? 180 : 0 }}
             transition={{ duration: 0.2 }}
-            className='flex-shrink-0 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center'
+            className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
+              isOpen ? 'bg-blue-500/30 border border-blue-400/40' : 'bg-white/10 border border-white/10'
+            }`}
           >
-            <ChevronDown className='w-4 h-4 text-white/60' />
+            <ChevronDown className={`w-4 h-4 ${isOpen ? 'text-blue-300' : 'text-white/80'}`} />
           </motion.div>
         </div>
 
@@ -59,7 +61,7 @@ const AccordionItem = ({
               transition={{ duration: 0.2 }}
               className='overflow-hidden'
             >
-              <p className='text-xs sm:text-sm text-white/70 mt-3 leading-relaxed'>
+              <p className='text-xs sm:text-sm text-white/80 mt-3 leading-relaxed border-t border-white/5 pt-3'>
                 {answer}
               </p>
             </motion.div>
@@ -149,6 +151,16 @@ const MobileFAQs = () => {
       />
 
       <div className='relative z-10 px-4 pt-8 pb-12'>
+        {/* Section Header */}
+        <div className='text-center mb-6'>
+          <h2 className='text-2xl font-bold text-white tracking-tight'>
+            Frequently Asked Questions
+          </h2>
+          <p className='text-xs text-gray-400 mt-1'>
+            Everything you need to know about working with us
+          </p>
+        </div>
+
         {/* Accordion Items */}
         <div className='space-y-3 mb-8'>
           {accordionData.map((item, index) => (

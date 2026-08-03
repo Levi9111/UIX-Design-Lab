@@ -11,7 +11,7 @@ const Hero = () => {
   return (
     <section
       id='home'
-      className='relative pt-[110px] pb-[100px] md:pt-[170px] md:pb-[185px]'
+      className='relative pt-[70px] pb-12 sm:pt-[110px] sm:pb-[100px] md:pt-[170px] md:pb-[185px]'
     >
       {/* Floating decorative ambient glows */}
       <div className='pointer-events-none absolute w-40 h-40 bg-purple-500/10 blur-2xl rounded-full top-[10%] left-[5%] z-0 animate-pulse' />
@@ -29,16 +29,15 @@ const Hero = () => {
         </motion.h1>
 
         <motion.p
-          className='mt-4 sm:mt-6 mb-8 sm:mb-12 text-base sm:text-lg md:text-xl lg:text-2xl font-normal leading-relaxed tracking-normal max-w-xl sm:max-w-4xl text-cadet-gray'
+          className='mt-3 sm:mt-6 mb-6 sm:mb-12 text-sm sm:text-lg md:text-xl lg:text-2xl font-normal leading-relaxed tracking-normal max-w-xl sm:max-w-4xl text-cadet-gray'
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.8 }}
         >
           Welcome to{' '}
           <span className='text-white font-semibold'>{SITE_NAME}</span> — a
-          team of passionate designers and developers with 4+ years of hands-on
-          experience crafting impactful digital products. From intuitive
-          interfaces to full-stack platforms, we focus on creating beautiful,
+          team crafting impactful digital products. From intuitive
+          interfaces to full-stack platforms, we focus on beautiful,
           functional solutions that drive real results.
         </motion.p>
 

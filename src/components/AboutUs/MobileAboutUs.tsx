@@ -115,7 +115,7 @@ const MobileAboutUs = () => {
                 >
                   <Sparkles className='w-4 h-4' />
                 </motion.div>
-                <span>Team Member</span>
+                <span>{member.role}</span>
               </motion.div>
             </motion.div>
           );
@@ -124,7 +124,7 @@ const MobileAboutUs = () => {
 
       {/* CTA Section */}
       <motion.div
-        className='text-center mt-20 p-8 rounded-3xl bg-gradient-to-r from-slate-800/50 via-slate-800/30 to-slate-800/50 
+        className='text-center mt-10 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-slate-800/50 via-slate-800/30 to-slate-800/50 
                    border border-slate-700/50 backdrop-blur-xl overflow-hidden relative'
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

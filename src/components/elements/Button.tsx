@@ -10,14 +10,20 @@ interface ButtonProps {
   children: ReactNode;
   type?: 1 | 2;
   onClick?: () => void;
+  className?: string;
+  fullWidth?: boolean;
 }
 
-const Button = ({ children, type = 1, onClick }: ButtonProps) => {
+const Button = ({ children, type = 1, onClick, className, fullWidth = false }: ButtonProps) => {
   const [isActive, setIsActive] = useState(false); // hover (desktop) OR press (mobile)
 
   return (
     <motion.div
-      className='relative inline-block min-w-[150px] sm:min-w-[180px] md:min-w-[222px] font-dm-sans'
+      className={clsx(
+        'relative inline-block font-dm-sans',
+        fullWidth ? 'w-full' : 'min-w-[150px] sm:min-w-[180px] md:min-w-[222px]',
+        className
+      )}
       onHoverStart={() => setIsActive(true)}
       onHoverEnd={() => setIsActive(false)}
       initial={{ opacity: 0, y: 8 }}

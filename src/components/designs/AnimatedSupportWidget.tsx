@@ -25,14 +25,14 @@ const AnimatedSupportWidget = () => {
   return (
     <div
       className={`fixed z-50 transform-gpu ${
-        isMobile ? 'bottom-4 right-4' : 'bottom-6 right-6'
+        isMobile ? 'bottom-5 right-4' : 'bottom-6 right-6'
       }`}
     >
       <div
-        className={`relative bg-slate-900/90 backdrop-blur-md border border-white/15 rounded-2xl shadow-xl transition-all duration-300 ease-out overflow-hidden ${
+        className={`relative bg-slate-900/95 backdrop-blur-md border border-white/15 rounded-2xl shadow-xl transition-all duration-300 ease-out overflow-hidden ${
           isMobile
             ? isExpanded
-              ? 'h-[135px] w-[190px]'
+              ? 'h-[150px] w-[210px]'
               : 'h-14 w-14'
             : isExpanded
             ? 'h-[260px] w-[260px]'
@@ -65,22 +65,27 @@ const AnimatedSupportWidget = () => {
         {isMobile ? (
           /* Mobile Expanded */
           <div
-            className={`relative z-10 pt-14 px-3 pb-3 transition-opacity duration-300 ${
+            className={`relative z-10 pt-12 px-3 pb-3 transition-opacity duration-300 ${
               isExpanded ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
             }`}
           >
+            <p className='text-center text-[11px] text-gray-400 mb-2 font-medium uppercase tracking-wider'>
+              Quick Support
+            </p>
             <div className='flex justify-center gap-3'>
               <button
                 onClick={handleWhatsApp}
-                className='group p-2.5 bg-green-500/20 border border-green-500/30 rounded-xl hover:bg-green-500/30 transition-colors cursor-pointer'
+                className='group flex-1 flex flex-col items-center gap-1 p-2 bg-green-500/20 border border-green-500/30 rounded-xl active:bg-green-500/30 transition-colors cursor-pointer'
               >
                 <WhatsAppIcon />
+                <span className='text-[10px] text-green-300 font-medium'>WhatsApp</span>
               </button>
               <button
                 onClick={handleTelegram}
-                className='group p-2.5 bg-blue-500/20 border border-blue-500/30 rounded-xl hover:bg-blue-500/30 transition-colors cursor-pointer'
+                className='group flex-1 flex flex-col items-center gap-1 p-2 bg-blue-500/20 border border-blue-500/30 rounded-xl active:bg-blue-500/30 transition-colors cursor-pointer'
               >
                 <TelegramIcon />
+                <span className='text-[10px] text-blue-300 font-medium'>Telegram</span>
               </button>
             </div>
           </div>

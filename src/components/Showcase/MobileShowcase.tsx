@@ -184,15 +184,15 @@ const Card = memo<{ data: CardData }>(({ data }) => {
   return (
     <motion.div
       variants={fadeInVariants}
-      className={`bg-gradient-to-br ${data.bgGradient} border ${data.borderColor} rounded-2xl p-5 flex items-center gap-4 min-h-[120px] relative overflow-hidden group transform-gpu`}
+      className={`bg-gradient-to-br ${data.bgGradient} border ${data.borderColor} rounded-2xl p-3.5 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center gap-2.5 sm:gap-4 min-h-[100px] relative overflow-hidden group transform-gpu`}
     >
       <ProfessionalIcon Icon={data.icon} colorClass={data.iconColor} />
 
-      <div className='relative z-10'>
-        <h3 className='text-2xl sm:text-3xl font-bold text-white'>
+      <div className='relative z-10 min-w-0'>
+        <h3 className='text-xl sm:text-3xl font-bold text-white leading-tight truncate'>
           {data.title}
         </h3>
-        <p className='text-gray-300 text-sm font-medium'>
+        <p className='text-gray-300 text-xs sm:text-sm font-medium leading-tight truncate'>
           {data.subtitle}
         </p>
       </div>
@@ -221,29 +221,19 @@ const MobileShowcase: React.FC = () => {
         initial='hidden'
         animate={activeState}
         variants={staggerContainer}
-        className='space-y-6'
+        className='space-y-4'
       >
-        {/* First Grid */}
-        <motion.div
-          variants={staggerContainer}
-          className='grid grid-cols-1 sm:grid-cols-2 gap-4'
-        >
-          {cardData.slice(0, 4).map((card) => (
-            <Card key={card.id} data={card} />
-          ))}
-        </motion.div>
-
-        {/* Central Logo */}
+        {/* Top Logo Showcase */}
         <motion.div variants={fadeInVariants} className='flex justify-center py-2'>
           <LogoShowcase />
         </motion.div>
 
-        {/* Second Grid */}
+        {/* 2-Column Grid of 8 Stats */}
         <motion.div
           variants={staggerContainer}
-          className='grid grid-cols-1 sm:grid-cols-2 gap-4'
+          className='grid grid-cols-2 gap-3'
         >
-          {cardData.slice(4).map((card) => (
+          {cardData.map((card) => (
             <Card key={card.id} data={card} />
           ))}
         </motion.div>

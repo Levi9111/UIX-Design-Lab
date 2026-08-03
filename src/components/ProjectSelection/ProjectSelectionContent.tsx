@@ -239,10 +239,10 @@ const ProjectSelection = () => {
       </div>
 
       {/* Buttons */}
-      <div className='relative z-10 flex justify-center gap-6 mt-16'>
+      <div className='relative z-10 flex justify-center gap-4 sm:gap-6 mt-8 sm:mt-16 pb-4'>
         <button
           onClick={handleGoBack}
-          className='flex items-center gap-2 px-6 py-3 border border-white/20 text-white/70 hover:text-white hover:border-white transition rounded-full backdrop-blur-sm'
+          className='flex items-center gap-2 px-5 sm:px-6 py-3 border border-white/20 text-white/70 hover:text-white hover:border-white transition rounded-full backdrop-blur-sm active:scale-95 cursor-pointer text-sm sm:text-base'
         >
           <ArrowLeft className='w-4 h-4' />
           Back
@@ -250,9 +250,9 @@ const ProjectSelection = () => {
         <button
           onClick={handleProceed}
           disabled={selectedService === null}
-          className={`flex items-center gap-2 px-6 py-3 rounded-full transition backdrop-blur-sm ${
+          className={`flex items-center gap-2 px-6 py-3 rounded-full transition backdrop-blur-sm active:scale-95 text-sm sm:text-base font-medium cursor-pointer ${
             selectedService !== null
-              ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700'
+              ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 shadow-lg shadow-purple-500/25'
               : 'bg-white/10 text-white/30 cursor-not-allowed'
           }`}
         >

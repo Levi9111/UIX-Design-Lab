@@ -71,82 +71,101 @@ const MobileGetInTouch = () => {
                 </div>
 
                 <form ref={form} onSubmit={handleSubmit} className='space-y-4'>
-                  <div className='relative group'>
-                    <input
-                      type='text'
-                      name='name'
-                      placeholder='Your Name'
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className='w-full px-4 py-3.5 rounded-xl bg-black/20 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400/40 focus:border-blue-400/40 transition-all duration-300 backdrop-blur-sm hover:bg-black/30 hover:border-white/20 text-sm'
-                    />
-                    <div className='absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none' />
+                  {submitted && (
+                    <div className='p-3 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-sm text-center font-medium animate-fadeIn'>
+                      ✓ Message sent successfully! We'll reply shortly.
+                    </div>
+                  )}
+                  {error && (
+                    <div className='p-3 rounded-xl bg-red-500/20 border border-red-500/40 text-red-300 text-sm text-center font-medium animate-fadeIn'>
+                      ✕ {error}
+                    </div>
+                  )}
+
+                  <div className='space-y-1.5'>
+                    <label htmlFor='mobile-name' className='block text-xs font-semibold text-gray-300 uppercase tracking-wider'>
+                      Your Name
+                    </label>
+                    <div className='relative group'>
+                      <input
+                        id='mobile-name'
+                        type='text'
+                        name='name'
+                        placeholder='Jane Doe'
+                        autoComplete='name'
+                        autoCapitalize='words'
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        className='w-full px-4 py-3.5 rounded-xl bg-black/30 border border-white/15 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all duration-300 backdrop-blur-sm hover:border-white/30 text-sm'
+                      />
+                    </div>
                   </div>
 
-                  <div className='relative group'>
-                    <input
-                      type='email'
-                      name='email'
-                      placeholder='Email Address'
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className='w-full px-4 py-3.5 rounded-xl bg-black/20 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400/40 focus:border-blue-400/40 transition-all duration-300 backdrop-blur-sm hover:bg-black/30 hover:border-white/20 text-sm'
-                    />
-                    <div className='absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none' />
+                  <div className='space-y-1.5'>
+                    <label htmlFor='mobile-email' className='block text-xs font-semibold text-gray-300 uppercase tracking-wider'>
+                      Email Address
+                    </label>
+                    <div className='relative group'>
+                      <input
+                        id='mobile-email'
+                        type='email'
+                        name='email'
+                        placeholder='jane@company.com'
+                        autoComplete='email'
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        className='w-full px-4 py-3.5 rounded-xl bg-black/30 border border-white/15 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all duration-300 backdrop-blur-sm hover:border-white/30 text-sm'
+                      />
+                    </div>
                   </div>
 
-                  <div className='relative group'>
-                    <textarea
-                      name='message'
-                      rows={4}
-                      placeholder='Your message...'
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      className='w-full px-4 py-3.5 rounded-xl bg-black/20 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400/40 focus:border-blue-400/40 transition-all duration-300 backdrop-blur-sm hover:bg-black/30 hover:border-white/20 resize-none text-sm'
-                    />
-                    <div className='absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none' />
+                  <div className='space-y-1.5'>
+                    <label htmlFor='mobile-message' className='block text-xs font-semibold text-gray-300 uppercase tracking-wider'>
+                      Your Message
+                    </label>
+                    <div className='relative group'>
+                      <textarea
+                        id='mobile-message'
+                        name='message'
+                        rows={4}
+                        placeholder='Tell us about your project or idea...'
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                        className='w-full px-4 py-3.5 rounded-xl bg-black/30 border border-white/15 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all duration-300 backdrop-blur-sm hover:border-white/30 resize-none text-sm'
+                      />
+                    </div>
                   </div>
 
                   <button
                     type='submit'
                     disabled={isLoading}
-                    className='group relative w-full py-3.5 px-4 rounded-xl font-bold text-white overflow-hidden transition-all duration-300 hover:scale-[1.02] active:scale-[0.96] shadow-xl disabled:opacity-70 disabled:cursor-not-allowed'
+                    className='group relative w-full py-3.5 px-4 rounded-xl font-bold text-white overflow-hidden transition-all duration-300 active:scale-[0.97] shadow-xl disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer'
                   >
                     <div className='absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300' />
-                    <div className='absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 opacity-0 group-active:opacity-100 transition-opacity duration-150' />
                     <span className='relative flex items-center justify-center gap-2 text-sm'>
                       {isLoading ? 'Sending...' : 'Send Message'}
                     </span>
                   </button>
-
-                  {submitted && (
-                    <p className='text-sm text-emerald-400 text-center'>
-                      Message sent successfully!
-                    </p>
-                  )}
-                  {error && (
-                    <p className='text-sm text-red-400 text-center'>{error}</p>
-                  )}
                 </form>
               </div>
             </div>
           </div>
 
           {/* Free Call Section */}
-          <div className='mt-10 p-5 rounded-2xl border border-white/10 bg-gradient-to-r from-purple-600/20 to-blue-600/20 backdrop-blur-md text-center shadow-xl'>
-            <h3 className='text-lg font-bold text-white mb-2'>
+          <div className='mt-8 p-5 rounded-2xl border border-purple-500/30 bg-gradient-to-r from-purple-600/20 via-blue-600/15 to-purple-600/20 backdrop-blur-md text-center shadow-xl'>
+            <h3 className='text-lg font-bold text-white mb-1.5'>
               Book a Free 15-Minute Call
             </h3>
-            <p className='text-sm text-gray-300 mb-4'>
+            <p className='text-xs sm:text-sm text-gray-300 mb-4 leading-relaxed'>
               Have an idea or question? Let's chat and explore how we can help.
             </p>
             <button
               type='button'
               onClick={() => window.open(CALENDLY_URL, '_blank')}
-              className='w-full py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl hover:from-purple-600 hover:to-blue-500 transition-all duration-300'
+              className='w-full py-3.5 px-4 bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-600 text-white font-semibold rounded-xl active:scale-[0.98] transition-all shadow-lg cursor-pointer text-sm'
             >
               Schedule a Call
             </button>

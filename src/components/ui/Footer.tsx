@@ -59,21 +59,22 @@ const Footer = () => {
           </h4>
         </div>
 
-        <div className='flex gap-4'>
+        <div className='flex gap-2 sm:gap-3 flex-wrap justify-center'>
           {iconArr.map(({ Icon, link, label }, index) => (
             <motion.a
               key={link}
               href={link}
               target='_blank'
               rel='noopener noreferrer'
-              whileHover={{ scale: 1.2, rotate: 5 }}
+              whileTap={{ scale: 0.9 }}
+              whileHover={{ scale: 1.15, rotate: 5 }}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
               aria-label={label}
-              className='text-white font-extralight hover:text-[#DCA685] transition-colors flex items-center'
+              className='w-11 h-11 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white hover:text-[#DCA685] transition-all flex items-center justify-center cursor-pointer'
             >
-              <Icon size={20} strokeWidth={0.1} />
+              <Icon size={22} />
             </motion.a>
           ))}
         </div>
