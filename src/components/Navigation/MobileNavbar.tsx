@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import logo from '../../../public/logos/logo.svg';
@@ -14,6 +14,17 @@ const LINE_CLASS =
 
 const MobileNavbar = ({ url }: { url: string }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
 
   return (
     <nav className='block lg:hidden bg-rich-black/90 px-4 py-3 border-b border-gray-800/30 backdrop-blur-sm shadow-md relative z-50'>

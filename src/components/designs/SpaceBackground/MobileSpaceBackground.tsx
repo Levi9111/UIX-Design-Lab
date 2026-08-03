@@ -7,7 +7,7 @@ import LinearMovingStar from './LinearMovingStar';
 
 export { LinearMovingStar };
 
-// Simplified twinkling star with colors and better visibility
+// Lightweight twinkling star using CSS keyframes for zero JS overhead
 export const SimpleTwinklingStar = ({
   x,
   y,
@@ -22,96 +22,90 @@ export const SimpleTwinklingStar = ({
   const [color] = useState(getStarColor());
 
   return (
-    <motion.div
-      className='absolute rounded-full'
+    <div
+      className='absolute rounded-full animate-pulse'
       style={{
         width: size,
         height: size,
         top: `${y}%`,
         left: `${x}%`,
         backgroundColor: color,
-        opacity: 0.6,
         boxShadow: `0 0 4px ${color}`,
-      }}
-      animate={{
-        opacity: [0.4, 1, 0.4],
-        scale: [1, 1.3, 1],
-      }}
-      transition={{
-        duration: 2.5,
-        delay,
-        repeat: Infinity,
-        ease: 'easeInOut',
+        animationDelay: `${delay}s`,
+        animationDuration: '2.5s',
       }}
     />
   );
 };
 
-const MobileSpaceBackground = () => {
-  const StaticStar = ({
-    x,
-    y,
-    size = 1,
-  }: {
-    x: number;
-    y: number;
-    size?: number;
-  }) => (
-    <div
-      className='absolute rounded-full bg-white'
-      style={{
-        width: size,
-        height: size,
-        top: `${y}%`,
-        left: `${x}%`,
-        opacity: 0.6,
-      }}
-    />
-  );
+// Pre-generated static positions for mobile background to avoid hydration mismatch & Math.random() re-calculation
+const STATIC_STARS = Array.from({ length: 15 }, (_, i) => ({
+  id: i,
+  x: (i * 23 + 12) % 100,
+  y: (i * 37 + 5) % 100,
+  size: (i % 2) + 1,
+}));
 
+const TWINKLE_STARS = Array.from({ length: 35 }, (_, i) => ({
+  id: i,
+  x: (i * 17 + 8) % 100,
+  y: (i * 29 + 14) % 100,
+  size: (i % 3 === 0 ? 2 : 1),
+  delay: (i * 0.3) % 3,
+}));
+
+const MOVING_STARS = Array.from({ length: 6 }, (_, i) => ({
+  id: i,
+  startX: (i * 25 + 5) % 100,
+  startY: (i * 15 + 10) % 100,
+  endX: (i * 25 + 20) % 100,
+  endY: (i * 30 + 50) % 100,
+  delay: (i * 1.2) % 4,
+  duration: 4 + (i % 3),
+  size: 1.5,
+}));
+
+const MobileSpaceBackground = () => {
   return (
     <div className='fixed inset-0 -z-50 overflow-hidden pointer-events-none bg-transparent'>
-      {/* Static stars for base layer */}
-      {Array.from({ length: 18 }).map((_, i) => (
-        <StaticStar
-          key={`static-star-${i}`}
-          x={Math.random() * 100}
-          y={Math.random() * 100}
-          size={Math.random() * 1 + 0.5}
+      {/* Base layer static stars */}
+      {STATIC_STARS.map((s) => (
+        <div
+          key={`static-${s.id}`}
+          className='absolute rounded-full bg-white opacity-60'
+          style={{
+            width: s.size,
+            height: s.size,
+            top: `${s.y}%`,
+            left: `${s.x}%`,
+          }}
         />
       ))}
 
-      {/* Increased colored twinkling stars */}
-      {Array.from({ length: 80 }).map((_, i) => (
+      {/* CSS-animated colored twinkling stars */}
+      {TWINKLE_STARS.map((s) => (
         <SimpleTwinklingStar
-          key={`twinkle-star-${i}`}
-          x={Math.random() * 100}
-          y={Math.random() * 100}
-          size={Math.random() * 1.5 + 1}
-          delay={Math.random() * 3}
+          key={`twinkle-${s.id}`}
+          x={s.x}
+          y={s.y}
+          size={s.size}
+          delay={s.delay}
         />
       ))}
 
-      {/* Linear moving stars in random directions */}
-      {Array.from({ length: 30 }).map((_, i) => {
-        const startX = Math.random() * 100;
-        const startY = Math.random() * 100;
-        const endX = Math.random() * 100;
-        const endY = Math.random() * 100;
-
-        return (
-          <LinearMovingStar
-            key={`random-star-${i}`}
-            startX={startX}
-            startY={startY}
-            endX={endX}
-            endY={endY}
-            delay={Math.random() * 4}
-            duration={Math.random() * 5 + 3}
-            size={Math.random() * 2 + 1}
-          />
-        );
-      })}
+      {/* Lightweight linear moving stars */}
+      {MOVING_STARS.map((s) => (
+        <LinearMovingStar
+          key={`moving-${s.id}`}
+          startX={s.startX}
+          startY={s.startY}
+          endX={s.endX}
+          endY={s.endY}
+          delay={s.delay}
+          duration={s.duration}
+          size={s.size}
+        />
+      ))}
     </div>
   );
 };

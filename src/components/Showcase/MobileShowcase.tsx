@@ -204,10 +204,13 @@ Card.displayName = 'Card';
 
 const MobileShowcase: React.FC = () => {
   const ref = useRef<HTMLDivElement | null>(null);
+  const shouldReduceMotion = useReducedMotion();
   const isInView = useInView(ref, {
     once: true,
     margin: '-30px',
   });
+
+  const activeState = shouldReduceMotion || isInView ? 'visible' : 'hidden';
 
   return (
     <div
@@ -216,7 +219,7 @@ const MobileShowcase: React.FC = () => {
     >
       <motion.div
         initial='hidden'
-        animate={isInView ? 'visible' : 'hidden'}
+        animate={activeState}
         variants={staggerContainer}
         className='space-y-6'
       >

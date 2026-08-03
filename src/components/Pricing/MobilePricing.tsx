@@ -47,9 +47,11 @@ const MobilePricing = () => {
             </ul>
 
             {/* CTA */}
-            <button className='w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold text-base shadow-xl hover:shadow-purple-500/25 transition-all duration-300'>
-              Launch Project
-            </button>
+            <Route link='/select-your-project'>
+              <button className='w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold text-base shadow-xl hover:shadow-purple-500/25 transition-all duration-300 cursor-pointer'>
+                Launch Project
+              </button>
+            </Route>
 
             {/* Ambient glow */}
             <div className='absolute inset-0 bg-gradient-to-r from-purple-500/5 to-blue-500/5 rounded-3xl blur-xl -z-10'></div>

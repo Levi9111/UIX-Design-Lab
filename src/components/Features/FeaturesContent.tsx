@@ -144,6 +144,7 @@ const FeatureCard = ({ feature }: { feature: Feature; index: number }) => {
   });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches) return;
     const rect = cardRef.current?.getBoundingClientRect();
     if (!rect) return;
     const x = (e.clientX - rect.left) / rect.width - 0.5;

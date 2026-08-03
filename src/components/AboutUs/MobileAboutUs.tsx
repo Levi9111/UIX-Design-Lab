@@ -53,8 +53,12 @@ const MobileAboutUs = () => {
               <div className='flex items-center gap-4 mb-4'>
                 <motion.div
                   className='p-3 rounded-xl bg-slate-700/50 border border-slate-600'
-                  //@ts-ignore
-                  animate={index < 2 ? iconFloat : {}}
+                  animate={index < 2 ? { y: [0, -3, 0] } : {}}
+                  transition={
+                    index < 2
+                      ? { duration: 2, repeat: Infinity, ease: 'easeInOut' }
+                      : {}
+                  }
                   style={{ animationDelay: `${index * 0.3}s` }}
                 >
                   <Icon className='w-6 h-6 text-blue-300' />

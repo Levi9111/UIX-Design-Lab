@@ -51,7 +51,7 @@ const GalacticModal: React.FC<GalacticModalProps> = ({
           <div className='absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(109,40,217,0.2),transparent_80%)] z-0 pointer-events-none' />
 
           <motion.div
-            className='relative bg-gradient-to-br from-slate-900 via-indigo-900 to-black text-white rounded-2xl shadow-2xl border border-purple-800 p-4 max-w-2xl w-[80vw] mx-auto md:w-full z-10 overflow-hidden h-[70vh] md:h-[90vh] max-h-[600px]'
+            className='relative bg-gradient-to-br from-slate-900 via-indigo-900 to-black text-white rounded-2xl shadow-2xl border border-purple-800 p-5 md:p-8 max-w-2xl w-[92vw] sm:w-[85vw] md:w-full mx-auto z-10 overflow-hidden h-[80vh] md:h-[85vh] max-h-[650px] flex flex-col'
             initial={{ scale: 0.8, opacity: 0, y: 50 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.8, opacity: 0, y: 50 }}
@@ -80,19 +80,20 @@ const GalacticModal: React.FC<GalacticModalProps> = ({
             {/* Close button */}
             <button
               onClick={onClose}
-              className='absolute top-4 right-4 text-white/60 hover:text-white transition'
+              aria-label='Close modal'
+              className='absolute top-4 right-4 z-20 text-white/60 hover:text-white transition cursor-pointer p-1'
             >
               <X className='w-6 h-6' />
             </button>
 
             {/* Header */}
-            <h2 className='text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-pink-500 to-blue-400 text-transparent bg-clip-text'>
+            <h2 className='text-2xl sm:text-3xl font-bold mb-4 pr-8 bg-gradient-to-r from-purple-400 via-pink-500 to-blue-400 text-transparent bg-clip-text flex-shrink-0'>
               {title}
             </h2>
 
             {/* Content */}
             <div
-              className='text-white/90 leading-relaxed space-y-4 relative z-10 h-full overflow-y-scroll pr-2 md:pb-16 pb-20 2xl:pl-0 galactic-modal-scroll'
+              className='text-white/90 leading-relaxed space-y-4 relative z-10 flex-1 overflow-y-auto pr-2 pb-8 md:pb-12 galactic-modal-scroll'
             >
               {children}
             </div>

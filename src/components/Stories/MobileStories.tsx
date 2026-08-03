@@ -70,6 +70,15 @@ const MobileStories = () => {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const isInView = useInView(containerRef, { margin: '-50px' });
 
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Clear timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, []);
+
   // Auto-play functionality
   useEffect(() => {
     if (!isAutoPlaying || !isInView) return;
@@ -81,25 +90,27 @@ const MobileStories = () => {
     return () => clearInterval(interval);
   }, [isAutoPlaying, isInView]);
 
+  const resetAutoplayTimer = () => {
+    setIsAutoPlaying(false);
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => setIsAutoPlaying(true), 10000);
+  };
+
   const goToSlide = (index: number) => {
     setActiveIndex(index);
-    setIsAutoPlaying(false);
-    // Resume auto-play after 10 seconds
-    setTimeout(() => setIsAutoPlaying(true), 10000);
+    resetAutoplayTimer();
   };
 
   const nextSlide = () => {
     setActiveIndex((prev) => (prev + 1) % testimonials.length);
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 10000);
+    resetAutoplayTimer();
   };
 
   const prevSlide = () => {
     setActiveIndex(
       (prev) => (prev - 1 + testimonials.length) % testimonials.length,
     );
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 10000);
+    resetAutoplayTimer();
   };
 
   return (
@@ -107,7 +118,7 @@ const MobileStories = () => {
       {/* Main Testimonial Container - Fixed overflow issues */}
       <div
         ref={containerRef}
-        className='relative mb-6 overflow-hidden  min-h-[480px]'
+        className='relative mb-6 overflow-hidden min-h-[480px] touch-pan-y'
       >
         <AnimatePresence mode='wait'>
           <motion.div
@@ -115,11 +126,21 @@ const MobileStories = () => {
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '-100%' }}
+            drag='x'
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.2}
+            onDragEnd={(_, info) => {
+              if (info.offset.x < -50) {
+                nextSlide();
+              } else if (info.offset.x > 50) {
+                prevSlide();
+              }
+            }}
             transition={{
               duration: 0.5,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            className='bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-2xl w-full'
+            className='bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-2xl w-full cursor-grab active:cursor-grabbing'
           >
             {/* Header with Avatar */}
             <div className='flex items-center gap-4 mb-6'>

@@ -16,30 +16,30 @@ const MobileGetInTouch = () => {
           {contactInfo.map((info, idx) => (
             <div
               key={info.label}
-              className='group relative flex items-center gap-4 p-4 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 backdrop-blur-sm transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]'
+              className='group relative flex items-center gap-4 p-4 rounded-2xl border border-white/10 bg-white/5 active:bg-white/15 active:border-white/30 backdrop-blur-sm transition-all duration-200 active:scale-[0.98]'
               style={{
                 animationDelay: `${idx * 150}ms`,
                 animation: 'slideInUp 0.6s ease-out forwards',
               }}
             >
-              <div className='absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
+              <div className='absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-active:opacity-100 transition-opacity duration-200' />
 
               <div
-                className={`relative p-3 rounded-xl transition-all duration-300 group-hover:scale-110 ${info.bgColor} ${info.color} shadow-md`}
+                className={`relative p-3 rounded-xl transition-transform duration-200 group-active:scale-105 ${info.bgColor} ${info.color} shadow-md`}
               >
                 <info.icon className='w-5 h-5 text-white drop-shadow-sm' />
               </div>
 
               <div className='flex-1'>
-                <p className='text-base font-semibold text-white group-hover:text-white transition-colors'>
+                <p className='text-base font-semibold text-white transition-colors'>
                   {info.label}
                 </p>
-                <p className='text-sm text-gray-300 group-hover:text-gray-200 transition-colors mt-0.5'>
+                <p className='text-sm text-gray-300 transition-colors mt-0.5'>
                   {info.value}
                 </p>
               </div>
 
-              <div className='opacity-0 group-hover:opacity-60 transition-all duration-300'>
+              <div className='opacity-60 group-active:opacity-100 transition-opacity duration-200'>
                 <svg
                   className='w-4 h-4 text-gray-400'
                   fill='none'

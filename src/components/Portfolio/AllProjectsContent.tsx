@@ -204,7 +204,7 @@ const AllProjects = () => {
                       </p>
 
                       {/* CTA */}
-                      <div className='mt-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0'>
+                      <div className='mt-4 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 md:transform md:translate-y-2 md:group-hover:translate-y-0'>
                         <div className='flex items-center justify-between'>
                           <span className='text-xs text-platinum/60 font-medium tracking-wider uppercase'>
                             View Project
