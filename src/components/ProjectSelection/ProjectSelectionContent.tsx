@@ -208,7 +208,7 @@ const ProjectSelection = () => {
   return (
     <section
       ref={sectionRef}
-      className='relative uix-center min-h-screen flex flex-col justify-center lg:pt-36 pt-16 px-6 sm:px-10 overflow-hidden text-white'
+      className='relative uix-center min-h-screen flex flex-col justify-center lg:pt-36 pt-24 sm:pt-32 px-6 sm:px-10 overflow-hidden text-white'
     >
       {/* Decorative glowing orbs */}
       <div className='absolute inset-0 z-0 pointer-events-none'>

@@ -9,7 +9,7 @@ const MobileGetInTouch = () => {
     useContactForm();
 
   return (
-    <div className='relative px-4 py-10 text-silver-mist overflow-hidden'>
+    <div className='relative px-4 py-2 sm:py-6 text-silver-mist overflow-hidden'>
       <div className='relative z-10 max-w-sm mx-auto'>
         <div className='mt-8 space-y-4'>
           {/* Enhanced Contact Info Cards */}

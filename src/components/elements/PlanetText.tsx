@@ -57,7 +57,7 @@ const MobilePlanetText: React.FC<PlanetTextProps> = ({
   btnText,
 }) => {
   return (
-    <div className='relative z-10 mx-auto w-full max-w-sm px-4 py-8 text-center'>
+    <div className='relative z-10 mx-auto w-full max-w-sm px-4 pt-2 pb-6 sm:py-8 text-center'>
       {/* Static background rings */}
       <div className='absolute left-1/2 top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2 pointer-events-none'>
         <div className='w-48 h-48 rounded-full border border-white/5' />

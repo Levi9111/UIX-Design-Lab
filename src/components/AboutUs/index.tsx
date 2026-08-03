@@ -54,7 +54,7 @@ const AboutUs = () => {
   if (!device) return null;
 
   return (
-    <section className='py-24'>
+    <section className='pt-24 pb-16 sm:py-24'>
       <PlanetText
         title='Meet Our Team'
         subtitle='Behind every great project stands an exceptional team. Meet the creative minds and technical experts who bring innovation to life through passion, expertise, and collaboration.'

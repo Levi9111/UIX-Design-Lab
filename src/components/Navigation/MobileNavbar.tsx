@@ -115,8 +115,8 @@ const MobileNavbar = ({ url }: { url: string }) => {
               </Link>
             </li>
             <li className='pt-4 pb-2' onClick={() => setIsOpen(false)}>
-              <Route link='/get-in-touch'>
-                <Button>Get in touch</Button>
+              <Route link='/get-in-touch' className='w-full block'>
+                <Button fullWidth>Get in touch</Button>
               </Route>
             </li>
           </motion.ul>

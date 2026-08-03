@@ -81,7 +81,7 @@ const FeaturesHomePage = () => {
   return (
     <section
       ref={sectionRef}
-      className='relative pt-24 px-4 sm:px-8 lg:px-12 text-white'
+      className='relative pt-24 sm:pt-32 px-4 sm:px-8 lg:px-12 text-white'
     >
       {/* Subtle background */}
       <div className='absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-transparent pointer-events-none z-0' />

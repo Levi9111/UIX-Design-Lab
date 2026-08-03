@@ -51,7 +51,7 @@ const AllProjects = () => {
   };
 
   return (
-    <section className='md:pt-24 pt-12 pb-16 sm:pb-20 bg-rich-black/20 min-h-screen'>
+    <section className='pt-24 sm:pt-32 pb-16 sm:pb-20 bg-rich-black/20 min-h-screen'>
       <div className='uix-center px-4 sm:px-6'>
         <motion.div
           initial={{ opacity: 0, y: 20 }}

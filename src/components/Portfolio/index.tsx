@@ -165,7 +165,7 @@ const Portfolio = () => {
   return (
     <section
       id='portfolio'
-      className='md:pt-24 pt-12 pb-16 sm:pb-20 bg-rich-black/20'
+      className='pt-24 sm:pt-32 pb-16 sm:pb-20 bg-rich-black/20'
     >
       <div className='uix-center px-4 sm:px-6 relative'>
         <PlanetText
