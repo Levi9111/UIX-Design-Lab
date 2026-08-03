@@ -2,14 +2,14 @@
 
 import Route from '@/components/elements/Route';
 import { motion } from 'framer-motion';
-import { serviceData } from '.';
+import { pricingTiers } from '.';
 import { Home } from 'lucide-react';
 
 const TabletPricing = () => {
   return (
     <div className='px-4 py-10'>
       <div className='grid grid-cols-1 sm:grid-cols-2 gap-6'>
-        {serviceData.map((service, index) => (
+        {pricingTiers.map((service, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 50 }}

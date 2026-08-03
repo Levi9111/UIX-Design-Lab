@@ -1,12 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
-
-const randomColor = () =>
-  ['#ffffff', '#a855f7', '#38bdf8', '#facc15', '#f472b6'][
-    Math.floor(Math.random() * 5)
-  ];
+import { STAR_COLORS, getStarColor } from './constants';
+import LinearMovingStar from './LinearMovingStar';
 
 const FloatingDot = ({
   startX,
@@ -26,7 +22,7 @@ const FloatingDot = ({
     style={{
       width: size,
       height: size,
-      background: `radial-gradient(circle, ${randomColor()} 0%, transparent 70%)`,
+      background: `radial-gradient(circle, ${getStarColor()} 0%, transparent 70%)`,
       top: `${startY}%`,
       left: `${startX}%`,
     }}
@@ -45,8 +41,6 @@ const FloatingDot = ({
     }}
   />
 );
-
-const STAR_COLORS = ['#ffffff', '#93c5fd', '#f472b6', '#facc15', '#a855f7', '#5eead4'];
 
 // Pre-generate 280 static star positions to prevent hydration churn
 const TWINKLE_STARS = Array.from({ length: 280 }, (_, i) => ({
@@ -171,49 +165,6 @@ const ShootingStar = () => (
     <div className='shooting-star shooting-star-2' />
     <div className='shooting-star shooting-star-3' />
   </div>
-);
-
-const LinearMovingStar = ({
-  startX,
-  startY,
-  endX,
-  endY,
-  delay = 0,
-  duration = 4,
-  size = 2,
-}: {
-  startX: number; // in vw
-  startY: number; // in vh
-  endX: number; // in vw
-  endY: number; // in vh
-  delay?: number;
-  duration?: number;
-  size?: number;
-}) => (
-  <motion.div
-    className='absolute bg-white rounded-full'
-    style={{
-      width: `${size}px`,
-      height: `${size}px`,
-      top: `${startY}vh`,
-      left: `${startX}vw`,
-      boxShadow: '0 0 8px white',
-      opacity: 0.7,
-    }}
-    initial={{ opacity: 0 }}
-    animate={{
-      x: `${endX - startX}vw`,
-      y: `${endY - startY}vh`,
-      opacity: [0, 1, 0],
-    }}
-    transition={{
-      delay,
-      duration,
-      repeat: Infinity,
-      repeatDelay: 2,
-      ease: 'linear',
-    }}
-  />
 );
 
 const TabAndDesktopSpaceBackground = () => {

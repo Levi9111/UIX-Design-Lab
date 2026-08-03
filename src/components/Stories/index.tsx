@@ -8,6 +8,8 @@ import TabletStories from './TabletStories';
 const Stories = () => {
   const device = useMedia();
 
+  if (!device) return null;
+
   return (
     <section id='review' className='md:pt-[180px] pt-16'>
       <div className='uix-center relative '>

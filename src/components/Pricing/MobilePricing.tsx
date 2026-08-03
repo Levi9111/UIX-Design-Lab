@@ -1,13 +1,14 @@
 'use client';
+
 import Route from '@/components/elements/Route';
-import { serviceData } from '.';
+import { pricingTiers } from '.';
 import { Home } from 'lucide-react';
 
 const MobilePricing = () => {
   return (
     <div className='space-y-12'>
       <div className='grid grid-cols-1 gap-6'>
-        {serviceData.map((service, index) => (
+        {pricingTiers.map((service, index) => (
           <div
             key={index}
             className='relative bg-gradient-to-br from-[#121417] to-[#1c1f24] backdrop-blur-xl rounded-3xl p-6 border border-purple-500/20 transition-all duration-300 flex flex-col'

@@ -13,6 +13,7 @@ import {
 import Image from 'next/image';
 import logo from '../../../public/logos/logo.svg';
 import { SOCIAL_LINKS } from '@/lib/constants/socials';
+import { SITE_NAME } from '@/lib/constants/site';
 
 const iconArr = [
   { Icon: FaBehance, link: SOCIAL_LINKS.behance, label: 'Behance' },
@@ -54,7 +55,7 @@ const Footer = () => {
         >
           <Image src={logo} alt='Logo' width={43} height={44} />
           <h4 className='font-dm-sans font-semibold text-lg sm:text-xl tracking-wide text-platinum'>
-            Design lab
+            Design Lab
           </h4>
         </div>
 
@@ -111,7 +112,7 @@ const Footer = () => {
 
       {/* Bottom section */}
       <div className='pt-6 pb-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-[#d5dbe6]'>
-        <p>© {new Date().getFullYear()} UIX Design Lab</p>
+        <p>© {new Date().getFullYear()} {SITE_NAME}</p>
         <p>All rights reserved.</p>
       </div>
     </footer>

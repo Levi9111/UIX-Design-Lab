@@ -8,8 +8,8 @@ export const metadata: Metadata = {
   keywords: ['UI/UX Design Pricing', 'Web Development Cost', 'Design Agency Plans', 'Affordable Design Services'],
 };
 
-const PricingHomePage = () => {
+const PricingPage = () => {
   return <PricingSection />;
 };
 
-export default PricingHomePage;
+export default PricingPage;

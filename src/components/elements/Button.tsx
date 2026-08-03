@@ -10,7 +10,7 @@ const bubbleShapes = ['rounded-full', 'rounded-md', 'rounded-[40%]'];
 
 interface ButtonProps {
   children: ReactNode;
-  type?: number;
+  type?: 1 | 2;
   onClick?: () => void;
 }
 

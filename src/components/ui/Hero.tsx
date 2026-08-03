@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Button from '../elements/Button';
 import { useRouter } from 'next/navigation';
+import { SITE_NAME } from '@/lib/constants/site';
 
 const Hero = () => {
   const router = useRouter();
@@ -34,7 +35,7 @@ const Hero = () => {
           transition={{ delay: 0.4, duration: 0.8 }}
         >
           Welcome to{' '}
-          <span className='text-white font-semibold'>UIX Design Lab</span> — a
+          <span className='text-white font-semibold'>{SITE_NAME}</span> — a
           team of passionate designers and developers with 4+ years of hands-on
           experience crafting impactful digital products. From intuitive
           interfaces to full-stack platforms, we focus on creating beautiful,

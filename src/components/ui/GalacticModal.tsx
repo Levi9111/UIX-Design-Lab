@@ -3,10 +3,8 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import React, { useEffect } from 'react';
-import {
-  LinearMovingStar,
-  SimpleTwinklingStar,
-} from '../designs/SpaceBackground/MobileSpaceBackground';
+import LinearMovingStar from '../designs/SpaceBackground/LinearMovingStar';
+import { SimpleTwinklingStar } from '../designs/SpaceBackground/MobileSpaceBackground';
 
 type GalacticModalProps = {
   isOpen: boolean;

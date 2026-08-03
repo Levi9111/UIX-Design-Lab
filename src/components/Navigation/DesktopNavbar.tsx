@@ -17,8 +17,6 @@ import Route from '../elements/Route';
 import Link from 'next/link';
 import { NAV_LINKS } from '@/lib/constants/navLinks';
 
-const links = NAV_LINKS;
-
 // Static Variants declared outside the component to prevent recreation on re-renders
 const navVariants: Variants = {
   hidden: { y: -100, opacity: 0 },
@@ -230,7 +228,7 @@ const DesktopNavbar = ({ url }: { url: string }) => {
         >
           {url === '/' ? (
             <>
-              {links.map((link, i) => (
+              {NAV_LINKS.map((link, i) => (
                 <motion.li
                   key={link.title}
                   custom={i}

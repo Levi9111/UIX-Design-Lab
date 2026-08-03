@@ -8,7 +8,7 @@ import { useMedia } from '@/hooks/useMedia';
 import TabletPricing from './TabletPricing';
 import MobilePricing from './MobilePricing';
 
-export const serviceData = [
+export const pricingTiers = [
   {
     title: 'Stellar Starter',
     price: '$249',
@@ -18,12 +18,10 @@ export const serviceData = [
       'Wireframe Layout',
       'Mobile-First Responsive Design',
       'Basic SEO Setup',
-      // 'Google Analytics Integration',
       'Simple Contact Form',
       'Free Revisions(1 week)',
       'User Friendly Design',
       'Full UX Support',
-      // 'Email Support (30 Days)',
     ],
   },
   {
@@ -32,18 +30,14 @@ export const serviceData = [
     icon: Rocket,
     features: [
       'Up to 5 Pages with Landing Pages',
-      // 'CMS Integration (WordPress or Strapi)',
       'Wireframe Layout',
       'Fully Functional Website',
-      // 'Blog or News Section',
       'Performance & Accessibility Optimization',
       'On-Page SEO Setup (Basic)',
       'Custom Dashboard (Basic)',
       'Free Revisions(2 weeks)',
       'Cloud Hosting Setup & Deployment',
-      // 'Priority Email & Chat Support (60 Days)',
       'Concept Changing Opportunity',
-      // 'Training Session for Content Editors',
       'Full UX Support',
     ],
   },
@@ -53,7 +47,6 @@ export const serviceData = [
     icon: ShieldCheck,
     features: [
       'Up to 12 Pages with Custom Features',
-      // 'Full CMS Integration & API Connections',
       'Full API Connections',
       'Custom UI/UX Design',
       'E-commerce or Booking System (Basic)',
@@ -64,7 +57,6 @@ export const serviceData = [
       'Unlimited Revisions within Scope(3 weeks)',
       'Dashboard Design Support',
       'Full UX with Server Support',
-      // 'Dedicated Account Manager (Optional)',
     ],
   },
 ];

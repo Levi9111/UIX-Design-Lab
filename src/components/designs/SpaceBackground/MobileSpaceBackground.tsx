@@ -2,55 +2,10 @@
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { getStarColor } from './constants';
+import LinearMovingStar from './LinearMovingStar';
 
-// Shared utilities
-const getStarColor = () =>
-  ['#ffffff', '#93c5fd', '#f472b6', '#facc15', '#a855f7', '#5eead4'][
-    Math.floor(Math.random() * 6)
-  ];
-
-export const LinearMovingStar = ({
-  startX,
-  startY,
-  endX,
-  endY,
-  delay = 0,
-  duration = 4,
-  size = 2,
-}: {
-  startX: number;
-  startY: number;
-  endX: number;
-  endY: number;
-  delay?: number;
-  duration?: number;
-  size?: number;
-}) => (
-  <motion.div
-    className='absolute bg-white rounded-full'
-    style={{
-      width: `${size}px`,
-      height: `${size}px`,
-      top: `${startY}vh`,
-      left: `${startX}vw`,
-      boxShadow: '0 0 8px white',
-      opacity: 0.7,
-    }}
-    initial={{ opacity: 0 }}
-    animate={{
-      x: `${endX - startX}vw`,
-      y: `${endY - startY}vh`,
-      opacity: [0, 1, 0],
-    }}
-    transition={{
-      delay,
-      duration,
-      repeat: Infinity,
-      repeatDelay: 2,
-      ease: 'linear',
-    }}
-  />
-);
+export { LinearMovingStar };
 
 // Simplified twinkling star with colors and better visibility
 export const SimpleTwinklingStar = ({

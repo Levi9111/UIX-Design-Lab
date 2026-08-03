@@ -9,9 +9,7 @@ import Route from '../elements/Route';
 import Link from 'next/link';
 import { NAV_LINKS } from '@/lib/constants/navLinks';
 
-const links = NAV_LINKS;
-
-const lineProps =
+const LINE_CLASS =
   'w-full h-[2px] bg-platinum rounded transition-all duration-300';
 
 const MobileNavbar = ({ url }: { url: string }) => {
@@ -33,17 +31,17 @@ const MobileNavbar = ({ url }: { url: string }) => {
           aria-expanded={isOpen}
         >
           <motion.span
-            className={lineProps}
+            className={LINE_CLASS}
             animate={isOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
             transition={{ type: 'spring', stiffness: 100, damping: 20 }}
           />
           <motion.span
-            className={lineProps}
+            className={LINE_CLASS}
             animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
             transition={{ duration: 0.3 }}
           />
           <motion.span
-            className={lineProps}
+            className={LINE_CLASS}
             animate={isOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
             transition={{ type: 'spring', stiffness: 100, damping: 20 }}
           />
@@ -61,7 +59,7 @@ const MobileNavbar = ({ url }: { url: string }) => {
           >
             {url === '/' ? (
               <>
-                {links.map((link) => (
+                {NAV_LINKS.map((link) => (
                   <li
                     key={link.title}
                     className='text-silver-mist text-base font-medium border-b border-gray-700/60 py-2 cursor-pointer hover:text-white transition-colors'

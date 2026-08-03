@@ -2,7 +2,7 @@
 
 import Route from '@/components/elements/Route';
 import { motion } from 'framer-motion';
-import { serviceData } from '.';
+import { pricingTiers } from '.';
 import { Home } from 'lucide-react';
 
 const DesktopPricing = () => {
@@ -45,7 +45,7 @@ const DesktopPricing = () => {
         viewport={{ once: true }}
         className='grid md:grid-cols-3 gap-8 lg:gap-12'
       >
-        {serviceData.map((service) => (
+        {pricingTiers.map((service) => (
           <motion.div
             key={service.title}
             variants={cardVariants}

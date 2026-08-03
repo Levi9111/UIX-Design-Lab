@@ -2,13 +2,11 @@
 
 import { motion } from 'framer-motion';
 import SpaceBackground from '@/components/designs/SpaceBackground';
-import NebulaBackground from '@/components/designs/NebulaBackground';
 
 export default function NotFoundPage() {
   return (
     <div className='relative flex items-center justify-center min-h-screen  text-white overflow-hidden'>
       {/* Background Effects */}
-      <NebulaBackground />
       <SpaceBackground />
 
       {/* Central Animated 404 Message */}

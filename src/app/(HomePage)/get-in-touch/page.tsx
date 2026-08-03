@@ -8,8 +8,8 @@ export const metadata: Metadata = {
   keywords: ['Contact Design Agency', 'Hire UI/UX Designer', 'Web Development Inquiry', 'Start Project'],
 };
 
-const GetInTouchHomePage = () => {
+const GetInTouchPage = () => {
   return <GetInTouch />;
 };
 
-export default GetInTouchHomePage;
+export default GetInTouchPage;
