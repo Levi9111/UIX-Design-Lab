@@ -7,8 +7,8 @@ export type DeviceType = 'mobile' | 'tablet' | 'desktop';
  * Returns `null` until the first client-side measurement is done,
  * preventing hydration mismatches between SSR and client renders.
  */
-export const useMedia = (): DeviceType | null => {
-  const [device, setDevice] = useState<DeviceType | null>(null);
+export const useMedia = (): DeviceType => {
+  const [device, setDevice] = useState<DeviceType>('desktop');
 
   useEffect(() => {
     const checkDevice = () => {

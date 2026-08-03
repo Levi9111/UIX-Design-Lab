@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     images: [
       {
-        url: '/logos/logo.svg',
+        url: '/logos/og-image.png',
         width: 1200,
         height: 630,
         alt: `${SITE_NAME} Logo`,
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     title: `${SITE_NAME} | Creative Design & Development Agency`,
     description:
       'Creative design and development agency specializing in platform UI/UX and full-stack web development.',
-    images: ['/logos/logo.svg'],
+    images: ['/logos/og-image.png'],
   },
   robots: {
     index: true,

@@ -176,39 +176,13 @@ const Comet = ({
   />
 );
 
-const ShootingStar = () => {
-  const [visible, setVisible] = useState(false);
-  const [startPos, setStartPos] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setStartPos({ x: Math.random() * 100, y: Math.random() * 50 });
-      setVisible(true);
-      setTimeout(() => setVisible(false), 1500);
-    }, 8000);
-    return () => clearInterval(interval);
-  }, []);
-
-  return visible ? (
-    <motion.div
-      className='absolute bg-white rounded-full'
-      style={{
-        width: '2px',
-        height: '2px',
-        top: `${startPos.y}%`,
-        left: `${startPos.x}%`,
-        boxShadow: '0 0 12px white',
-      }}
-      initial={{ opacity: 0 }}
-      animate={{
-        x: ['0%', '30%'],
-        y: ['0%', '30%'],
-        opacity: [0, 1, 0],
-      }}
-      transition={{ duration: 1.5, ease: 'easeOut' }}
-    />
-  ) : null;
-};
+const ShootingStar = () => (
+  <div className='absolute inset-0 pointer-events-none overflow-hidden'>
+    <div className='shooting-star shooting-star-1' />
+    <div className='shooting-star shooting-star-2' />
+    <div className='shooting-star shooting-star-3' />
+  </div>
+);
 
 const LinearMovingStar = ({
   startX,

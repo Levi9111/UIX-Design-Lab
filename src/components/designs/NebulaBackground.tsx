@@ -1,60 +1,14 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
 
-const ShootingStar = () => {
-  const [stars, setStars] = useState<{ id: number; x: number; y: number }[]>(
-    [],
-  );
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setStars((prev) => [
-        ...prev,
-        {
-          id: Date.now(),
-          x: Math.random() * 100,
-          y: Math.random() * 50,
-        },
-      ]);
-
-      // Remove old ones after 2 seconds
-      setTimeout(() => {
-        setStars((prev) => prev.slice(1));
-      }, 2000);
-    }, 5000); // every 5 seconds
-
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <>
-      {stars.map((star) => (
-        <motion.div
-          key={star.id}
-          className='absolute bg-white'
-          style={{
-            width: '2px',
-            height: '2px',
-            top: `${star.y}%`,
-            left: `${star.x}%`,
-            borderRadius: '50%',
-            boxShadow:
-              '0 0 6px 2px white, -20px -2px 15px rgba(255,255,255,0.3)', // adds a trail
-          }}
-          initial={{ opacity: 0 }}
-          animate={{
-            x: ['0%', '30%'],
-            y: ['0%', '30%'],
-            opacity: [0, 1, 0],
-          }}
-          transition={{ duration: 1.6, ease: 'easeOut' }}
-        />
-      ))}
-    </>
-  );
-};
+const ShootingStar = () => (
+  <div className='absolute inset-0 pointer-events-none overflow-hidden'>
+    <div className='shooting-star shooting-star-1' />
+    <div className='shooting-star shooting-star-2' />
+    <div className='shooting-star shooting-star-3' />
+  </div>
+);
 
 const Comet = ({
   startX,

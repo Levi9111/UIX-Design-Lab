@@ -1,8 +1,7 @@
 'use client';
 
 import { Mail, Phone, MapPin } from 'lucide-react';
-import { Instagram, LinkedIn } from 'developer-icons';
-import { BsBehance, BsDribbble } from 'react-icons/bs';
+import { BsBehance, BsDribbble, BsInstagram, BsLinkedin } from 'react-icons/bs';
 import { PlanetText } from '@/components/elements/PlanetText';
 import { useMedia } from '@/hooks/useMedia';
 import DesktopGetInTouch from './DesktopGetInTouch';
@@ -40,7 +39,7 @@ export const socialCards = [
   {
     platform: 'LinkedIn',
     handle: '@sktahsinahmed',
-    icon: LinkedIn,
+    icon: BsLinkedin,
     color: 'from-[#0A66C2] to-[#004182]',
     bgColor: 'bg-[#0A66C2]/10',
     borderColor: 'border-[#0A66C2]/20',
@@ -51,7 +50,7 @@ export const socialCards = [
   {
     platform: 'Instagram',
     handle: '@sk.tahmed',
-    icon: Instagram,
+    icon: BsInstagram,
     color: 'from-[#f58529] via-[#dd2a7b] to-[#8134af]',
     bgColor: 'bg-[#dd2a7b]/10',
     borderColor: 'border-[#dd2a7b]/20',
